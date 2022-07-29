@@ -8,6 +8,7 @@ use crate::structure::{
 use serde::{Deserialize, Serialize};
 
 /// Begins defining a new local tissue in the creature.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct LocalTissueToken {
     /// Argument 1 of `[TISSUE:...]`
@@ -172,6 +173,7 @@ pub struct LocalTissueToken {
 
 /// Defines a new local creature tissue and populates it with all properties defined in the
 /// local tissue specified in the second argument.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct UseTissue {
     /// Argument 1 of `[USE_TISSUE:...]`
@@ -336,6 +338,7 @@ pub struct UseTissue {
 
 /// Loads a tissue template listed in `OBJECT:TISSUE_TEMPLATE` files, such as
 /// `tissue_template_default.txt`.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct UseTissueTemplate {
     /// Argument 1 of `[USE_TISSUE_TEMPLATE:...]`
@@ -499,6 +502,7 @@ pub struct UseTissueTemplate {
 }
 
 /// Selects a tissue for editing.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SelectTissue {
     /// Argument 1 of `[SELECT_TISSUE:...]`
@@ -663,6 +667,7 @@ pub struct SelectTissue {
 
 /// Selects a locally defined material for editing. You can select `ALL` to modify all materials
 /// in the creature.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SelectMaterial {
     /// Arguments of `[SELECT_MATERIAL:...]`

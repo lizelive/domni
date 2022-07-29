@@ -8,6 +8,7 @@ use crate::structure::InteractionToken;
 
 /// Begin defining a new attack this creature/caste can use, including its name, and the body
 /// part(s) used to perform the attack.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Attack {
     /// Arguments of the `ATTACK` token
@@ -85,6 +86,7 @@ pub struct Attack {
     pub specialattack_suck_blood: Option<(u32, u32)>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AttackPriorityEnum {
@@ -99,6 +101,7 @@ impl Default for AttackPriorityEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum AttackPerformerTokenArg {
     /// Specifies the type of body part used to perform the attack; for example,

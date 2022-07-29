@@ -3,6 +3,7 @@ use crate::structure::{ItemReferenceArg, KeyBindEnum, LaborEnum, MaterialTokenAr
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum BuildingToken {
     #[serde(alias = "BUILDING_WORKSHOP")]
@@ -16,6 +17,7 @@ impl Default for BuildingToken {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BuildingGeneralToken {
     /// Argument 1 of `[BUILDING_WORKSHOP:...]` or `[BUILDING_FURNACE:...]`
@@ -104,6 +106,7 @@ pub struct BuildingGeneralToken {
     pub needs_magma: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BuildItemToken {
     /// Argument 1 of `[BUILD_ITEM:...]`
@@ -234,6 +237,7 @@ pub struct BuildItemToken {
     pub worthless_stone_only: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum MatEnum {

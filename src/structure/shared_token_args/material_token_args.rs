@@ -7,6 +7,7 @@ use crate::structure::{
 use serde::{Deserialize, Serialize};
 
 /// Wiki page: https://dwarffortresswiki.org/index.php/Material_token
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct MaterialTokenArg {
     // |---0------|---------1--------|----2----|---3-----|
@@ -19,6 +20,7 @@ pub struct MaterialTokenArg {
     pub material: MaterialTypeEnum,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 /// The shape of the tissue
 pub enum MaterialTypeEnum {
@@ -147,6 +149,7 @@ impl Default for MaterialTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum CoalMaterialEnum {

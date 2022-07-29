@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::structure::StandardPluralEnum;
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum BodyObjectToken {
     #[serde(alias = "BODY")]
@@ -17,6 +18,7 @@ impl Default for BodyObjectToken {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BodyGlossToken {
     /// Arguments of `[BODYGLOSS:...]`
@@ -24,6 +26,7 @@ pub struct BodyGlossToken {
     pub bodygloss: Option<(ReferenceTo<Self>, String, String, String, String)>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BodyToken {
     /// Argument 1 of `[BODY:...]`
@@ -38,6 +41,7 @@ pub struct BodyToken {
 /// typing. If you don't add something in that slot, the body part won't even load."
 ///
 /// --Toady
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BodyPartToken {
     /// Arguments of `[BP:...]`
@@ -242,6 +246,7 @@ pub struct BodyPartToken {
     pub vermin_butcher_item: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ConTypeEnum {

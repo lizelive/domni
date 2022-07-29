@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::structure::{BpCriteriaTokenArg, MaterialToken, TissueToken};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BodyDetailPlanToken {
     /// Argument 1 of `[BODY_DETAIL_PLAN:...]`
@@ -59,6 +60,7 @@ pub struct BodyDetailPlanToken {
     pub bp_relsize: Vec<(BpCriteriaTokenArg, u32)>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum PositionEnum {
@@ -81,6 +83,7 @@ impl Default for PositionEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum BpRelationEnum {
@@ -118,6 +121,7 @@ impl Default for BpRelationEnum {
 }
 
 // region: BP_LAYERS args =========================================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ArgEnum {
@@ -154,6 +158,7 @@ impl Default for ArgEnum {
 }
 
 // TODO: research; can you have more than 5 of these total in one BP_LAYERS?
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BpLayerTokenArg {
     pub tissue: (

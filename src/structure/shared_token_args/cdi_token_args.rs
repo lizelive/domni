@@ -6,6 +6,7 @@ use crate::structure::{
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum CdiTargetTypeEnum {
@@ -32,6 +33,7 @@ impl Default for CdiTargetTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum UsageHintEnum {
@@ -84,6 +86,7 @@ impl Default for UsageHintEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum CdiTokenArg {
     /// Specifies which interaction can be performed. This is only needed following

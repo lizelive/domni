@@ -25,6 +25,7 @@ type CeTokenArgs = Choose<
 
 // region: Symptomatic Effects ====================================================================
 /// Causes the targeted bodypart to undergo bruising.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeBruising {
     /// Arguments for `[CE_BRUISING:...]`
@@ -35,6 +36,7 @@ pub struct CeBruising {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Covers the targeted bodypart with blisters.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeBlisters {
     /// Arguments for `[CE_BLISTERS:...]`
@@ -45,6 +47,7 @@ pub struct CeBlisters {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Causes pus to ooze from the afflicted bodypart.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeOozing {
     /// Arguments for `[CE_OOZING:...]`
@@ -56,6 +59,7 @@ pub struct CeOozing {
 }
 /// Causes the targeted bodypart to start bleeding, with heavy enough bleeding resulting in the
 /// death of the sufferer. Some conditions seem to cause bleeding to be fatal no matter how weak.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeBleeding {
     /// Arguments for `[CE_BLEEDING:...]`
@@ -66,6 +70,7 @@ pub struct CeBleeding {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Causes the targeted bodypart to swell up. Extreme swelling may lead to necrosis.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeSwelling {
     /// Arguments for `[CE_SWELLING:...]`
@@ -78,6 +83,7 @@ pub struct CeSwelling {
 /// Causes the targeted bodypart to rot, with associated tissue damage, miasma emission and
 /// bleeding. The victim slowly bleeds to death if the wound is not treated. Badly necrotic limbs
 /// will require amputation.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeNecrosis {
     /// Arguments for `[CE_NECROSIS:...]`
@@ -89,6 +95,7 @@ pub struct CeNecrosis {
 }
 /// Causes numbness in the affected body part, blocking pain. Extreme numbness may lead to sensory
 /// nerve damage.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeNumbness {
     /// Arguments for `[CE_NUMBNESS:...]`
@@ -99,6 +106,7 @@ pub struct CeNumbness {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Afflicts the targeted bodypart with intense pain.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CePain {
     /// Arguments for `[CE_PAIN:...]`
@@ -110,6 +118,7 @@ pub struct CePain {
 }
 /// Causes paralysis. Paralysis is complete paralysis and will cause suffocation in smaller
 /// creatures. Paralysis on a limb may lead to motor nerve damage.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeParalysis {
     /// Arguments for `[CE_PARALYSIS:...]`
@@ -123,6 +132,7 @@ pub struct CeParalysis {
 /// impaired the creature can't breathe and will suffocate. This token only affects organs, not
 /// limbs. Note that this effect is currently bugged, and will not "turn off" until the creature
 /// receives a wound to cause its body parts to update.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeImpairFunction {
     /// Arguments for `[CE_IMPAIR_FUNCTION:...]`
@@ -134,6 +144,7 @@ pub struct CeImpairFunction {
 }
 /// Inflicts the Dizziness condition, occasional fainting and a general slowdown in movement and
 /// work speed.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeDizziness {
     /// Arguments for `[CE_DIZZINESS:...]`
@@ -144,6 +155,7 @@ pub struct CeDizziness {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Causes the Drowsiness condition.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeDrowsiness {
     /// Arguments for `[CE_DROWSINESS:...]`
@@ -154,6 +166,7 @@ pub struct CeDrowsiness {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Renders unconscious.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeUnconsciousness {
     /// Arguments for `[CE_UNCONSCIOUSNESS:...]`
@@ -164,6 +177,7 @@ pub struct CeUnconsciousness {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Causes the Fever condition.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeFever {
     /// Arguments for `[CE_FEVER:...]`
@@ -174,6 +188,7 @@ pub struct CeFever {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Causes the Nausea condition, and heavy vomiting. Can eventually lead to dehydration and death.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeNausea {
     /// Arguments for `[CE_NAUSEA:...]`
@@ -185,6 +200,7 @@ pub struct CeNausea {
 }
 /// This effect results in the sufferer periodically coughing blood, which stains the tile they're
 /// on and requires cleanup. It doesn't appear to be lethal, but may cause minor bleeding damage.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeCoughBlood {
     /// Arguments for `[CE_COUGH_BLOOD:...]`
@@ -196,6 +212,7 @@ pub struct CeCoughBlood {
 }
 /// This effect results in the sufferer periodically vomiting blood, which stains the tile they're
 /// on and requires cleanup. It doesn't appear to be lethal, but may cause minor bleeding damage.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeVomitBlood {
     /// Arguments for `[CE_VOMIT_BLOOD:...]`
@@ -209,6 +226,7 @@ pub struct CeVomitBlood {
 // region: Healing Effects ========================================================================
 /// Decreases the severity of pain produced by wounds or syndrome effects on the targeted bodypart.
 /// The `SEV` value probably controls by how much the pain is decreased.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeReducePain {
     /// Arguments for `[CE_REDUCE_PAIN:...]`
@@ -219,6 +237,7 @@ pub struct CeReducePain {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Decreases the severity of swelling on the targeted bodypart.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeReduceSwelling {
     /// Arguments for `[CE_REDUCE_SWELLING:...]`
@@ -229,6 +248,7 @@ pub struct CeReduceSwelling {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Decreases the severity of any paralysis effects on the targeted bodypart.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeReduceParalysis {
     /// Arguments for `[CE_REDUCE_PARALYSIS:...]`
@@ -239,6 +259,7 @@ pub struct CeReduceParalysis {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Decreases the severity of any dizziness the creature has.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeReduceDizziness {
     /// Arguments for `[CE_REDUCE_DIZZINESS:...]`
@@ -249,6 +270,7 @@ pub struct CeReduceDizziness {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Decreases the severity of any nausea the creature has.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeReduceNausea {
     /// Arguments for `[CE_REDUCE_NAUSEA:...]`
@@ -259,6 +281,7 @@ pub struct CeReduceNausea {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Decreases the severity of any fever the creature has.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeReduceFever {
     /// Arguments for `[CE_REDUCE_FEVER:...]`
@@ -270,6 +293,7 @@ pub struct CeReduceFever {
 }
 /// Decreases the severity of the bleeding of any wounds or syndrome effects on the targeted
 /// bodypart. The `SEV` value probably controls by how much the bleeding is decreased.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeStopBleeding {
     /// Arguments for `[CE_STOP_BLEEDING:...]`
@@ -280,6 +304,7 @@ pub struct CeStopBleeding {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Closes any wounds on the targeted bodypart with speed depending on the `SEV` value.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeCloseOpenWounds {
     /// Arguments for `[CE_CLOSE_OPEN_WOUNDS:...]`
@@ -290,6 +315,7 @@ pub struct CeCloseOpenWounds {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Probably decreases the severity of the infection from infected wounds over time.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeCureInfection {
     /// Arguments for `[CE_CURE_INFECTION:...]`
@@ -300,6 +326,7 @@ pub struct CeCureInfection {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Heals the tissues of the targeted bodypart with speed depending on the `SEV` value.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeHealTissues {
     /// Arguments for `[CE_HEAL_TISSUES:...]`
@@ -310,6 +337,7 @@ pub struct CeHealTissues {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Heals the nerves of the targeted bodypart with speed depending on the `SEV` value.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeHealNerves {
     /// Arguments for `[CE_HEAL_NERVES:...]`
@@ -323,6 +351,7 @@ pub struct CeHealNerves {
 ///
 /// In adventure, parts will be regrown until you travel or wait/sleep.
 /// [Bug:0011396.](https://www.bay12games.com/dwarves/mantisbt/view.php?id=0011396)
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeRegrowParts {
     /// Arguments for `[CE_REGROW_PARTS:...]`
@@ -340,6 +369,7 @@ pub struct CeRegrowParts {
 /// Adding tags will cause the creature to pass/fail any relevant `IT_REQUIRES`/`IT_FORBIDDEN` checks
 /// (with the apparent exceptions of `FIT_FOR_ANIMATION` and `FIT_FOR_RESURRECTION`). Note that
 /// `CE_REMOVE_TAG` overrides this effect.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeAddTag {
     /// Arguments for `[CE_ADD_TAG:...]`
@@ -359,6 +389,7 @@ pub struct CeAddTag {
 ///
 /// Removing tags will cause the creature to fail/pass any relevant `IT_REQUIRES`/`IT_FORBIDDEN` checks
 /// (with the apparent exceptions of `FIT_FOR_ANIMATION` and `FIT_FOR_RESURRECTION`).
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeRemoveTag {
     /// Arguments for `[CE_REMOVE_TAG:...]`
@@ -369,6 +400,7 @@ pub struct CeRemoveTag {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Attaches the specified name to the creature's normal name.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeDisplayName {
     /// Arguments for `[CE_DISPLAY_NAME:...]`
@@ -379,6 +411,7 @@ pub struct CeDisplayName {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Causes the creature to display the specified tile instead of its normal one.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeDisplayTile {
     /// Arguments for `[CE_DISPLAY_TILE:...]`
@@ -389,6 +422,7 @@ pub struct CeDisplayTile {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Causes the creature to flash between its normal tile and the one specified here.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeFlashTile {
     /// Arguments for `[CE_FLASH_TILE:...]`
@@ -409,6 +443,7 @@ pub struct CeFlashTile {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Alters the creature's specified physical attribute.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CePhysAttChange {
     /// Arguments for `[CE_PHYS_ATT_CHANGE:...]`
@@ -419,6 +454,7 @@ pub struct CePhysAttChange {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Alters the creature's specified mental attribute.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeMentAttChange {
     /// Arguments for `[CE_MENT_ATT_CHANGE:...]`
@@ -430,6 +466,7 @@ pub struct CeMentAttChange {
 }
 /// Changes the creature's speed. The minimum and maximum speeds able to be created by
 /// `CE_SPEED_CHANGE` are 99 and 10,000 respectively.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeSpeedChange {
     /// Arguments for `[CE_SPEED_CHANGE:...]`
@@ -442,6 +479,7 @@ pub struct CeSpeedChange {
 /// Alters the creature's specified skill level. The argument `PERC` specifies a percentage of the
 /// creature's current skill, and `PERC_ON` the probability of the effect being applied on a
 /// particular roll.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeSkillRollAdjust {
     /// Arguments for `[CE_SKILL_ROLL_ADJUST:...]`
@@ -452,6 +490,7 @@ pub struct CeSkillRollAdjust {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Alters the size of the creature.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeBodyAppearanceModifier {
     /// Arguments for `[CE_BODY_APPEARANCE_MODIFIER:...]`
@@ -467,6 +506,7 @@ pub struct CeBodyAppearanceModifier {
     pub ce: Vec<CeTokenArgs>,
 }
 /// Alters the characteristics (height, width etc.) of a body part.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeBpAppearanceModifier {
     /// Arguments for `[CE_BP_APPEARANCE_MODIFIER:...]`
@@ -491,6 +531,7 @@ pub struct CeBpAppearanceModifier {
 /// Note that transformation into or out of the target form causes the creature to
 /// drop all items in its inventory and instantly heals all of its wounds. If an undead limb
 /// happens to be transformed, its entire body will regenerate upon transforming back.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeBodyTransformation {
     /// Arguments for `[CE_BODY_TRANSFORMATION:...]`
@@ -507,6 +548,7 @@ pub struct CeBodyTransformation {
 /// be doubled. If A is 1 and B is 2, it will be halved instead. `NONE:NONE` can be used in place
 /// of a specific material token so as to make the effect applicable to all materials. Note that
 /// this syndrome effect is equivalent to the `MATERIAL_FORCE_MULTIPLIER` creature token.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeMaterialForceMultiplier {
     /// Arguments for `[CE_MATERIAL_FORCE_MULTIPLIER:...]`
@@ -525,6 +567,7 @@ pub struct CeMaterialForceMultiplier {
 /// Makes the creature able to perform an interaction. Follow this effect token with
 /// `[CDI:INTERACTION:<interaction name>]` to specify the desired interaction, and add other `CDI`
 /// tokens as required.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeCanDoInteraction {
     /// Arguments for `[CE_CAN_DO_INTERACTION:...]`
@@ -536,6 +579,7 @@ pub struct CeCanDoInteraction {
 }
 /// Makes the creature able to perform an interaction when using an attack with a designated body
 /// part/parts.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeSpecialAttackInteraction {
     /// Arguments for `[CE_SPECIAL_ATTACK_INTERACTION:...]`
@@ -560,6 +604,7 @@ pub struct CeSpecialAttackInteraction {
 /// This currently only works on materials obtained from historical figures. That is to say, the
 /// material must bear the source unit's name, such as "Urist McVampire's dwarf blood" as opposed to
 /// mere "dwarf blood".
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeBodyMatInteraction {
     /// Arguments for `[CE_BODY_MAT_INTERACTION:...]`
@@ -579,6 +624,7 @@ pub struct CeBodyMatInteraction {
 /// reduce or negate the combat penalty of blind units when fighting creatures they can sense. In
 /// adventure mode, the specified tile will be used to represent sensed creatures when they cannot
 /// be seen directly.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeSenseCreatureClass {
     /// Arguments for `[CE_SENSE_CREATURE_CLASS:...]`
@@ -599,6 +645,7 @@ pub struct CeSenseCreatureClass {
 /// Makes the creature feel a specific emotion. The effect's `SEV` value determines how intense
 /// the emotion is. The creature also receives a thought in the following format: "`[creature]`
 /// feels `[emotion]` due to `[syndrome name]`".
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeFeelEmotion {
     /// Arguments for `[CE_FEEL_EMOTION:...]`
@@ -617,6 +664,7 @@ pub struct CeFeelEmotion {
 /// According to Toady, `CE_CHANGE_PERSONALITY` effects can cause creatures to re-evaluate their
 /// goals in worldgen; the boost to anxiety and distrust given to necromancers makes it more
 /// likely for them to develop the goal of ruling the world.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeChangePersonality {
     /// Arguments for `[CE_CHANGE_PERSONALITY:...]`
@@ -628,6 +676,7 @@ pub struct CeChangePersonality {
 }
 /// Causes erratic behavior, meaning "People that like to brawl have a chance of starting a brawl-
 /// level fight with any nearby adult." -Toady
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeErraticBehavior {
     /// Arguments for `[CE_ERRATIC_BEHAVIOR:...]`

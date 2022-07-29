@@ -25,6 +25,7 @@ use crate::structure::{
     SkillEnum, SoulAttributeEnum, SphereEnum, UnitTypeEnum, UseMaterial, UseMaterialTemplate,
 };
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CreatureToken {
     /// argument 1 of `CREATURE`

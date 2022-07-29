@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use serde::{Deserialize, Serialize};
 
 /// Work same way as `Option<T>` except for `TokenDeserialize` trait

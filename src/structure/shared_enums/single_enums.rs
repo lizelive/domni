@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AllEnum {
@@ -13,6 +14,7 @@ impl Default for AllEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NoneEnum {
@@ -26,6 +28,7 @@ impl Default for NoneEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum StandardPluralEnum {
@@ -38,6 +41,7 @@ impl Default for StandardPluralEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NoMatGlossEnum {
@@ -51,6 +55,7 @@ impl Default for NoMatGlossEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NotApplicableEnum {

@@ -9,6 +9,7 @@ use crate::structure::{
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct InorganicToken {
     /// Argument 1 of `[INORGANIC:...]`
@@ -674,6 +675,7 @@ pub struct InorganicToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum EnvClassEnum {
@@ -718,6 +720,7 @@ impl Default for EnvClassEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum InclusionTypeEnum {

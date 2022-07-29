@@ -16,6 +16,7 @@ use crate::structure::{
 pub use entity_enums::*;
 pub use entity_position::*;
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct EntityToken {
     /// Argument 1 of `[ENTITY:...]`
@@ -757,6 +758,7 @@ pub struct EntityToken {
 }
 
 /// Start an animal definition.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Animal {
     /// argument 1 of `ANIMAL`
@@ -823,6 +825,7 @@ pub struct Animal {
 }
 
 ///
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Weapon {
     /// argument 1 of `WEAPON`
@@ -835,6 +838,7 @@ pub struct Weapon {
 
 /// Select a tissue layer which has the `ID` attached using `TISSUE_STYLE_UNIT` token in unit raws.
 /// This allows setting further cultural style parameters for the selected tissue layer.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TissueStyle {
     /// argument 1 of `TISSUE_STYLE`
@@ -850,6 +854,7 @@ pub struct TissueStyle {
     pub ts_preferred_shaping: Vec<StylingEnum>, // `TODO` this possibly depends on the given tissue above
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum StylingEnum {

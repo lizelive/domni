@@ -14,6 +14,7 @@ use crate::structure::{
 };
 
 // TODO: don't exit back up to parent when a creature-only token is used; instead give an error
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Caste {
     /// argument 1 of `CASTE`

@@ -2,6 +2,7 @@ use crate::core::ReferenceTo;
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct PatternToken {
     /// Argument 1 of `[COLOR_PATTERN:...]`
@@ -13,6 +14,7 @@ pub struct PatternToken {
     pub cp_color: Vec<ReferenceTo<crate::ColorToken>>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum PatternEnum {

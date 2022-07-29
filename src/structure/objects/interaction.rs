@@ -8,6 +8,7 @@ use crate::structure::{
 use serde::{Deserialize, Serialize};
 
 /// Define a new interaction.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct InteractionToken {
     /// Argument 1 of `[INTERACTION:...]`
@@ -35,6 +36,7 @@ pub struct InteractionToken {
     pub generated: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ISource {
     /// Argument 1 of `[I_SOURCE:...]`
@@ -122,6 +124,7 @@ pub struct ISource {
     pub is_frequency: Option<i32>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ITarget {
     /// Arguments of `[I_TARGET:...]`
@@ -166,6 +169,7 @@ pub struct ITarget {
     pub it_material: Option<InteractionMaterialEmissionTypeTokenArg>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct IEffect {
     /// Argument 1 of `[I_EFFECT:...]`
@@ -309,6 +313,7 @@ pub struct IEffect {
     pub ie_make_pet_if_possible: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum InteractionMaterialEmissionTypeTokenArg {
     /// Indicates the emission details should be obtained from `[CDI:MATERIAL]` or `[CDI:FLOW]`.
@@ -324,6 +329,7 @@ impl Default for InteractionMaterialEmissionTypeTokenArg {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SourceEnum {
@@ -372,6 +378,7 @@ impl Default for SourceEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SecretGoalEnum {
@@ -444,6 +451,7 @@ impl Default for SecretGoalEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SecretLearnMethodEnum {
@@ -469,6 +477,7 @@ impl Default for SecretLearnMethodEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum LimitedUsageHintEnum {
@@ -494,6 +503,7 @@ impl Default for LimitedUsageHintEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum RegionTypeEnum {
@@ -543,6 +553,7 @@ impl Default for RegionTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TargetTypeEnum {
@@ -573,6 +584,7 @@ impl Default for TargetTypeEnum {
 }
 
 // TODO semantic analysis to limit which values are allowed based on the parent `I_TARGET`
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum TargetLocationEnum {
     /// Used with `CREATURE` to target the whole unit.
@@ -603,6 +615,7 @@ impl Default for TargetLocationEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum EffectEnum {
@@ -669,6 +682,7 @@ impl Default for EffectEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum IntermittentFrequencyEnum {
@@ -687,6 +701,7 @@ impl Default for IntermittentFrequencyEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum WeatherEnum {
@@ -723,6 +738,7 @@ impl Default for WeatherEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ArtifactEnum {

@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum GaitTypeEnum {
@@ -53,6 +54,7 @@ impl Default for GaitTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NoBuildUpEnum {
@@ -72,6 +74,7 @@ impl Default for NoBuildUpEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct GaitFlagTokenArg {
     /// Makes `THICKENS_ON_ENERGY_STORAGE` and `THICKENS_ON_STRENGTH` tissue layers slow movement

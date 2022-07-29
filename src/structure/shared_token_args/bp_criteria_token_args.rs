@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::structure::BodyToken;
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum BodyPartTypeEnum {
@@ -174,6 +175,7 @@ impl Default for BodyPartTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum BpCriteriaTokenArg {
     /// Select body parts by their `CATEGORY`, as defined in a `[CATEGORY:...]` body token.

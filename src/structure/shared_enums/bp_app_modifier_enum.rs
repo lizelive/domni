@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 // TODO: investigate if these are hardcoded to only be applicable to cerain body part CATEGORY's;
 // the wiki groups these according to body part category, but categories are arbitrary and user definable!
 // TODO: Fill this out; this likely matches to specific description string ingame; maybe use that here.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum BpAppModifersEnum {

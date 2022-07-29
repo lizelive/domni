@@ -8,6 +8,7 @@ use crate::structure::{
 use serde::{Deserialize, Serialize};
 
 // region: CE args for CE_BODY_MAT_INTERACTION ====================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum CeBodyMatInteractionTokenArg {
     /// Used to specify what must be done with the body material to trigger the interaction.
@@ -30,6 +31,7 @@ impl Default for CeBodyMatInteractionTokenArg {
 }
 
 // region: CE args for CE_BODY_TRANSFORMATION =====================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum CeBodyTransformationTokenArg {
     /// This can be used to specify a specific target creature of a specific caste, to transform
@@ -78,6 +80,7 @@ impl Default for CeBodyTransformationTokenArg {
 }
 
 // region: Full CE_X args =========================================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeXTokenArg {
     /// The severity of the effect. Higher values appear to be worse, with `SEV:1000` `CE_NECROSIS`
@@ -144,6 +147,7 @@ pub struct CeXTokenArg {
 }
 
 // region: CE_X args with no target params ========================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeXNoTargetTokenArg {
     /// The severity of the effect. Higher values appear to be worse, with `SEV:1000` `CE_NECROSIS`
@@ -180,6 +184,7 @@ pub struct CeXNoTargetTokenArg {
 }
 
 // region: CE_X args with no SEV or target parameters =============================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeXNoSevTokenArg {
     /// The probability of the effect actually manifesting in the victim, as a percentage. 100 means
@@ -213,6 +218,7 @@ pub struct CeXNoSevTokenArg {
 }
 
 // region: CE_CHANGE_PERSONALITY args =============================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeChangePersonalityTokenArg {
     pub facets: Vec<(FacetEnum, PersonalityTraitEnum, i8)>,
@@ -220,6 +226,7 @@ pub struct CeChangePersonalityTokenArg {
 }
 
 // region: CE_(ADD/REMOVE)_TAG args ===============================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeTagsTokenArg {
     pub tags: Vec<TargetPropertyEnum>,
@@ -227,6 +234,7 @@ pub struct CeTagsTokenArg {
 }
 
 // region: CE_PHYS_ATT_CHANGE args ================================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CePhysAttChangeTokenArg {
     pub body_attributes: Vec<(BodyAttributeEnum, u32, u32)>,
@@ -234,6 +242,7 @@ pub struct CePhysAttChangeTokenArg {
 }
 
 // region: CE_MENT_ATT_CHANGE args ================================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CeMentAttChangeTokenArg {
     pub soul_attributes: Vec<(SoulAttributeEnum, u32, u32)>,

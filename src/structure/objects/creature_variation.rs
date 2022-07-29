@@ -3,6 +3,7 @@ use crate::core::{AllowEmpty, Any, Reference, ReferenceTo};
 use serde::{Deserialize, Serialize};
 
 // TODO: for all of these, support `!ARG` tokens, up to `!ARG65537` at least
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CreatureVariationToken {
     /// Argument 1 of `[CREATURE_VARIATION:...]`
@@ -159,6 +160,7 @@ pub struct CreatureVariationToken {
 /// blocks altering the same token, the replacements will be applied in reverse order
 /// (see [Application](https://dwarffortresswiki.org/index.php/Creature_variation_token#Application)
 /// for more detail).
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CvConvertTag {
     /// `CV_CONVERT_TAG`; has no arguments.
@@ -348,6 +350,7 @@ pub struct CvConvertTag {
 /// blocks altering the same token, the replacements will be applied in reverse order
 /// (see [Application](https://dwarffortresswiki.org/index.php/Creature_variation_token#Application)
 /// for more detail).
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CvConvertCTag {
     /// Arguments of `[CV_CONVERT_CTAG:...]`

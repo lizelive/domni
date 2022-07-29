@@ -2,6 +2,7 @@ use crate::core::{DFChar, Reference, ReferenceTo};
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ShapeToken {
     /// Argument 1 of `[SHAPE:...]`

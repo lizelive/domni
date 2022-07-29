@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 
 // TODO: maybe add descriptions for these where possible/practical;
 // copy from applicable creature tokens.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum CreatureFlagEnum {
@@ -251,6 +252,7 @@ impl Default for CreatureFlagEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum CasteFlagEnum {

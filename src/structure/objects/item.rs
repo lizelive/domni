@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 use crate::structure::{MusicSkillEnum, SkillEnum};
 
 #[allow(clippy::large_enum_variant)]
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum ItemToken {
     #[serde(alias = "ITEM_AMMO")]
@@ -42,6 +43,7 @@ impl Default for ItemToken {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct AmmoToken {
     /// Argument 1 of `[ITEM_AMMO:...]`
@@ -62,6 +64,7 @@ pub struct AmmoToken {
     pub attack: Option<ItemAttack>, // TODO: test ingame if WeaponAttack could be used instead here
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ArmorToken {
     /// Argument 1 of `[ITEM_ARMOR:...]`
@@ -189,6 +192,7 @@ pub struct ArmorToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct FoodToken {
     /// Argument 1 of `[ITEM_FOOD:...]`
@@ -205,6 +209,7 @@ pub struct FoodToken {
     pub level: Option<Clamp<u8, 2, 4>>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct GlovesToken {
     /// Argument 1 of `[ITEM_GLOVES:...]`
@@ -313,6 +318,7 @@ pub struct GlovesToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct HelmToken {
     /// Argument 1 of `[ITEM_HELM:...]`
@@ -413,6 +419,7 @@ pub struct HelmToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct InstrumentToken {
     /// Argument 1 of `[ITEM_INSTRUMENT:...]`
@@ -631,6 +638,7 @@ pub struct InstrumentToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NameTypeEnum {
@@ -647,6 +655,7 @@ impl Default for NameTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum PitchMethodEnum {
@@ -686,6 +695,7 @@ impl Default for PitchMethodEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TuningMethodEnum {
@@ -706,6 +716,7 @@ impl Default for TuningMethodEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SoundProductionEnum {
@@ -767,6 +778,7 @@ impl Default for SoundProductionEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TimbreEnum {
@@ -903,6 +915,7 @@ impl Default for TimbreEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct PantsToken {
     /// Argument 1 of `[ITEM_PANTS:...]`
@@ -1020,6 +1033,7 @@ pub struct PantsToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ShieldToken {
     /// Argument 1 of `[ITEM_SHIELD:...]`
@@ -1054,6 +1068,7 @@ pub struct ShieldToken {
     pub adjective: Option<String>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ShoesToken {
     /// Argument 1 of `[ITEM_SHOES:...]`
@@ -1162,6 +1177,7 @@ pub struct ShoesToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum LayerEnum {
@@ -1180,6 +1196,7 @@ impl Default for LayerEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum MaxEnum {
@@ -1192,6 +1209,7 @@ impl Default for MaxEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SiegeAmmoToken {
     /// Argument 1 of `[ITEM_SIEGEAMMO:...]`
@@ -1206,6 +1224,7 @@ pub struct SiegeAmmoToken {
     pub class: Option<SiegeAmmoClassEnum>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SiegeAmmoClassEnum {
@@ -1218,6 +1237,7 @@ impl Default for SiegeAmmoClassEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ToolToken {
     /// Argument 1 of `[ITEM_TOOL:...]`
@@ -1361,6 +1381,7 @@ pub struct ToolToken {
     pub attack: Vec<WeaponAttack>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ToolUseEnum {
@@ -1449,6 +1470,7 @@ impl Default for ToolUseEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum ImprovementTypeTokenArg {
     // TODO: token should be marked as deprecated/unused/ignored by the game, see #83
@@ -1492,6 +1514,7 @@ impl Default for ImprovementTypeTokenArg {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ItemSpecificEnum {
@@ -1506,6 +1529,7 @@ impl Default for ItemSpecificEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ImprovementMaterialFlagEnum {
@@ -1562,6 +1586,7 @@ impl Default for ImprovementMaterialFlagEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ToyToken {
     /// Argument 1 of `[ITEM_TOY:...]`
@@ -1576,6 +1601,7 @@ pub struct ToyToken {
     pub hard_mat: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TrapCompToken {
     /// Argument 1 of `[ITEM_TRAPCOMP:...]`
@@ -1614,6 +1640,7 @@ pub struct TrapCompToken {
     pub attack: Option<ItemAttack>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct WeaponToken {
     /// Argument 1 of `[ITEM_WEAPON:...]`
@@ -1682,6 +1709,7 @@ pub struct WeaponToken {
 /// - verb3rd: string
 /// - noun: string or `NO_SUB`
 /// - velocity_multiplier: value
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ItemAttack {
     /// Arguments of the `ATTACK` token
@@ -1715,6 +1743,7 @@ pub struct ItemAttack {
 /// - verb3rd: string
 /// - noun: string or `NO_SUB`
 /// - velocity_multiplier: value
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct WeaponAttack {
     /// Arguments of the `ATTACK` token
@@ -1740,6 +1769,7 @@ pub struct WeaponAttack {
     pub attack_flag_independent_multiattack: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AttackTypeEnum {
@@ -1754,6 +1784,7 @@ impl Default for AttackTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NoSubEnum {

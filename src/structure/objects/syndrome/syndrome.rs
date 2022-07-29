@@ -15,6 +15,7 @@ use crate::structure::{
 use serde::{Deserialize, Serialize};
 
 /// Used to begin defining a new syndrome.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SyndromeToken {
     #[serde(alias = "SYNDROME")]

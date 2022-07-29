@@ -11,6 +11,7 @@ use crate::structure::{
 
 /// Makes the creature able to perform this interaction. Follow this effect token with
 /// various `CDI` tokens to specify its properties.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CanDoInteraction {
     /// Arguments for `[CAN_DO_INTERACTION:...]`
@@ -26,6 +27,7 @@ pub struct CanDoInteraction {
 /// The items dropped are defined by `[EBO_ITEM]` and `[EBO_SHAPE]`.
 ///
 /// Used for gizzard stones in vanilla creatures.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ExtraButcherObject {
     /// Arguments for `[EXTRA_BUTCHER_OBJECT:...]`
@@ -37,6 +39,7 @@ pub struct ExtraButcherObject {
 }
 
 /// Defines the item that the creature drops upon being butchered.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct EboItem {
     /// Arguments for `[EBO_ITEM:...]`
@@ -61,6 +64,7 @@ pub struct EboItem {
 ///
 /// `90:95:98:100:102:105:110` : sets the range from the shortest (90% of the average height) to
 /// the tallest (110% of the average height) creature variation.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BodyAppearanceModifier {
     /// Arguments for `[BODY_APPEARANCE_MODIFIER:...]`
@@ -114,6 +118,7 @@ pub struct BodyAppearanceModifier {
 }
 
 /// Begins a selection of body parts.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SetBpGroup {
     /// Arguments for `[SET_BP_GROUP:...]`
@@ -136,6 +141,7 @@ pub struct SetBpGroup {
 }
 
 /// Sets up the breadth of possibilities for appearance qualities for a selected `BP` group.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BpAppearanceModifier {
     /// Arguments for `[BP_APPEARANCE_MODIFIER:...]`
@@ -189,6 +195,7 @@ pub struct BpAppearanceModifier {
 }
 
 /// Begins a selection of tissue layers.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SetTlGroup {
     /// Arguments for `[SET_TL_GROUP:...]`
@@ -215,6 +222,7 @@ pub struct SetTlGroup {
 
 /// Sets the range of qualities, including `LENGTH`, `DENSE`, `HIGH_POSITION`, `CURLY`,
 /// `GREASY`, WRINKLY
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TissueLayerAppearanceModifier {
     /// Arguments for `[TISSUE_LAYER_APPEARANCE_MODIFIER:...]`
@@ -270,6 +278,7 @@ pub struct TissueLayerAppearanceModifier {
 
 /// Creates a list of colors/color patterns, giving each a relative frequency. If the given
 /// color or pattern does not exist, the tissue is described as being "transparent".
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TlColorModifier {
     /// Arguments for `[TL_COLOR_MODIFIER:...]`
@@ -297,6 +306,7 @@ pub struct TlColorModifier {
 
 /// Sets tissue layer to be the target of `TISSUE_STYLE` token specified for an entity, works
 /// only on entity members. Mostly used with tissues `HAIR`, `BEARD`, `MOUSTACHE`, `SIDEBURNS`.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TissueStyleUnit {
     /// Arguments for `[TISSUE_STYLE_UNIT:...]`
@@ -311,6 +321,7 @@ pub struct TissueStyleUnit {
 ///
 /// Non-argument Locations can be `FRONT`, `RIGHT`, `LEFT`, `TOP`, `BOTTOM`. Argument locations
 /// are `AROUND` and `CLEANS`, requiring a further body part and a % of coverage/cleansing
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TissueLayer {
     #[serde(alias = "TISSUE_LAYER")]
@@ -354,6 +365,7 @@ pub struct TissueLayer {
 }
 
 /// Selects a tissue layer for descriptor and cosmetic purposes.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SelectTissueLayer {
     /// Arguments for `[SELECT_TISSUE_LAYER:...]`
@@ -402,6 +414,7 @@ pub struct SelectTissueLayer {
 /// the replacements will be applied in reverse order
 /// (see [Application](https://dwarffortresswiki.org/index.php/Creature_variation_token#Application)
 /// for more detail).
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CreatureCvConvertTag {
     /// `CV_CONVERT_TAG`; has no arguments.

@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::structure::{CreatureToken, PlantToken};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SingularOrPluralEnum {
@@ -18,6 +19,7 @@ impl Default for SingularOrPluralEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AlertOrPeacefulIntermittentEnum {
@@ -32,6 +34,7 @@ impl Default for AlertOrPeacefulIntermittentEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum VocalizationEnum {
@@ -44,6 +47,7 @@ impl Default for VocalizationEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TissueModifierEnum {
@@ -66,6 +70,7 @@ impl Default for TissueModifierEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AppGeneticModelEnum {
@@ -82,6 +87,7 @@ impl Default for AppGeneticModelEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SecretionTriggerEnum {
@@ -104,6 +110,7 @@ impl Default for SecretionTriggerEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum LairCharacteristicEnum {
@@ -116,6 +123,7 @@ impl Default for LairCharacteristicEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum LairTypeEnum {
@@ -136,6 +144,7 @@ impl Default for LairTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TestAllEnum {
@@ -148,6 +157,7 @@ impl Default for TestAllEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum HabitTypeEnum {
@@ -178,6 +188,7 @@ impl Default for HabitTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AnyHardStoneEnum {
@@ -190,6 +201,7 @@ impl Default for AnyHardStoneEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum RootEnum {
@@ -202,6 +214,7 @@ impl Default for RootEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TimescaleEnum {
@@ -216,6 +229,7 @@ impl Default for TimescaleEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NoEndEnum {
@@ -228,6 +242,7 @@ impl Default for NoEndEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NormalEnum {
@@ -243,6 +258,7 @@ impl Default for NormalEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum PlantOrCreatureTokenArg {
     Plant(ReferenceTo<PlantToken>),

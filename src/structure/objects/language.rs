@@ -2,6 +2,7 @@ use crate::core::{AllowEmpty, ReferenceTo};
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 pub enum LanguageToken {
     #[serde(alias = "WORD")]
@@ -17,7 +18,7 @@ impl Default for LanguageToken {
         Self::WordToken(WordToken::default())
     }
 }
-
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TranslationToken {
     /// Argument 1 of `TRANSLATION`
@@ -29,6 +30,7 @@ pub struct TranslationToken {
     pub t_word: Vec<(ReferenceTo<WordToken>, String)>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SymbolToken {
     /// Argument 1 of `SYMBOL`
@@ -40,6 +42,7 @@ pub struct SymbolToken {
     pub s_word: Vec<ReferenceTo<WordToken>>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct WordToken {
     /// Argument 1 of `WORD`
@@ -60,6 +63,7 @@ pub struct WordToken {
     pub prefix: Vec<PrefixToken>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct NounToken {
     /// Argument 1 of `NOUN`
@@ -98,6 +102,7 @@ pub struct NounToken {
     pub of_noun_plur: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct VerbToken {
     /// Argument 1 of `VERB`
@@ -117,6 +122,7 @@ pub struct VerbToken {
     pub rear_compound_adj: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct AdjToken {
     /// Argument 1 of `ADJ`
@@ -136,6 +142,7 @@ pub struct AdjToken {
     pub rear_compound_adj: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct PrefixToken {
     /// Argument 1 of `PREFIX`

@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum EffectLocationEnum {
@@ -25,6 +26,7 @@ impl Default for EffectLocationEnum {
 }
 
 // TODO: most of these are creature tokens; check if ANY creature token can be used for this
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TargetPropertyEnum {
@@ -128,6 +130,7 @@ impl Default for TargetPropertyEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SynTransmittionMethodEnum {
@@ -211,6 +214,7 @@ impl Default for SynTransmittionMethodEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum BreathFlowEnum {
@@ -230,6 +234,7 @@ impl Default for BreathFlowEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum BreathMaterialEnum {

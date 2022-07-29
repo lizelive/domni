@@ -8,6 +8,7 @@ use crate::structure::{
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct PlantToken {
     /// Argument 1 of `[PLANT:...]`
@@ -386,6 +387,7 @@ pub struct PlantToken {
 }
 
 /// Defines a plant growth.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Growth {
     /// argument 1 of `GROWTH`
@@ -456,6 +458,7 @@ pub struct Growth {
     pub growth_drops_off_no_cloud: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum GrowthHostEnum {
@@ -518,6 +521,7 @@ impl Default for GrowthHostEnum {
 ///
 /// You can nest any material token under here to modify the new material created from the
 /// original material.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BasicMat {
     /// arguments of `BASIC_MAT`

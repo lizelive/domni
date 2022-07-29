@@ -3,12 +3,14 @@ use crate::structure::*;
 use serde::{Deserialize, Serialize};
 
 #[allow(clippy::upper_case_acronyms)]
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct DFRaw {
     pub header: String,
     pub object_tokens: Vec<ObjectToken>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ObjectToken {
     #[serde(alias = "BODY")]

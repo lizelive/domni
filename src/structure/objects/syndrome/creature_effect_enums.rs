@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 // region: Unique single CE_X enums ===============================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum BpEnum {
@@ -29,6 +30,7 @@ impl Default for BpEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum NameEnum {
@@ -41,6 +43,7 @@ impl Default for NameEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TileEnum {
@@ -52,6 +55,7 @@ impl Default for TileEnum {
         Self::Tile
     }
 }
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum FrequencyEnum {
@@ -65,6 +69,7 @@ impl Default for FrequencyEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SpeedEnum {
@@ -82,6 +87,7 @@ impl Default for SpeedEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum PercEnum {
@@ -95,6 +101,7 @@ impl Default for PercEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum PercOnEnum {
@@ -108,6 +115,7 @@ impl Default for PercOnEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AppearanceModifierEnum {
@@ -121,6 +129,7 @@ impl Default for AppearanceModifierEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AppModTypeEnum {
@@ -140,6 +149,7 @@ impl Default for AppModTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum MatMultEnum {
@@ -152,6 +162,7 @@ impl Default for MatMultEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum InteractionEnum {
@@ -165,6 +176,7 @@ impl Default for InteractionEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum MatTokenEnum {
@@ -178,6 +190,7 @@ impl Default for MatTokenEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ReservedBloodEnum {
@@ -192,6 +205,7 @@ impl Default for ReservedBloodEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ClassEnum {
@@ -205,6 +219,7 @@ impl Default for ClassEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum EmotionEnum {
@@ -218,6 +233,7 @@ impl Default for EmotionEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum FacetEnum {
@@ -233,6 +249,7 @@ impl Default for FacetEnum {
 // endregion ======================================================================================
 
 // region: General CE enums =======================================================================
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum PeriodicTriggerEnum {
@@ -260,6 +277,7 @@ impl Default for PeriodicTriggerEnum {
         Self::Periodic
     }
 }
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum CounterTriggerEnum {
@@ -295,6 +313,7 @@ impl Default for CounterTriggerEnum {
         Self::CounterTrigger
     }
 }
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum MoonPhaseEnum {
@@ -318,6 +337,7 @@ impl Default for MoonPhaseEnum {
         Self::MoonPhase
     }
 }
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum CounterTypesEnum {
@@ -389,6 +409,7 @@ impl Default for CounterTypesEnum {
         Self::Alcoholic
     }
 }
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum RequiredEnum {
@@ -416,6 +437,7 @@ impl Default for RequiredEnum {
 ///
 /// Note that positive thoughts have a negative number, as they _reduce_ stress. Numbers closer
 /// to 1 or -1 have the strongest effect on stress (remember, these are *divisors*).
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum EmotionTypeEnum {

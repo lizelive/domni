@@ -14,6 +14,7 @@ use crate::structure::{
     UseMaterialTemplate, UseTissue, UseTissueTemplate, VocalizationEnum,
 };
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SelectCaste {
     /// argument 1 of `SELECT_CASTE`

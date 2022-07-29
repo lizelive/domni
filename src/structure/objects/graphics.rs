@@ -4,6 +4,7 @@ use crate::structure::CreatureToken;
 use indexmap::IndexMap;
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[allow(clippy::large_enum_variant)]
 pub enum GraphicsToken {
@@ -18,6 +19,7 @@ impl Default for GraphicsToken {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TilePageToken {
     /// Argument 1 of `[TILE_PAGE:...]`
@@ -59,6 +61,7 @@ type TextureGraphicsTokenArg = (
     Option<TextureTypeEnum>,
 );
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum TextureTypeEnum {
@@ -89,6 +92,7 @@ impl Default for TextureTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ColorTypeEnum {
@@ -103,6 +107,7 @@ impl Default for ColorTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CreatureGraphicsToken {
     /// Argument 1 of `[CREATURE_GRAPHICS:...]`

@@ -6,6 +6,7 @@ use crate::structure::{
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct MaterialToken {
     /// Argument 1 of `[MATERIAL_TEMPLATE:...]`
@@ -542,6 +543,7 @@ pub struct MaterialToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum OverwriteSolidEnum {
@@ -554,6 +556,7 @@ impl Default for OverwriteSolidEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum DietInfoEnum {
@@ -581,6 +584,7 @@ impl Default for DietInfoEnum {
 }
 
 /// Define a new material locally.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct LocalMaterialToken {
     /// Argument 1 of `[MATERIAL:...]`
@@ -1121,6 +1125,7 @@ pub struct LocalMaterialToken {
 /// Define a new material locally, based off the given template.
 ///
 /// You can modify this new material to change it from the original.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct UseMaterialTemplate {
     /// Arguments of `[USE_MATERIAL_TEMPLATE:...]`
@@ -1694,6 +1699,7 @@ pub struct UseMaterialTemplate {
 /// Define a new material locally, based off the given local material.
 ///
 /// You can modify this new material to change it from the original.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct UseMaterial {
     /// Argument 1 of `[USE_MATERIAL:...]`

@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum WeaponSkillEnum {
@@ -34,6 +35,7 @@ impl Default for WeaponSkillEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum MusicSkillEnum {
@@ -52,6 +54,7 @@ impl Default for MusicSkillEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SkillEnum {

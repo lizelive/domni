@@ -3,6 +3,7 @@ use crate::structure::{MaterialStateEnum, MaterialTokenArg, PluralEnum};
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct TissueToken {
     /// Argument 1 of `[TISSUE_TEMPLATE:...]`
@@ -165,6 +166,7 @@ pub struct TissueToken {
     // endregion ==================================================================================
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 /// The shape of the tissue

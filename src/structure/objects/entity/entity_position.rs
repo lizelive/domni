@@ -7,6 +7,7 @@ use crate::structure::{AllEnum, MaleOrFemaleEnum, WeaponSkillEnum};
 
 /// Defines a leader/noble position for a civilization. These replace previous tags such as
 /// `[MAYOR]` and `[CAN_HAVE_SITE_LEADER]` and so on.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct EntityPosition {
     /// argument 1 of `POSITION`
@@ -224,6 +225,7 @@ pub struct EntityPosition {
     pub succession: Option<(SuccessionTypeEnum, Option<Reference>)>, // TODO: ref is position
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SuccessionTypeEnum {
@@ -238,6 +240,7 @@ impl Default for SuccessionTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum AsNeededEnum {
@@ -251,6 +254,7 @@ impl Default for AsNeededEnum {
 }
 
 /// The position holder does a thing. See each enum value for what each responsibility does.
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Responsibility {
     /// argument 1 of `Responsibility`
@@ -262,6 +266,7 @@ pub struct Responsibility {
     pub execution_skill: Option<WeaponSkillEnum>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ResponsibilityEnum {

@@ -5,6 +5,7 @@ use crate::structure::{
 
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ReactionToken {
     /// Defines a new reaction
@@ -107,6 +108,7 @@ pub struct ReactionToken {
     pub products: Vec<ProductToken>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ReagentToken {
     /// Requires a given reagent as an input for a reaction
@@ -278,6 +280,7 @@ pub struct ReagentToken {
     pub worthless_stone_only: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ProductToken {
     /// Defines a thing that comes out of the reaction. `GET_MATERIAL_FROM_REAGENT` and
@@ -332,6 +335,7 @@ pub struct ProductToken {
     pub transfer_artifact_status: Option<()>,
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ReactionCategoryToken {
     /// Argument 1 of `[CATEGORY:...]`
@@ -354,6 +358,7 @@ pub struct ReactionCategoryToken {
     pub category_key: Option<Choose<KeyBindEnum, NoneEnum>>, // param is KeyBind
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ImprovementType {

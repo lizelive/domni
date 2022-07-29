@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SiteTypeEnum {
@@ -25,6 +26,7 @@ impl Default for SiteTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ConstructionEnum {
@@ -43,6 +45,7 @@ impl Default for ConstructionEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ArtFacetEnum {
@@ -61,6 +64,7 @@ impl Default for ArtFacetEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ArtImageModifierEnum {
@@ -81,6 +85,7 @@ impl Default for ArtImageModifierEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ItemImprovementModifierEnum {
@@ -111,6 +116,7 @@ impl Default for ItemImprovementModifierEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SymbolNounEnum {
@@ -157,6 +163,7 @@ impl Default for SymbolNounEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ReligionTypeEnum {
@@ -175,6 +182,7 @@ impl Default for ReligionTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum RarityEnum {
@@ -200,6 +208,7 @@ impl Default for RarityEnum {
 }
 
 // `TODO` need to implement this still
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum EthicTypeEnum {
@@ -307,6 +316,7 @@ impl Default for EthicTypeEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum EthicReactionEnum {
@@ -352,6 +362,7 @@ impl Default for EthicReactionEnum {
 }
 
 // `TODO` implement this
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum CulturalValueEnum {
@@ -693,6 +704,7 @@ impl Default for CulturalValueEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum SeasonEnum {
@@ -711,6 +723,7 @@ impl Default for SeasonEnum {
     }
 }
 
+#[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
 pub enum ScholarTypeEnum {
