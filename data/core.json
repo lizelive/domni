@@ -1,0 +1,81 @@
+{
+	"capacities": [
+		{
+			"title": "Blood Filtration",
+			"description": "A character's ability to fight off diseases. Affects consciousness and immunity gain speed."
+		},
+		{
+			"title": "Blood Pumping",
+			"description": "How well a creature can move blood around its body. Affects consciousness and moving."
+		},
+		{
+			"title": "Breathing",
+			"description": "The ability of a character to breathe. Affects consciousness and movement."
+		},
+		{
+			"title": "Consciousness",
+			"description": "The state or quality of awareness. A pawn loses consciousness when this falls below 30%, and dies when this reaches 0%."
+		},
+		{
+			"title": "Eating",
+			"description": "A character's ability to eat."
+		},
+		{
+			"title": "Hearing",
+			"description": "How well a creature can detect sound waves. It improves social and trade prices"
+		},
+		{
+			"title": "Manipulation",
+			"description": "How well a character can physically interact with objects. Directly affected by consciousness and arms/hands/fingers effectiveness."
+		},
+		{
+			"title": "Metabolism",
+			"description": "How well a creature's body converts food reserves into energy to sustain life. Other than killing the character if it reaches 0%, it also influences the rest rate multiplier at 30% weight."
+		},
+		{
+			"title": "Moving",
+			"description": "How well a character can move around. Directly affected by consciousness."
+		},
+		{
+			"title": "Pain",
+			"description": "How much pain a person feels."
+		},
+		{
+			"title": "Sight",
+			"description": "How well a character can see."
+		},
+		{
+			"title": "Talking",
+			"description": "A character's capacity of speech. Directly affected by consciousness."
+		},
+		{
+			"name": "MINER",
+			"description": "How fast they are at mining.",
+			"base": "attr.strength + attr.KINESTHETIC_SENSE"
+		}
+	],
+	"calculate" :
+	[
+
+		{
+			"for": "ABILITY_MOVE",
+			"use": "ABILITY_CONSCIOUSNESS",
+			"weight": 1
+		},
+		{
+			"for": "ABILITY_MELEE_DODGE",
+			"use": "ABILITY_CONSCIOUSNESS",
+			"weight": 18
+		},
+		{
+			"for": "ABILITY_AMBUSH",
+			"use": "ABILITY_CONSCIOUSNESS",
+			"weight": 18
+		},
+		{
+			"capacity" : "MINER",
+			"base": "KINESTHETIC_SENSE",
+			"weight": 3
+		}
+	]
+}

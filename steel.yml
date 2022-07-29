@@ -1,0 +1,127 @@
+def:
+  # the kind of thing this is
+  type:
+  # the base this def extends
+  base:
+  # what args this def requires
+  args:
+  # do something
+  do:
+  # do when used as base
+  late:
+  # flattend, sets a value
+  set:
+  # checks following conditions
+  test:
+inebriation:
+  base: SYNDROME
+
+metal:
+  type: inorganic
+  material_value: 1
+  spec_heat: 450
+  ignite_point:
+  heatdam_point:
+  colddam_point:
+  mat_fixed_temp:
+  melting_point: 12768
+  boiling_point: 15150
+  solid_density: 7850
+  liquid_density: 6980
+  molar_mass: 55845
+  impact_yield: 1080000 # used average for stainless steel
+  impact_fracture: 1080000
+  impact_strain_at_yield: 1000
+  compressive_yield: 1080000
+  compressive_fracture: 1080000
+  compressive_strain_at_yield: 1000
+  tensile_yield: 520000
+  tensile_fracture: 860000
+  tensile_strain_at_yield: 1000
+  torsion_yield: 520000
+  torsion_fracture: 860000
+  torsion_strain_at_yield: 1000
+  shear_yield: 520000 # used stainless steel
+  shear_fracture: 860000
+  shear_strain_at_yield: 1000
+  bending_yield: 520000
+  bending_fracture: 860000
+  bending_strain_at_yield: 1000
+  max_edge: 10000
+  absorption: 0
+  is_metal: true
+  late:
+    - color_glows: { color: gray }
+    - auto_name_solid: { name: {} }
+steel:
+  base: economic_metal
+  with:
+    base_color: gray
+  # economic
+  material_value: 30
+  # physical
+  spec_heat: 500
+  melting_point: 12718
+  boiling_point: 14968
+  solid_density: 7850
+  liquid_density: 6980
+  molar_mass: 55845
+  impact_yield: 1505000
+  impact_fracture: 2520000
+  impact_strain_at_yield: 940
+  compressive_yield: 1505000
+  compressive_fracture: 2520000
+  compressive_strain_at_yield: 940 # 160
+  tensile_yield: 430000
+  tensile_fracture: 720000
+  tensile_strain_at_yield: 225 # 200
+  torsion_yield: 430000
+  torsion_fracture: 720000
+  torsion_strain_at_yield: 215
+  shear_yield: 430000
+  shear_fracture: 720000
+  shear_strain_at_yield: 215 # no data, used 200
+  bending_yield: 430000
+  bending_fracture: 720000
+  bending_strain_at_yield: 215
+  max_edge: 10000
+  color_glows: gray
+
+auto_name_solid:
+  args:
+    name:
+  state_name_all_solid: { "template": "{{name}}" }
+  state_name_liquid: { "template": "molten {{name}}" }
+  state_name_gas: { "template": "boiling {{name}}" }
+  state_adj_all_solid: { "template": "{{name}}" }
+  state_adj_liquid: { "template": "molten {{name}}" }
+  state_adj_gas: { "template": "boiling {{name}}" }
+
+economic_metal:
+  base: metal
+  tag:
+    items_hard: true
+    items_metal: true
+    items_barred: true
+    items_scaled: true
+    items_weapon: true
+    items_weapon_ranged: true
+    items_ammo: true
+    items_digger: true
+    items_armor: true
+    items_anvil: true
+color_glows:
+  args: { color }
+  on: [material]
+  state_color:
+    all_solid: { color }
+    liquid: red
+    gas: red
+  display_color: { call: color2vec, color }
+  build_color: { call: color2vec, color }
+
+patches:
+  - foreach: { tag: economic_metal }
+
+# just some constants
+consts:

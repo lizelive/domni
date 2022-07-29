@@ -1,0 +1,107 @@
+dwarf:
+  description: A short, sturdy creature fond of drink and industry
+
+  base_caste:
+
+entity:
+  type: entity
+  # Allows creatures from this entity to be playable in adventure mode.
+  all_main_pops_controllable: false
+
+kobold_ethics:
+  ethic:
+    kill_entity_member: punish_exile
+    kill_neutral: required
+    kill_enemy: required
+    kill_animal: acceptable
+    kill_plant: acceptable
+    torture_as_example: unthinkable
+    torture_for_information: not_applicable
+    torture_for_fun: acceptable
+    torture_animals: unthinkable
+    treason: unthinkable
+    oath_breaking: not_applicable
+    lying: not_applicable
+    vandalism: not_applicable
+    trespassing: not_applicable
+    theft: not_applicable
+    assault: personal_matter
+    slavery: unthinkable
+    eat_sapient_other: unthinkable
+    eat_sapient_kill: unthinkable
+    make_trophy_same_race: unthinkable
+    make_trophy_sapient: unthinkable
+    make_trophy_animal: unthinkable
+
+evil:
+  base: entity
+  creature: [ goblin ]
+  abuse_bodies: true
+  items: 
+  - has: ITEM_WEAPON_PICK
+    as: digger
+  add:
+    - kobold_ethics
+  permitted_job: 
+    miner: true
+    carpenter: true
+    bowyer: true
+    woodcutter: true
+    engraver: true
+    mason: true
+    animal_caretaker: true
+    animal_trainer: true
+    hunter: true
+    trapper: true
+    animal_dissector: true
+    furnace_operator: true
+    weaponsmith: true
+    armorer: true
+    blacksmith: true
+    metalcrafter: true
+    woodcrafter: true
+    stonecrafter: true
+    leatherworker: true
+    bone_carver: true
+    weaver: true
+    clothier: true
+    glassmaker: true
+    fisherman: true
+    fish_dissector: true
+    fish_cleaner: true
+    gelder: true
+    cook: true
+    shearer: true
+    spinner: true
+    butcher: true
+    tanner: true
+    dyer: true
+    herbalist: true
+    brewer: true
+    lye_maker: true
+    wood_burner: true
+    mechanic: true
+    siege_engineer: true
+    siege_operator: true
+    pump_operator: true
+    trader: true
+    architect: true
+    diagnoser: true
+    bone_setter: true
+    suturer: true
+    surgeon: true
+
+abuse_bodies:
+  on: entity
+  description: An entity with this token will mutiliate the bodies from history-gen warfare, such as hanging them from trees or impaling them on spikes.
+  set:
+    abuse_bodies: true
+
+graphics:
+  - creature: dwarf
+    soldier: true
+    tile: 1
+    color:
+      foreground: 3
+      background: 0
+      bright: false

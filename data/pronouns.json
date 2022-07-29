@@ -1,0 +1,107 @@
+{
+    "number": [
+        "Singular",
+        "Plural"
+    ],
+    "formality": [
+        "Formal",
+        "Informal"
+    ],
+    "personality": [
+        "Personal",
+        "Impersonal"
+    ],
+    "genders": [
+        "Epicene",
+        "Neuter",
+        "Feminine",
+        "Masculine"
+    ],
+    "person": [
+        "First",
+        "Second",
+        "Third",
+        "Generic",
+        "Relative",
+        "Reciprocal",
+        "Dummy"
+    ],
+    "gender_symbols":{
+        "Neuter": "⚲",
+        "Feminine": "♀",
+        "Masculine": "♂",
+        "Epicene": "☿"
+    },
+    "pronouns": [
+        {
+            "where": [
+                "First",
+                "Singular"
+            ],
+            "nominative": "I",
+            "accusative": "me",
+            "reflexive": "myself",
+            "independent": "mine",
+            "dependent": "my"
+        },
+        {
+            "where": [
+                "First",
+                "Plural"
+            ],
+            "nominative": "we",
+            "accusative": "us",
+            "reflexive": "ourselves",
+            "independent": "ours",
+            "dependent": "our"
+        },
+        {
+            "where": [
+                "Second",
+                "Third",
+                "Neuter"
+            ],
+            "symbol": "⚲",
+            "subject": "it",
+            "object": "it",
+            "posessive": "its",
+            "reflexive": "itself"
+        },
+        {
+            "where": [
+                "Second",
+                "Third",
+                "Feminine"
+            ],
+            "symbol": "♀",
+            "subject": "she",
+            "object": "her",
+            "posessive": "her",
+            "reflexive": "herself"
+        },
+        {
+            "where": [
+                "Second",
+                "Third",
+                "Masculine"
+            ],
+            "symbol": "♂",
+            "subject": "he",
+            "object": "him",
+            "posessive": "his",
+            "reflexive": "himself"
+        },
+        {
+            "where": [
+                "Second",
+                "Third",
+                "Epicene"
+            ],
+            "symbol": "☿",
+            "subject": "they",
+            "object": "them",
+            "posessive": "th",
+            "reflexive": "itself"
+        }
+    ]
+}
