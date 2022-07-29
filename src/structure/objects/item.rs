@@ -1,4 +1,4 @@
-use crate::core::{Choose, Clamp, DFChar, Reference, ReferenceTo};
+use crate::core::{Choose, Clamp, DFChar, Reference, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 
@@ -97,53 +97,53 @@ pub struct ArmorToken {
     /// random peasants. This tag will not work unless `ARMORLEVEL` is explicitly declared: if you
     /// leave out `ARMORLEVEL`, even metal armor will default to level 0.
     #[serde(alias = "METAL_ARMOR_LEVELS")]
-    pub metal_armor_levels: Option<()>,
+    pub metal_armor_levels: Flag,
     /// Metal versions of this item will have "chain" added between the material and item name.
     #[serde(alias = "CHAIN_METAL_TEXT")]
-    pub chain_metal_text: Option<()>,
+    pub chain_metal_text: Flag,
     /// Clothiers can make this item from all kinds of cloth. If paired with `[LEATHER]`, the item
     /// has an equal chance of being either in randomly generated outfits. Further uses of this tag
     /// are unknown.
     #[serde(alias = "SOFT")]
-    pub soft: Option<()>,
+    pub soft: Flag,
     /// Default state in the absence of a `[SOFT]` token. Actual effects unknown.
     #[serde(alias = "HARD")]
-    pub hard: Option<()>,
+    pub hard: Flag,
     /// Item can be made from metal. Overrides `[SOFT]` and `[LEATHER]` in randomly generated
     /// outfits, if the `ARMORLEVEL` permits. Civilizations with `[WOOD_ARMOR]` will make this
     /// item out of wood instead.
     #[serde(alias = "METAL")]
-    pub metal: Option<()>,
+    pub metal: Flag,
     /// Craftsmen can make this item from bones. Randomly generated outfits don't include bone
     /// armor.
     #[serde(alias = "BARRED")]
-    pub barred: Option<()>,
+    pub barred: Flag,
     /// Craftsmen can make this item from shells. Randomly generated outfits don't include shell
     /// armor.
     #[serde(alias = "SCALED")]
-    pub scaled: Option<()>,
+    pub scaled: Flag,
     /// Leatherworkers can make this item from leather. If paired with `[SOFT]`, this item has an
     /// equal chance of being either in randomly generated outfits.
     #[serde(alias = "LEATHER")]
-    pub leather: Option<()>,
+    pub leather: Flag,
     /// Only one shaped piece of clothing can be worn on a single body slot at a time.
     #[serde(alias = "SHAPED")]
-    pub shaped: Option<()>,
+    pub shaped: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, if lower.
     /// This makes the garment flex and give way instead of shattering under force. Strong materials
     /// that resist cutting will blunt edged attacks into bone-crushing hits instead.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_ALL")]
-    pub structural_elasticity_chain_all: Option<()>,
+    pub structural_elasticity_chain_all: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, but only if
     /// the garment is made from metal.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_METAL")]
-    pub structural_elasticity_chain_metal: Option<()>,
+    pub structural_elasticity_chain_metal: Flag,
     /// Reduces the armor material's `SHEAR_YIELD` to 20000, `SHEAR_FRACTURE` to 30000 and increases
     /// the `*_STRAIN_AT_YIELD` properties to 50000, but only if the garment is made from cloth.
     /// This makes the item very weak against edged attacks, even if the thread material is
     /// normally very strong.
     #[serde(alias = "STRUCTURAL_ELASTICITY_WOVEN_THREAD")]
-    pub structural_elasticity_woven_thread: Option<()>,
+    pub structural_elasticity_woven_thread: Flag,
     /// The item's bulkiness when worn. Aside from the layer limitations, it's a big contributor to
     /// the thickness and weight (and therefore price) of the garment. See
     /// [Armor](https://dwarffortresswiki.org/index.php/Armor) for more on item sizes and
@@ -240,53 +240,53 @@ pub struct GlovesToken {
     /// random peasants. This tag will not work unless `ARMORLEVEL` is explicitly declared: if you
     /// leave out `ARMORLEVEL`, even metal armor will default to level 0.
     #[serde(alias = "METAL_ARMOR_LEVELS")]
-    pub metal_armor_levels: Option<()>,
+    pub metal_armor_levels: Flag,
     /// Metal versions of this item will have "chain" added between the material and item name.
     #[serde(alias = "CHAIN_METAL_TEXT")]
-    pub chain_metal_text: Option<()>,
+    pub chain_metal_text: Flag,
     /// Clothiers can make this item from all kinds of cloth. If paired with `[LEATHER]`, the item
     /// has an equal chance of being either in randomly generated outfits. Further uses of this tag
     /// are unknown.
     #[serde(alias = "SOFT")]
-    pub soft: Option<()>,
+    pub soft: Flag,
     /// Default state in the absence of a `[SOFT]` token. Actual effects unknown.
     #[serde(alias = "HARD")]
-    pub hard: Option<()>,
+    pub hard: Flag,
     /// Item can be made from metal. Overrides `[SOFT]` and `[LEATHER]` in randomly generated
     /// outfits, if the `ARMORLEVEL` permits. Civilizations with `[WOOD_ARMOR]` will make this
     /// item out of wood instead.
     #[serde(alias = "METAL")]
-    pub metal: Option<()>,
+    pub metal: Flag,
     /// Craftsmen can make this item from bones. Randomly generated outfits don't include bone
     /// armor.
     #[serde(alias = "BARRED")]
-    pub barred: Option<()>,
+    pub barred: Flag,
     /// Craftsmen can make this item from shells. Randomly generated outfits don't include shell
     /// armor.
     #[serde(alias = "SCALED")]
-    pub scaled: Option<()>,
+    pub scaled: Flag,
     /// Leatherworkers can make this item from leather. If paired with `[SOFT]`, this item has an
     /// equal chance of being either in randomly generated outfits.
     #[serde(alias = "LEATHER")]
-    pub leather: Option<()>,
+    pub leather: Flag,
     /// Only one shaped piece of clothing can be worn on a single body slot at a time.
     #[serde(alias = "SHAPED")]
-    pub shaped: Option<()>,
+    pub shaped: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, if lower.
     /// This makes the garment flex and give way instead of shattering under force. Strong materials
     /// that resist cutting will blunt edged attacks into bone-crushing hits instead.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_ALL")]
-    pub structural_elasticity_chain_all: Option<()>,
+    pub structural_elasticity_chain_all: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, but only if
     /// the garment is made from metal.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_METAL")]
-    pub structural_elasticity_chain_metal: Option<()>,
+    pub structural_elasticity_chain_metal: Flag,
     /// Reduces the armor material's `SHEAR_YIELD` to 20000, `SHEAR_FRACTURE` to 30000 and increases
     /// the `*_STRAIN_AT_YIELD` properties to 50000, but only if the garment is made from cloth.
     /// This makes the item very weak against edged attacks, even if the thread material is
     /// normally very strong.
     #[serde(alias = "STRUCTURAL_ELASTICITY_WOVEN_THREAD")]
-    pub structural_elasticity_woven_thread: Option<()>,
+    pub structural_elasticity_woven_thread: Flag,
     /// The item's bulkiness when worn. Aside from the layer limitations, it's a big contributor to
     /// the thickness and weight (and therefore price) of the garment. See
     /// [Armor](https://dwarffortresswiki.org/index.php/Armor) for more on item sizes and
@@ -341,53 +341,53 @@ pub struct HelmToken {
     /// random peasants. This tag will not work unless `ARMORLEVEL` is explicitly declared: if you
     /// leave out `ARMORLEVEL`, even metal armor will default to level 0.
     #[serde(alias = "METAL_ARMOR_LEVELS")]
-    pub metal_armor_levels: Option<()>,
+    pub metal_armor_levels: Flag,
     /// Metal versions of this item will have "chain" added between the material and item name.
     #[serde(alias = "CHAIN_METAL_TEXT")]
-    pub chain_metal_text: Option<()>,
+    pub chain_metal_text: Flag,
     /// Clothiers can make this item from all kinds of cloth. If paired with `[LEATHER]`, the item
     /// has an equal chance of being either in randomly generated outfits. Further uses of this tag
     /// are unknown.
     #[serde(alias = "SOFT")]
-    pub soft: Option<()>,
+    pub soft: Flag,
     /// Default state in the absence of a `[SOFT]` token. Actual effects unknown.
     #[serde(alias = "HARD")]
-    pub hard: Option<()>,
+    pub hard: Flag,
     /// Item can be made from metal. Overrides `[SOFT]` and `[LEATHER]` in randomly generated
     /// outfits, if the `ARMORLEVEL` permits. Civilizations with `[WOOD_ARMOR]` will make this
     /// item out of wood instead.
     #[serde(alias = "METAL")]
-    pub metal: Option<()>,
+    pub metal: Flag,
     /// Craftsmen can make this item from bones. Randomly generated outfits don't include bone
     /// armor.
     #[serde(alias = "BARRED")]
-    pub barred: Option<()>,
+    pub barred: Flag,
     /// Craftsmen can make this item from shells. Randomly generated outfits don't include shell
     /// armor.
     #[serde(alias = "SCALED")]
-    pub scaled: Option<()>,
+    pub scaled: Flag,
     /// Leatherworkers can make this item from leather. If paired with `[SOFT]`, this item has an
     /// equal chance of being either in randomly generated outfits.
     #[serde(alias = "LEATHER")]
-    pub leather: Option<()>,
+    pub leather: Flag,
     /// Only one shaped piece of clothing can be worn on a single body slot at a time.
     #[serde(alias = "SHAPED")]
-    pub shaped: Option<()>,
+    pub shaped: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, if lower.
     /// This makes the garment flex and give way instead of shattering under force. Strong materials
     /// that resist cutting will blunt edged attacks into bone-crushing hits instead.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_ALL")]
-    pub structural_elasticity_chain_all: Option<()>,
+    pub structural_elasticity_chain_all: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, but only if
     /// the garment is made from metal.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_METAL")]
-    pub structural_elasticity_chain_metal: Option<()>,
+    pub structural_elasticity_chain_metal: Flag,
     /// Reduces the armor material's `SHEAR_YIELD` to 20000, `SHEAR_FRACTURE` to 30000 and increases
     /// the `*_STRAIN_AT_YIELD` properties to 50000, but only if the garment is made from cloth.
     /// This makes the item very weak against edged attacks, even if the thread material is
     /// normally very strong.
     #[serde(alias = "STRUCTURAL_ELASTICITY_WOVEN_THREAD")]
-    pub structural_elasticity_woven_thread: Option<()>,
+    pub structural_elasticity_woven_thread: Flag,
     /// The item's bulkiness when worn. Aside from the layer limitations, it's a big contributor to
     /// the thickness and weight (and therefore price) of the garment. See
     /// [Armor](https://dwarffortresswiki.org/index.php/Armor) for more on item sizes and
@@ -428,7 +428,7 @@ pub struct InstrumentToken {
     // region: Unique to instruments ==============================================================
     /// Makes the instrument stationary.
     #[serde(alias = "PLACED_AS_BUILDING")]
-    pub placed_as_building: Option<()>,
+    pub placed_as_building: Flag,
     /// Sets a piece as the central part of the instrument.
     #[serde(alias = "DOMINANT_MATERIAL_PIECE")]
     pub dominant_material_piece: Option<Reference>,
@@ -489,7 +489,7 @@ pub struct InstrumentToken {
     pub music_skill: Option<MusicSkillEnum>,
     /// Can be used instead of either `REGISTER` or `PITCH_RANGE`.
     #[serde(alias = "INDEFINITE_PITCH")]
-    pub indefinite_pitch: Option<()>,
+    pub indefinite_pitch: Flag,
     // endregion ==================================================================================
 
     // TODO: prune the following list/region of shared tokens, these aren't all actually shared.
@@ -513,10 +513,10 @@ pub struct InstrumentToken {
     pub tile: Option<DFChar>,
     /// Permits the tool to be made from any bone.
     #[serde(alias = "BONE_MAT")]
-    pub bone_mat: Option<()>,
+    pub bone_mat: Flag,
     /// Permits the tool to be made from any ceramic material.
     #[serde(alias = "CERAMIC_MAT")]
-    pub ceramic_mat: Option<()>,
+    pub ceramic_mat: Flag,
     /// Allows a string to describe the tool when viewed. The text box can accommodate up to 325
     /// characters until it cuts off, but the spacing of actual sentences puts the realistic limit
     /// closer to 300.
@@ -524,49 +524,49 @@ pub struct InstrumentToken {
     pub description: Option<String>,
     /// Permits the tool to be made from any glass.
     #[serde(alias = "GLASS_MAT")]
-    pub glass_mat: Option<()>,
+    pub glass_mat: Flag,
     /// Permits the tool to be made from anything with the `[ITEMS_HARD]` token, such as wood, stone
     /// or metal.
     #[serde(alias = "HARD_MAT")]
-    pub hard_mat: Option<()>,
+    pub hard_mat: Flag,
     /// Permits the tool to be made from any leather.
     #[serde(alias = "LEATHER_MAT")]
-    pub leather_mat: Option<()>,
+    pub leather_mat: Flag,
     /// Permits the tool to be made from anything with the `[IS_METAL]` token.
     #[serde(alias = "METAL_MAT")]
-    pub metal_mat: Option<()>,
+    pub metal_mat: Flag,
     /// Permits the tool to be made from any metal with the `[ITEMS_WEAPON]` token.
     #[serde(alias = "METAL_WEAPON_MAT")]
-    pub metal_weapon_mat: Option<()>,
+    pub metal_weapon_mat: Flag,
     /// Permits the tool to be made from any "sheet" material, such as papyrus, paper, and
     /// parchment. May be connected to the `PAPER_SLURRY`/`PAPER_PLANT` reaction classes,
     /// but this is not verified.
     #[serde(alias = "SHEET_MAT")]
-    pub sheet_mat: Option<()>,
+    pub sheet_mat: Flag,
     /// Permits the tool to be made from any shell.
     #[serde(alias = "SHELL_MAT")]
-    pub shell_mat: Option<()>,
+    pub shell_mat: Flag,
     /// Permits the tool to be made from any silk.
     #[serde(alias = "SILK_MAT")]
-    pub silk_mat: Option<()>,
+    pub silk_mat: Flag,
     /// Permits the tool to be made from any material with the `[ITEMS_SOFT]` token, such as leather
     /// or textiles.
     #[serde(alias = "SOFT_MAT")]
-    pub soft_mat: Option<()>,
+    pub soft_mat: Flag,
     /// Permits the tool to be made from any stone. Presumably connected to the `[IS_STONE]` token.
     #[serde(alias = "STONE_MAT")]
-    pub stone_mat: Option<()>,
+    pub stone_mat: Flag,
     /// Permits the tool to be made from any plant fiber, such as pig tails.
     #[serde(alias = "THREAD_PLANT_MAT")]
-    pub thread_plant_mat: Option<()>,
+    pub thread_plant_mat: Flag,
     /// Permits the tool to be made from any wood.
     #[serde(alias = "WOOD_MAT")]
-    pub wood_mat: Option<()>,
+    pub wood_mat: Flag,
     /// According to Toady, "Won't be used in world gen libraries (to differentiate scrolls from
     /// quires). Also put it on bindings, rollers, instr. pieces for completeness/future use".
     /// Used on scroll rollers, book bindings, and quires.
     #[serde(alias = "INCOMPLETE_ITEM")]
-    pub incomplete_item: Option<()>,
+    pub incomplete_item: Flag,
     /// Items that appear in the wild come standard with this kind of improvement. Used on scrolls:
     /// `[DEFAULT_IMPROVEMENT:SPECIFIC:ROLLERS:HARD_MAT]`
     ///
@@ -577,30 +577,30 @@ pub struct InstrumentToken {
     /// Prevents the tool from being improved. Used on honeycombs, scroll rollers, book bindings,
     /// and quires.
     #[serde(alias = "UNIMPROVABLE")]
-    pub unimprovable: Option<()>,
+    pub unimprovable: Flag,
     /// **This token's purpose is unknown, and it may be an alias of another token; if you know
     /// what it does, please open an issue on the issue tracker.**
     #[serde(alias = "NO_DEFAULT_IMPROVEMENTS")]
-    pub no_default_improvements: Option<()>,
+    pub no_default_improvements: Flag,
     /// The background of the tile will be colored, instead of the foreground.
     #[serde(alias = "INVERTED_TILE")]
-    pub inverted_tile: Option<()>,
+    pub inverted_tile: Flag,
     /// According to Toady, "only custom reactions are used to make this item". Found on scrolls and
     /// quires.
     #[serde(alias = "NO_DEFAULT_JOB")]
-    pub no_default_job: Option<()>,
+    pub no_default_job: Flag,
     /// Defines the task performed using the tool.
     #[serde(alias = "TOOL_USE")]
     pub tool_use: Vec<ToolUseEnum>,
     /// Allows item to be stored in a furniture stockpile.
     #[serde(alias = "FURNITURE")]
-    pub furniture: Option<()>,
+    pub furniture: Flag,
     // TODO: ref is shape category
     #[serde(alias = "SHAPE_CATEGORY")]
     pub shape_category: Option<Reference>,
     /// Used on dice.
     #[serde(alias = "USES_FACE_IMAGE_SET")]
-    pub uses_face_image_set: Option<()>,
+    pub uses_face_image_set: Flag,
     /// Adjective preceding the material name (e.g. "large copper dagger")
     #[serde(alias = "ADJECTIVE")]
     pub adjective: Option<String>,
@@ -938,53 +938,53 @@ pub struct PantsToken {
     /// random peasants. This tag will not work unless `ARMORLEVEL` is explicitly declared: if you
     /// leave out `ARMORLEVEL`, even metal armor will default to level 0.
     #[serde(alias = "METAL_ARMOR_LEVELS")]
-    pub metal_armor_levels: Option<()>,
+    pub metal_armor_levels: Flag,
     /// Metal versions of this item will have "chain" added between the material and item name.
     #[serde(alias = "CHAIN_METAL_TEXT")]
-    pub chain_metal_text: Option<()>,
+    pub chain_metal_text: Flag,
     /// Clothiers can make this item from all kinds of cloth. If paired with `[LEATHER]`, the item
     /// has an equal chance of being either in randomly generated outfits. Further uses of this tag
     /// are unknown.
     #[serde(alias = "SOFT")]
-    pub soft: Option<()>,
+    pub soft: Flag,
     /// Default state in the absence of a `[SOFT]` token. Actual effects unknown.
     #[serde(alias = "HARD")]
-    pub hard: Option<()>,
+    pub hard: Flag,
     /// Item can be made from metal. Overrides `[SOFT]` and `[LEATHER]` in randomly generated
     /// outfits, if the `ARMORLEVEL` permits. Civilizations with `[WOOD_ARMOR]` will make this
     /// item out of wood instead.
     #[serde(alias = "METAL")]
-    pub metal: Option<()>,
+    pub metal: Flag,
     /// Craftsmen can make this item from bones. Randomly generated outfits don't include bone
     /// armor.
     #[serde(alias = "BARRED")]
-    pub barred: Option<()>,
+    pub barred: Flag,
     /// Craftsmen can make this item from shells. Randomly generated outfits don't include shell
     /// armor.
     #[serde(alias = "SCALED")]
-    pub scaled: Option<()>,
+    pub scaled: Flag,
     /// Leatherworkers can make this item from leather. If paired with `[SOFT]`, this item has an
     /// equal chance of being either in randomly generated outfits.
     #[serde(alias = "LEATHER")]
-    pub leather: Option<()>,
+    pub leather: Flag,
     /// Only one shaped piece of clothing can be worn on a single body slot at a time.
     #[serde(alias = "SHAPED")]
-    pub shaped: Option<()>,
+    pub shaped: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, if lower.
     /// This makes the garment flex and give way instead of shattering under force. Strong materials
     /// that resist cutting will blunt edged attacks into bone-crushing hits instead.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_ALL")]
-    pub structural_elasticity_chain_all: Option<()>,
+    pub structural_elasticity_chain_all: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, but only if
     /// the garment is made from metal.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_METAL")]
-    pub structural_elasticity_chain_metal: Option<()>,
+    pub structural_elasticity_chain_metal: Flag,
     /// Reduces the armor material's `SHEAR_YIELD` to 20000, `SHEAR_FRACTURE` to 30000 and increases
     /// the `*_STRAIN_AT_YIELD` properties to 50000, but only if the garment is made from cloth.
     /// This makes the item very weak against edged attacks, even if the thread material is
     /// normally very strong.
     #[serde(alias = "STRUCTURAL_ELASTICITY_WOVEN_THREAD")]
-    pub structural_elasticity_woven_thread: Option<()>,
+    pub structural_elasticity_woven_thread: Flag,
     /// The item's bulkiness when worn. Aside from the layer limitations, it's a big contributor to
     /// the thickness and weight (and therefore price) of the garment. See
     /// [Armor](https://dwarffortresswiki.org/index.php/Armor) for more on item sizes and
@@ -1099,53 +1099,53 @@ pub struct ShoesToken {
     /// random peasants. This tag will not work unless `ARMORLEVEL` is explicitly declared: if you
     /// leave out `ARMORLEVEL`, even metal armor will default to level 0.
     #[serde(alias = "METAL_ARMOR_LEVELS")]
-    pub metal_armor_levels: Option<()>,
+    pub metal_armor_levels: Flag,
     /// Metal versions of this item will have "chain" added between the material and item name.
     #[serde(alias = "CHAIN_METAL_TEXT")]
-    pub chain_metal_text: Option<()>,
+    pub chain_metal_text: Flag,
     /// Clothiers can make this item from all kinds of cloth. If paired with `[LEATHER]`, the item
     /// has an equal chance of being either in randomly generated outfits. Further uses of this tag
     /// are unknown.
     #[serde(alias = "SOFT")]
-    pub soft: Option<()>,
+    pub soft: Flag,
     /// Default state in the absence of a `[SOFT]` token. Actual effects unknown.
     #[serde(alias = "HARD")]
-    pub hard: Option<()>,
+    pub hard: Flag,
     /// Item can be made from metal. Overrides `[SOFT]` and `[LEATHER]` in randomly generated
     /// outfits, if the `ARMORLEVEL` permits. Civilizations with `[WOOD_ARMOR]` will make this
     /// item out of wood instead.
     #[serde(alias = "METAL")]
-    pub metal: Option<()>,
+    pub metal: Flag,
     /// Craftsmen can make this item from bones. Randomly generated outfits don't include bone
     /// armor.
     #[serde(alias = "BARRED")]
-    pub barred: Option<()>,
+    pub barred: Flag,
     /// Craftsmen can make this item from shells. Randomly generated outfits don't include shell
     /// armor.
     #[serde(alias = "SCALED")]
-    pub scaled: Option<()>,
+    pub scaled: Flag,
     /// Leatherworkers can make this item from leather. If paired with `[SOFT]`, this item has an
     /// equal chance of being either in randomly generated outfits.
     #[serde(alias = "LEATHER")]
-    pub leather: Option<()>,
+    pub leather: Flag,
     /// Only one shaped piece of clothing can be worn on a single body slot at a time.
     #[serde(alias = "SHAPED")]
-    pub shaped: Option<()>,
+    pub shaped: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, if lower.
     /// This makes the garment flex and give way instead of shattering under force. Strong materials
     /// that resist cutting will blunt edged attacks into bone-crushing hits instead.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_ALL")]
-    pub structural_elasticity_chain_all: Option<()>,
+    pub structural_elasticity_chain_all: Flag,
     /// Increases the `*_STRAIN_AT_YIELD` properties of the armor's material to 50000, but only if
     /// the garment is made from metal.
     #[serde(alias = "STRUCTURAL_ELASTICITY_CHAIN_METAL")]
-    pub structural_elasticity_chain_metal: Option<()>,
+    pub structural_elasticity_chain_metal: Flag,
     /// Reduces the armor material's `SHEAR_YIELD` to 20000, `SHEAR_FRACTURE` to 30000 and increases
     /// the `*_STRAIN_AT_YIELD` properties to 50000, but only if the garment is made from cloth.
     /// This makes the item very weak against edged attacks, even if the thread material is
     /// normally very strong.
     #[serde(alias = "STRUCTURAL_ELASTICITY_WOVEN_THREAD")]
-    pub structural_elasticity_woven_thread: Option<()>,
+    pub structural_elasticity_woven_thread: Flag,
     /// The item's bulkiness when worn. Aside from the layer limitations, it's a big contributor to
     /// the thickness and weight (and therefore price) of the garment. See
     /// [Armor](https://dwarffortresswiki.org/index.php/Armor) for more on item sizes and
@@ -1257,10 +1257,10 @@ pub struct ToolToken {
     pub tile: Option<DFChar>,
     /// Permits the tool to be made from any bone.
     #[serde(alias = "BONE_MAT")]
-    pub bone_mat: Option<()>,
+    pub bone_mat: Flag,
     /// Permits the tool to be made from any ceramic material.
     #[serde(alias = "CERAMIC_MAT")]
-    pub ceramic_mat: Option<()>,
+    pub ceramic_mat: Flag,
     /// Allows a string to describe the tool when viewed. The text box can accommodate up to 325
     /// characters until it cuts off, but the spacing of actual sentences puts the realistic limit
     /// closer to 300.
@@ -1268,49 +1268,49 @@ pub struct ToolToken {
     pub description: Option<String>,
     /// Permits the tool to be made from any glass.
     #[serde(alias = "GLASS_MAT")]
-    pub glass_mat: Option<()>,
+    pub glass_mat: Flag,
     /// Permits the tool to be made from anything with the `[ITEMS_HARD]` token, such as wood, stone
     /// or metal.
     #[serde(alias = "HARD_MAT")]
-    pub hard_mat: Option<()>,
+    pub hard_mat: Flag,
     /// Permits the tool to be made from any leather.
     #[serde(alias = "LEATHER_MAT")]
-    pub leather_mat: Option<()>,
+    pub leather_mat: Flag,
     /// Permits the tool to be made from anything with the `[IS_METAL]` token.
     #[serde(alias = "METAL_MAT")]
-    pub metal_mat: Option<()>,
+    pub metal_mat: Flag,
     /// Permits the tool to be made from any metal with the `[ITEMS_WEAPON]` token.
     #[serde(alias = "METAL_WEAPON_MAT")]
-    pub metal_weapon_mat: Option<()>,
+    pub metal_weapon_mat: Flag,
     /// Permits the tool to be made from any "sheet" material, such as papyrus, paper, and
     /// parchment. May be connected to the `PAPER_SLURRY`/`PAPER_PLANT` reaction classes,
     /// but this is not verified.
     #[serde(alias = "SHEET_MAT")]
-    pub sheet_mat: Option<()>,
+    pub sheet_mat: Flag,
     /// Permits the tool to be made from any shell.
     #[serde(alias = "SHELL_MAT")]
-    pub shell_mat: Option<()>,
+    pub shell_mat: Flag,
     /// Permits the tool to be made from any silk.
     #[serde(alias = "SILK_MAT")]
-    pub silk_mat: Option<()>,
+    pub silk_mat: Flag,
     /// Permits the tool to be made from any material with the `[ITEMS_SOFT]` token, such as leather
     /// or textiles.
     #[serde(alias = "SOFT_MAT")]
-    pub soft_mat: Option<()>,
+    pub soft_mat: Flag,
     /// Permits the tool to be made from any stone. Presumably connected to the `[IS_STONE]` token.
     #[serde(alias = "STONE_MAT")]
-    pub stone_mat: Option<()>,
+    pub stone_mat: Flag,
     /// Permits the tool to be made from any plant fiber, such as pig tails.
     #[serde(alias = "THREAD_PLANT_MAT")]
-    pub thread_plant_mat: Option<()>,
+    pub thread_plant_mat: Flag,
     /// Permits the tool to be made from any wood.
     #[serde(alias = "WOOD_MAT")]
-    pub wood_mat: Option<()>,
+    pub wood_mat: Flag,
     /// According to Toady, "Won't be used in world gen libraries (to differentiate scrolls from
     /// quires). Also put it on bindings, rollers, instr. pieces for completeness/future use".
     /// Used on scroll rollers, book bindings, and quires.
     #[serde(alias = "INCOMPLETE_ITEM")]
-    pub incomplete_item: Option<()>,
+    pub incomplete_item: Flag,
     /// Items that appear in the wild come standard with this kind of improvement. Used on scrolls:
     /// `[DEFAULT_IMPROVEMENT:SPECIFIC:ROLLERS:HARD_MAT]`
     ///
@@ -1321,30 +1321,30 @@ pub struct ToolToken {
     /// Prevents the tool from being improved. Used on honeycombs, scroll rollers, book bindings,
     /// and quires.
     #[serde(alias = "UNIMPROVABLE")]
-    pub unimprovable: Option<()>,
+    pub unimprovable: Flag,
     /// **This token's purpose is unknown, and it may be an alias of another token; if you know
     /// what it does, please open an issue on the issue tracker.**
     #[serde(alias = "NO_DEFAULT_IMPROVEMENTS")]
-    pub no_default_improvements: Option<()>,
+    pub no_default_improvements: Flag,
     /// The background of the tile will be colored, instead of the foreground.
     #[serde(alias = "INVERTED_TILE")]
-    pub inverted_tile: Option<()>,
+    pub inverted_tile: Flag,
     /// According to Toady, "only custom reactions are used to make this item". Found on scrolls and
     /// quires.
     #[serde(alias = "NO_DEFAULT_JOB")]
-    pub no_default_job: Option<()>,
+    pub no_default_job: Flag,
     /// Defines the task performed using the tool.
     #[serde(alias = "TOOL_USE")]
     pub tool_use: Vec<ToolUseEnum>,
     /// Allows item to be stored in a furniture stockpile.
     #[serde(alias = "FURNITURE")]
-    pub furniture: Option<()>,
+    pub furniture: Flag,
     // TODO: ref is shape category
     #[serde(alias = "SHAPE_CATEGORY")]
     pub shape_category: Option<Reference>,
     /// Used on dice.
     #[serde(alias = "USES_FACE_IMAGE_SET")]
-    pub uses_face_image_set: Option<()>,
+    pub uses_face_image_set: Flag,
     /// Adjective preceding the material name (e.g. "large copper dagger")
     #[serde(alias = "ADJECTIVE")]
     pub adjective: Option<String>,
@@ -1598,7 +1598,7 @@ pub struct ToyToken {
     /// Presumably prevents the item from being made from cloth, silk, or leather, present on
     /// everything but puzzleboxes and drums. Appears to work backwards for strange moods.
     #[serde(alias = "HARD_MAT")]
-    pub hard_mat: Option<()>,
+    pub hard_mat: Flag,
 }
 
 #[serde_with::skip_serializing_none]
@@ -1625,16 +1625,16 @@ pub struct TrapCompToken {
     pub hits: Option<u32>,
     /// Weapon may be installed in a screw pump.
     #[serde(alias = "IS_SCREW")]
-    pub is_screw: Option<()>,
+    pub is_screw: Flag,
     /// Weapon may be installed in a spike trap.
     #[serde(alias = "IS_SPIKE")]
-    pub is_spike: Option<()>,
+    pub is_spike: Flag,
     /// Weapon may be made out of wood.
     #[serde(alias = "WOOD")]
-    pub wood: Option<()>,
+    pub wood: Flag,
     /// Weapon may be made out of metal.
     #[serde(alias = "METAL")]
-    pub metal: Option<()>,
+    pub metal: Flag,
     /// Sets the attack characteristics of the weapon
     #[serde(alias = "ATTACK")]
     pub attack: Option<ItemAttack>,
@@ -1690,10 +1690,10 @@ pub struct WeaponToken {
     /// Allows the weapon to be made at a craftsdwarf's workshop from a sharp (`[MAX_EDGE:10000]` or
     /// higher) stone (i.e. obsidian) plus a wood log.
     #[serde(alias = "CAN_STONE")]
-    pub can_stone: Option<()>,
+    pub can_stone: Flag,
     /// Restricts this weapon to being made of wood.
     #[serde(alias = "TRAINING")]
-    pub training: Option<()>,
+    pub training: Flag,
     /// List of attacks this weapon can have.
     #[serde(alias = "ATTACK")]
     pub attack: Vec<WeaponAttack>,
@@ -1763,10 +1763,10 @@ pub struct WeaponAttack {
     pub attack_prepare_and_recover: Option<(u32, u32)>,
     /// Multiple strikes with this attack cannot be performed effectively.
     #[serde(alias = "ATTACK_FLAG_BAD_MULTIATTACK")]
-    pub attack_flag_bad_multiattack: Option<()>,
+    pub attack_flag_bad_multiattack: Flag,
     /// Multiple strikes with this attack can be performed with no penalty.
     #[serde(alias = "ATTACK_FLAG_INDEPENDENT_MULTIATTACK")]
-    pub attack_flag_independent_multiattack: Option<()>,
+    pub attack_flag_independent_multiattack: Flag,
 }
 
 #[serde_with::skip_serializing_none]

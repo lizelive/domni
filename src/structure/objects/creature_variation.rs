@@ -1,4 +1,4 @@
-use crate::core::{AllowEmpty, Any, Reference, ReferenceTo};
+use crate::core::{AllowEmpty, Any, Reference, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 
@@ -165,7 +165,7 @@ pub struct CreatureVariationToken {
 pub struct CvConvertTag {
     /// `CV_CONVERT_TAG`; has no arguments.
     #[serde(alias = "CV_CONVERT_TAG")]
-    pub cv_convert_tag: Option<()>,
+    pub cv_convert_tag: Flag,
     // TODO: properly implement the 3 below tokens:
     // --------------------------------------------------------------------------------------------
     /// **Warning: Incomplete token. This token is not yet properly implemented, and so you will

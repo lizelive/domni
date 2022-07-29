@@ -1,4 +1,4 @@
-use crate::core::{AllowEmpty, Any, Choose, Reference, ReferenceTo};
+use crate::core::{AllowEmpty, Any, Choose, Reference, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 
@@ -287,7 +287,7 @@ pub struct TlColorModifier {
     /// The way the color modifier is passed on to offspring. May or may not work in the current
     /// version of Dwarf Fortress.
     #[serde(alias = "TLCM_GENETIC_MODEL")]
-    pub tlcm_genetic_model: Option<()>,
+    pub tlcm_genetic_model: Flag,
     /// Presumably modifies the importance of the tissue layer color modifier, for description
     /// purposes.
     ///
@@ -345,14 +345,14 @@ pub struct TissueLayer {
     pub set_layer_tissue: Vec<Reference>,
     /// Gives the `CONNECTS` attribute to selected layers.
     #[serde(alias = "TL_CONNECTS")]
-    pub tl_connects: Option<()>,
+    pub tl_connects: Flag,
     /// Changes the `HEALING_RATE` of the selected tissue layers.
     #[serde(alias = "TL_HEALING_RATE")]
     pub tl_healing_rate: Option<u32>,
     /// Gives the "major arteries" attribute to selected layers. Used to add massive bleeding
     /// properties to the throat, made from skin.
     #[serde(alias = "TL_MAJOR_ARTERIES")]
-    pub tl_major_arteries: Option<()>,
+    pub tl_major_arteries: Flag,
     /// Changes the number of pain receptors for selected tissue layers.
     #[serde(alias = "TL_PAIN_RECEPTORS")]
     pub tl_pain_receptors: Option<u32>,
@@ -386,14 +386,14 @@ pub struct SelectTissueLayer {
     pub set_layer_tissue: Vec<Reference>,
     /// Gives the `CONNECTS` attribute to selected layers.
     #[serde(alias = "TL_CONNECTS")]
-    pub tl_connects: Option<()>,
+    pub tl_connects: Flag,
     /// Changes the `HEALING_RATE` of the selected tissue layers.
     #[serde(alias = "TL_HEALING_RATE")]
     pub tl_healing_rate: Option<u32>,
     /// Gives the "major arteries" attribute to selected layers. Used to add massive bleeding
     /// properties to the throat, made from skin.
     #[serde(alias = "TL_MAJOR_ARTERIES")]
-    pub tl_major_arteries: Option<()>,
+    pub tl_major_arteries: Flag,
     /// Changes the number of pain receptors for selected tissue layers.
     #[serde(alias = "TL_PAIN_RECEPTORS")]
     pub tl_pain_receptors: Option<u32>,
@@ -419,7 +419,7 @@ pub struct SelectTissueLayer {
 pub struct CreatureCvConvertTag {
     /// `CV_CONVERT_TAG`; has no arguments.
     #[serde(alias = "CV_CONVERT_TAG")]
-    pub cv_convert_tag: Option<()>,
+    pub cv_convert_tag: Flag,
     // TODO: properly implement the 3 below tokens:
     // --------------------------------------------------------------------------------------------
     /// **Warning: Incomplete token. This token is not yet properly implemented, and so you will

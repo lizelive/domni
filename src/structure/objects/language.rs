@@ -72,34 +72,34 @@ pub struct NounToken {
     pub words: Option<(String, AllowEmpty<String>)>,
     ///
     #[serde(alias = "FRONT_COMPOUND_NOUN_SING")]
-    pub front_compound_noun_sing: Option<()>,
+    pub front_compound_noun_sing: Flag,
     ///
     #[serde(alias = "REAR_COMPOUND_NOUN_SING")]
-    pub read_compound_noun_sing: Option<()>,
+    pub read_compound_noun_sing: Flag,
     ///
     #[serde(alias = "THE_COMPOUND_NOUN_SING")]
-    pub the_compound_noun_sing: Option<()>,
+    pub the_compound_noun_sing: Flag,
     ///
     #[serde(alias = "THE_NOUN_SING")]
-    pub the_noun_sing: Option<()>,
+    pub the_noun_sing: Flag,
     ///
     #[serde(alias = "OF_NOUN_SING")]
-    pub of_noun_sing: Option<()>,
+    pub of_noun_sing: Flag,
     ///
     #[serde(alias = "FRONT_COMPOUND_NOUN_PLUR")]
-    pub front_compound_noun_plur: Option<()>,
+    pub front_compound_noun_plur: Flag,
     ///
     #[serde(alias = "REAR_COMPOUND_NOUN_PLUR")]
-    pub read_compound_noun_plur: Option<()>,
+    pub read_compound_noun_plur: Flag,
     ///
     #[serde(alias = "THE_COMPOUND_NOUN_PLUR")]
-    pub the_compound_noun_plur: Option<()>,
+    pub the_compound_noun_plur: Flag,
     ///
     #[serde(alias = "THE_NOUN_PLUR")]
-    pub the_noun_plur: Option<()>,
+    pub the_noun_plur: Flag,
     ///
     #[serde(alias = "OF_NOUN_PLUR")]
-    pub of_noun_plur: Option<()>,
+    pub of_noun_plur: Flag,
 }
 
 #[serde_with::skip_serializing_none]
@@ -110,16 +110,16 @@ pub struct VerbToken {
     pub words: Option<(String, String, String, String, String)>,
     ///
     #[serde(alias = "STANDARD_VERB")]
-    pub standard_verb: Option<()>,
+    pub standard_verb: Flag,
     ///
     #[serde(alias = "FRONT_COMPOUND_ADJ")]
-    pub front_compound_adj: Option<()>,
+    pub front_compound_adj: Flag,
     ///
     #[serde(alias = "THE_COMPOUND_ADJ")]
-    pub the_compound_adj: Option<()>,
+    pub the_compound_adj: Flag,
     ///
     #[serde(alias = "REAR_COMPOUND_ADJ")]
-    pub rear_compound_adj: Option<()>,
+    pub rear_compound_adj: Flag,
 }
 
 #[serde_with::skip_serializing_none]
@@ -133,13 +133,13 @@ pub struct AdjToken {
     pub adj_dist: Option<i32>,
     ///
     #[serde(alias = "FRONT_COMPOUND_ADJ")]
-    pub front_compound_adj: Option<()>,
+    pub front_compound_adj: Flag,
     ///
     #[serde(alias = "THE_COMPOUND_ADJ")]
-    pub the_compound_adj: Option<()>,
+    pub the_compound_adj: Flag,
     ///
     #[serde(alias = "REAR_COMPOUND_ADJ")]
-    pub rear_compound_adj: Option<()>,
+    pub rear_compound_adj: Flag,
 }
 
 #[serde_with::skip_serializing_none]
@@ -150,8 +150,8 @@ pub struct PrefixToken {
     pub words: Option<String>,
     ///
     #[serde(alias = "FRONT_COMPOUND_PREFIX")]
-    pub front_compound_prefix: Option<()>,
+    pub front_compound_prefix: Flag,
     ///
     #[serde(alias = "THE_COMPOUND_PREFIX")]
-    pub the_compound_prefix: Option<()>,
+    pub the_compound_prefix: Flag,
 }

@@ -21,7 +21,7 @@ pub struct ReactionToken {
     /// the wanderers of Adventure Mode. When using this token, it will be allowed for adventurers
     /// of any race, without editing Entity files.
     #[serde(alias = "ADVENTURE_MODE_ENABLED")]
-    pub adventure_mode_enabled: Option<()>,
+    pub adventure_mode_enabled: Flag,
     /// Amount of attributes given per skill improvement.
     ///
     /// Default is 10.
@@ -32,7 +32,7 @@ pub struct ReactionToken {
     pub attribute_ip: Option<i32>,
     /// The reaction will be queued automatically if the reaction reagents are all present.
     #[serde(alias = "AUTOMATIC")]
-    pub automatic: Option<()>,
+    pub automatic: Flag,
     /// Sets the building that the reaction will be performed in, and the button used to queue
     /// the reaction once that building's menu is accessed in-game
     #[serde(alias = "BUILDING")]
@@ -50,7 +50,7 @@ pub struct ReactionToken {
     /// Requires that the reaction either use up a unit of coal or charcoal or
     /// else be performed at a magma workshop
     #[serde(alias = "FUEL")]
-    pub fuel: Option<()>,
+    pub fuel: Flag,
     /// Sets the maximum number of times a reaction is allowed to run when using stacked reagents.
     /// This can be used to ensure that the reaction doesn't repeat until
     /// the entire stack is depleted.
@@ -128,80 +128,80 @@ pub struct ReagentToken {
     )>,
     /// Reagent material must have the `[BONE]` token.
     #[serde(alias = "ANY_BONE_MATERIAL")]
-    pub any_bone_material: Option<()>,
+    pub any_bone_material: Flag,
     /// Reagent material must have the `[HORN]` token.
     #[serde(alias = "ANY_HORN_MATERIAL")]
-    pub any_horn_material: Option<()>,
+    pub any_horn_material: Flag,
     /// Reagent material must have the `[LEATHER]` token.
     #[serde(alias = "ANY_LEATHER_MATERIAL")]
-    pub any_leather_material: Option<()>,
+    pub any_leather_material: Flag,
     /// Reagent material must have the `[PEARL]` token.  
     #[serde(alias = "ANY_PEARL_MATERIAL")]
-    pub any_pearl_material: Option<()>,
+    pub any_pearl_material: Flag,
     /// Reagent material must be subordinate to a `PLANT` object.
     #[serde(alias = "ANY_PLANT_MATERIAL")]
-    pub any_plant_material: Option<()>,
+    pub any_plant_material: Flag,
     /// Reagent material must have the `[SHELL]` token.
     #[serde(alias = "ANY_SHELL_MATERIAL")]
-    pub any_shell_material: Option<()>,
+    pub any_shell_material: Flag,
     /// Reagent material must have the `[SILK]` token.
     #[serde(alias = "ANY_SILK_MATERIAL")]
-    pub any_silk_material: Option<()>,
+    pub any_silk_material: Flag,
     /// Reagent material must have the `[SOAP]` token.
     #[serde(alias = "ANY_SOAP_MATERIAL")]
-    pub any_soap_material: Option<()>,
+    pub any_soap_material: Flag,
     /// Reagent is made of a tissue having `[TISSUE_SHAPE:STRANDS]`, intended for matching hair and
     /// wool. Must be used with `[USE_BODY_COMPONENT]`.
     #[serde(alias = "ANY_STRAND_TISSUE")]
-    pub any_strand_tissue: Option<()>,
+    pub any_strand_tissue: Flag,
     /// Reagent material must have the `[TOOTH]` token.
     #[serde(alias = "ANY_TOOTH_MATERIAL")]
-    pub any_tooth_material: Option<()>,
+    pub any_tooth_material: Flag,
     /// Reagent material must have the `[YARN]` token.
     #[serde(alias = "ANY_YARN_MATERIAL")]
-    pub any_yarn_material: Option<()>,
+    pub any_yarn_material: Flag,
     /// Reagent has to be a bag. Intended to be used with an item type of `BOX`, to prevent chests,
     /// coffers, and other containers from being used instead.
     #[serde(alias = "BAG")]
-    pub bag: Option<()>,
+    pub bag: Flag,
     /// Reagent is able to be used to build structures (Stone, Wood, Blocks, Bars?).
     #[serde(alias = "BUILDMAT")]
-    pub build_material: Option<()>,
+    pub build_material: Flag,
     /// Reagent can be an Artifact. Using `[PRESERVE_REAGENT]` with this is strongly advised.
     #[serde(alias = "CAN_USE_ARTIFACT")]
-    pub can_use_artifact: Option<()>,
+    pub can_use_artifact: Flag,
     /// Allows the reagent to be an item that is otherwise reserved for use by a hospital.
     #[serde(alias = "CAN_USE_HOSPITAL_RESERVED")]
-    pub can_use_hospital_reserved: Option<()>,
+    pub can_use_hospital_reserved: Flag,
     /// Allows the reagent to be an item that is otherwise reserved for use by a location.
     #[serde(alias = "CAN_USE_LOCATION_RESERVED")]
-    pub can_use_location_reserved: Option<()>,
+    pub can_use_location_reserved: Flag,
     /// Reagent is a container that holds the specified reagent.
     #[serde(alias = "CONTAINS")]
     pub contains: Option<Reference>,
     /// Reagent material must have `[ABSORPTION:0]`
     #[serde(alias = "DOES_NOT_ABSORB")]
-    pub does_not_absorb: Option<()>,
+    pub does_not_absorb: Flag,
     /// Performing a reaction with large stacks of inputs can allow multiple sets of outputs to be
     /// produced. Setting this flag causes the reagent to be ignored in this process -
     /// for example, with the reaction "1 plant + 1 barrel -> 5 alcohol (into barrel)",
     /// using this on the barrel allows the reaction to be performed as
     /// "5 plant + 1 barrel -> 25 alcohol" instead of "5 plant + 5 barrel -> 25 alcohol".
     #[serde(alias = "DOES_NOT_DETERMINE_PRODUCT_AMOUNT")]
-    pub does_not_determine_product_amount: Option<()>,
+    pub does_not_determine_product_amount: Flag,
     /// If the reagent is a container, it must be empty.
     #[serde(alias = "EMPTY")]
-    pub empty: Option<()>,
+    pub empty: Flag,
     /// Reagent must be considered fire-safe (stable temperature below 11000 °U )
     /// - i.e. not wood, and not coal.
     #[serde(alias = "FIRE_BUILD_SAFE")]
-    pub fire_build_safe: Option<()>,
+    pub fire_build_safe: Flag,
     /// Reagent must be a barrel or any non-absorbing tool with `[TOOL_USE:FOOD_STORAGE]`
     #[serde(alias = "FOOD_STORAGE_CONTAINER")]
-    pub food_storage_container: Option<()>,
+    pub food_storage_container: Flag,
     /// Reagent material has `[IS_GLASS]`.
     #[serde(alias = "GLASS_MATERIAL")]
-    pub glass_material: Option<()>,
+    pub glass_material: Flag,
     /// Similar to `HAS_MATERIAL_REACTION_PRODUCT`, but requires the reagent's material to
     /// have a matching `ITEM_REACTION_PRODUCT` entry.
     #[serde(alias = "HAS_ITEM_REACTION_PRODUCT")]
@@ -219,12 +219,12 @@ pub struct ReagentToken {
     pub has_tool_use: Option<Reference>, // TODO
     /// Reagent must contain writing.
     #[serde(alias = "HAS_WRITING_IMPROVEMENT")]
-    pub has_writing_improvement: Option<()>,
+    pub has_writing_improvement: Flag,
     /// *Currently broken*
     ///
     /// Reagent must be considered magma-safe (stable temperature below 12000 °U ).
     #[serde(alias = "MAGMA_BUILD_SAFE")]
-    pub magma_build_safe: Option<()>,
+    pub magma_build_safe: Flag,
     /// Reagent material must be an ore of the specified metal.
     #[serde(alias = "METAL_ORE")]
     pub metal_ore: Option<Reference>, // TODO reference to Inorganic material
@@ -236,30 +236,30 @@ pub struct ReagentToken {
     /// Sharp stones (produced using knapping) and most types of weapon/ammo
     /// can not be used with this token.
     #[serde(alias = "NO_EDGE_ALLOWED")]
-    pub no_edge_allowed: Option<()>,
+    pub no_edge_allowed: Flag,
     /// Reagent must be sharpened (used for carving).
     #[serde(alias = "HAS_EDGE")]
-    pub has_edge: Option<()>,
+    pub has_edge: Flag,
     /// If the item is a container, it must not contain lye or milk.
     /// Not necessary if specifying `[EMPTY]`.
     #[serde(alias = "NOT_CONTAIN_BARREL_ITEM")]
-    pub not_contain_barrel_item: Option<()>,
+    pub not_contain_barrel_item: Flag,
     /// Reagent can not be engraved. For example, a memorial slab can not be engraved.
     #[serde(alias = "NOT_ENGRAVED")]
-    pub not_engraved: Option<()>,
+    pub not_engraved: Flag,
     /// Reagent has not been decorated.
     #[serde(alias = "NOT_IMPROVED")]
-    pub not_improved: Option<()>,
+    pub not_improved: Flag,
     /// Reagent must not be in the `SOLID_PRESSED` state.
     #[serde(alias = "NOT_PRESSED")]
-    pub not_pressed: Option<()>,
+    pub not_pressed: Flag,
     /// Reagent must be "collected" - used with `THREAD:NONE` to exclude webs.
     #[serde(alias = "NOT_WEB")]
-    pub not_web: Option<()>,
+    pub not_web: Flag,
     /// Reagent is not destroyed, which is the normal effect, at the completion of the reaction.
     /// Typically used for containers.
     #[serde(alias = "PRESERVE_REAGENT")]
-    pub preserve_reagent: Option<()>,
+    pub preserve_reagent: Flag,
     /// Requires the reagents material to have a matching `REACTION_CLASS` entry.
     /// Intended for reactions which accept a variety of materials but where the input material
     /// does not determine the output material, such as `FLUX` (for making pig iron and steel)
@@ -268,16 +268,16 @@ pub struct ReagentToken {
     pub reaction_class: Option<Reference>, // TODO
     /// Reagent must not be rotten, mainly for organic materials.
     #[serde(alias = "UNROTTEN")]
-    pub unrotten: Option<()>,
+    pub unrotten: Flag,
     /// Reagent material must come off a creature's body (`CORPSE` or `CORPSEPIECE`).
     #[serde(alias = "USE_BODY_COMPONENT")]
-    pub use_body_component: Option<()>,
+    pub use_body_component: Flag,
     /// Reagent must be "undisturbed" - used with `THREAD:NONE` to gather webs.
     #[serde(alias = "WEB_ONLY")]
-    pub web_only: Option<()>,
+    pub web_only: Flag,
     /// Reagent is made of an non-economic stone.
     #[serde(alias = "WORTHLESS_STONE_ONLY")]
-    pub worthless_stone_only: Option<()>,
+    pub worthless_stone_only: Flag,
 }
 
 #[serde_with::skip_serializing_none]
@@ -309,7 +309,7 @@ pub struct ProductToken {
     )>,
     /// Product is given a sharp edge. Used for knapping.
     #[serde(alias = "FORCE_EDGE")]
-    pub force_edge: Option<()>,
+    pub force_edge: Flag,
     /// Specifies the size of the product.
     /// A size of 150 is typical for `BAR`, `POWDER_MISC`, `LIQUID_MISC`, `DRINK`, and `GLOB`.
     /// A size of 15000 is typical for `THREAD`,
@@ -318,10 +318,10 @@ pub struct ProductToken {
     pub product_dimension: Option<u32>,
     /// Product is created in the `SOLID_PASTE` state.
     #[serde(alias = "PRODUCT_PASTE")]
-    pub product_paste: Option<()>,
+    pub product_paste: Flag,
     /// Product is created in the `SOLID_PRESSED` state.
     #[serde(alias = "PRODUCT_PRESSED")]
-    pub product_pressed: Option<()>,
+    pub product_pressed: Flag,
     /// Places the product in a container; `<id>` must be the name of a reagent with
     /// the `PRESERVE_REAGENT` token and a container item type.
     #[serde(alias = "PRODUCT_TO_CONTAINER")]
@@ -332,7 +332,7 @@ pub struct ProductToken {
     pub product_token: Option<Reference>, // TODO refer to `[REAGENT:<This_value>:..]`
     /// Transfers artifact status from the reagent to the product.
     #[serde(alias = "TRANSFER_ARTIFACT_STATUS")]
-    pub transfer_artifact_status: Option<()>,
+    pub transfer_artifact_status: Flag,
 }
 
 #[serde_with::skip_serializing_none]

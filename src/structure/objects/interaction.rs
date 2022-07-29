@@ -17,7 +17,7 @@ pub struct InteractionToken {
     /// This disallows use of the interaction in play, and also encourages usage specifically to
     /// create experimental populations.
     #[serde(alias = "EXPERIMENT_ONLY")]
-    pub experiment_only: Option<()>,
+    pub experiment_only: Flag,
     /// Defines what things are capable of triggering this interaction - multiple sources may be
     /// specified.
     #[serde(alias = "I_SOURCE")]
@@ -33,7 +33,7 @@ pub struct InteractionToken {
     pub i_effect: Vec<IEffect>,
     /// Indicates that this is a generated interaction. Cannot be specified in user-defined raws.
     #[serde(alias = "GENERATED")]
-    pub generated: Option<()>,
+    pub generated: Flag,
 }
 
 #[serde_with::skip_serializing_none]
@@ -158,7 +158,7 @@ pub struct ITarget {
     /// Prevents the interaction from targeting a creature that's already under the effect of the
     /// same interaction.
     #[serde(alias = "IT_CANNOT_TARGET_IF_ALREADY_AFFECTED")]
-    pub it_cannot_target_if_already_affected: Option<()>,
+    pub it_cannot_target_if_already_affected: Flag,
     /// Prevents the interaction from targeting a creature under the effects of a syndrome having
     /// the specified `SYN_CLASS` value.
     #[serde(alias = "IT_CANNOT_HAVE_SYNDROME_CLASS")]
@@ -200,7 +200,7 @@ pub struct IEffect {
     pub ie_intermittent: Option<IntermittentFrequencyEnum>,
     /// Indicates that the effect happens immediately.
     #[serde(alias = "IE_IMMEDIATE")]
-    pub ie_immediate: Option<()>,
+    pub ie_immediate: Flag,
     /// Prevents the interaction effect from manifesting unless the target is in a location which
     /// meets the specified criteria.
     ///
@@ -310,7 +310,7 @@ pub struct IEffect {
     pub ie_time_range: Option<(u32, u32)>,
     /// Makes the summoned unit behave as a pet of the unit who performed the summoning interaction.
     #[serde(alias = "IE_MAKE_PET_IF_POSSIBLE")]
-    pub ie_make_pet_if_possible: Option<()>,
+    pub ie_make_pet_if_possible: Flag,
 }
 
 #[serde_with::skip_serializing_none]

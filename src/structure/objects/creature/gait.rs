@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
 
+use crate::core::Flag;
+
 #[serde_with::skip_serializing_none]
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 
@@ -80,13 +82,13 @@ pub struct GaitFlagTokenArg {
     /// Makes `THICKENS_ON_ENERGY_STORAGE` and `THICKENS_ON_STRENGTH` tissue layers slow movement
     /// depending on how thick they are. Adding the `STRENGTH` gait flag counteracts the impact of
     /// the latter layer.
-    pub layers_slow: Option<()>,
+    pub layers_slow: Flag,
     /// Speeds/slows movement depending on the creature's
     /// [Strength](https://dwarffortresswiki.org/index.php/Attribute#Strength) stat.
-    pub strength: Option<()>,
+    pub strength: Flag,
     /// Speeds/slows movement depending on the creature's
     /// [Agility](https://dwarffortresswiki.org/index.php/Attribute#Agility) stat.
-    pub agility: Option<()>,
+    pub agility: Flag,
     /// Slows movement by the specified percentage when the creature is
     /// [sneaking](https://dwarffortresswiki.org/index.php/Ambusher).
     pub stealth_slows: Option<i32>,

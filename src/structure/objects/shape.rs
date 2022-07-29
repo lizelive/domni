@@ -17,15 +17,15 @@ pub struct ShapeToken {
     /// Makes gems in this shape use the syntax '`ADJ` + material' e.g. "conglomerate gizzard stone".
     /// This, `GEMS_USE_NOUN` or `GEMS_USE_ADJ_NOUN` must be used for the name of a gem in this shape to show up.
     #[serde(alias = "GEMS_USE_ADJ")]
-    pub gems_use_adj: Option<()>,
+    pub gems_use_adj: Flag,
     /// Makes gems in this shape use the syntax '`ADJ` + material + `NAME`' e.g. "smooth conglomerate cabochon".
     /// This, `GEMS_USE_ADJ` or `GEMS_USE_ADJ_NOUN` must be used for the name of a gem in this shape to show up.
     #[serde(alias = "GEMS_USE_ADJ_NOUN")]
-    pub gems_use_adj_noun: Option<()>,
+    pub gems_use_adj_noun: Flag,
     /// Makes gems in this shape use the syntax 'material + `NAME`' e.g. "point cut conglomerate".
     /// This, `GEMS_USE_ADJ` or`GEMS_USE_ADJ_NOUN` must be used for the name of a gem in this shape to show up.
     #[serde(alias = "GEMS_USE_NOUN")]
-    pub gems_use_noun: Option<()>,
+    pub gems_use_noun: Flag,
     /// The amount of sides on the dice.
     #[serde(alias = "FACES")]
     pub faces: Option<u32>,

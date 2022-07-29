@@ -1,4 +1,4 @@
-use crate::core::{Choose, Clamp, DFChar, Reference, ReferenceTo};
+use crate::core::{Choose, Clamp, DFChar, Reference, ReferenceTo, Flag};
 use crate::structure::{ItemReferenceArg, KeyBindEnum, LaborEnum, MaterialTokenArg, NoneEnum};
 
 use serde::{Deserialize, Serialize};
@@ -103,7 +103,7 @@ pub struct BuildingGeneralToken {
     /// must be hanging over magma in order for the building to function.
     /// Buildings with this token also ignore the `[FUEL]` token in their reactions.
     #[serde(alias = "NEEDS_MAGMA")]
-    pub needs_magma: Option<()>,
+    pub needs_magma: Flag,
 }
 
 #[serde_with::skip_serializing_none]
@@ -121,49 +121,49 @@ pub struct BuildItemToken {
     //-------------------------------------------------------------
     /// Item material must have the `[BONE]` token.
     #[serde(alias = "ANY_BONE_MATERIAL")]
-    pub any_bone_material: Option<()>,
+    pub any_bone_material: Flag,
     /// Item material must have the `[HORN]` token.
     #[serde(alias = "ANY_HORN_MATERIAL")]
-    pub any_horn_material: Option<()>,
+    pub any_horn_material: Flag,
     /// Item material must have the `[LEATHER]` token.
     #[serde(alias = "ANY_LEATHER_MATERIAL")]
-    pub any_leather_material: Option<()>,
+    pub any_leather_material: Flag,
     /// Item material must have the `[PEARL]` token.  
     #[serde(alias = "ANY_PEARL_MATERIAL")]
-    pub any_pearl_material: Option<()>,
+    pub any_pearl_material: Flag,
     /// Item material must be subordinate to a `PLANT` object.
     #[serde(alias = "ANY_PLANT_MATERIAL")]
-    pub any_plant_material: Option<()>,
+    pub any_plant_material: Flag,
     /// Item material must have the `[SHELL]` token.
     #[serde(alias = "ANY_SHELL_MATERIAL")]
-    pub any_shell_material: Option<()>,
+    pub any_shell_material: Flag,
     /// Item material must have the `[SILK]` token.
     #[serde(alias = "ANY_SILK_MATERIAL")]
-    pub any_silk_material: Option<()>,
+    pub any_silk_material: Flag,
     /// Item material must have the `[SOAP]` token.
     #[serde(alias = "ANY_SOAP_MATERIAL")]
-    pub any_soap_material: Option<()>,
+    pub any_soap_material: Flag,
     /// Item is made of a tissue having `[TISSUE_SHAPE:STRANDS]`,
     /// intended for matching hair and wool.
     /// Must be used with `[USE_BODY_COMPONENT]`.
     #[serde(alias = "ANY_STRAND_TISSUE")]
-    pub any_strand_tissue: Option<()>,
+    pub any_strand_tissue: Flag,
     /// Item material must have the `[TOOTH]` token.
     #[serde(alias = "ANY_TOOTH_MATERIAL")]
-    pub any_tooth_material: Option<()>,
+    pub any_tooth_material: Flag,
     /// Item material must have the `[YARN]` token.
     #[serde(alias = "ANY_YARN_MATERIAL")]
-    pub any_yarn_material: Option<()>,
+    pub any_yarn_material: Flag,
     /// Item has to be a bag. Intended to be used with an item type of `BOX`,
     /// to prevent chests, coffers, and other containers from being used instead.
     #[serde(alias = "BAG")]
-    pub bag: Option<()>,
+    pub bag: Flag,
     /// Item is able to be used to build structures (Stone, Wood, Blocks, Bars?).
     #[serde(alias = "BUILDMAT")]
-    pub build_material: Option<()>,
+    pub build_material: Flag,
     /// Item can be an Artifact.
     #[serde(alias = "CAN_USE_ARTIFACT")]
-    pub can_use_artifact: Option<()>,
+    pub can_use_artifact: Flag,
 
     // Not used in Reaction
     /// Item must be a `BARREL` or `TOOL` which contains at least one item of
@@ -173,15 +173,15 @@ pub struct BuildItemToken {
 
     /// If the item is a container, it must be empty.
     #[serde(alias = "EMPTY")]
-    pub empty: Option<()>,
+    pub empty: Flag,
     /// Item material must be considered fire-safe (stable temperature below 11000 °U ).
     /// Only works with items of type `BAR`, `BLOCKS`, `BOULDER`, `WOOD`, and `ANVIL` -
     /// all others are considered unsafe.
     #[serde(alias = "FIRE_BUILD_SAFE")]
-    pub fire_build_safe: Option<()>,
+    pub fire_build_safe: Flag,
     /// Item material has `[IS_GLASS]`. All 3 types of glass have this token hardcoded.
     #[serde(alias = "GLASS_MATERIAL")]
-    pub glass_material: Option<()>,
+    pub glass_material: Flag,
     /// Similar to `REACTION_CLASS`, but requires the reagents material to have a matching
     /// `MATERIAL_REACTION_PRODUCT` entry. Intended for reactions which transform one class of
     /// material into another, such as skin->leather and fat->tallow.
@@ -194,7 +194,7 @@ pub struct BuildItemToken {
     /// Only works with items of type `BAR`, `BLOCKS`, `BOULDER`, `WOOD`, and `ANVIL` -
     /// all others are considered unsafe.
     #[serde(alias = "MAGMA_BUILD_SAFE")]
-    pub magma_build_safe: Option<()>,
+    pub magma_build_safe: Flag,
     /// Item material must be an ore of the specified metal.
     #[serde(alias = "METAL_ORE")]
     pub metal_ore: Option<Reference>, // TODO reference to Inorganic material
@@ -206,17 +206,17 @@ pub struct BuildItemToken {
     /// Sharp stones (produced using knapping) and most types of weapon/ammo
     /// can not be used with this token.
     #[serde(alias = "NO_EDGE_ALLOWED")]
-    pub no_edge_allowed: Option<()>,
+    pub no_edge_allowed: Flag,
     /// If the item is a container, it must not contain lye or milk.
     /// Not necessary if specifying `[EMPTY]`.
     #[serde(alias = "NOT_CONTAIN_BARREL_ITEM")]
-    pub not_contain_barrel_item: Option<()>,
+    pub not_contain_barrel_item: Flag,
     /// Item can not be engraved. For example, a memorial slab can not be engraved.
     #[serde(alias = "NOT_ENGRAVED")]
-    pub not_engraved: Option<()>,
+    pub not_engraved: Flag,
     /// Item must be "collected" - used with `THREAD:NONE` to exclude webs.
     #[serde(alias = "NOT_WEB")]
-    pub not_web: Option<()>,
+    pub not_web: Flag,
     /// Requires the reagents material to have a matching `REACTION_CLASS` entry.
     /// Intended for reactions which accept a variety of materials but where the input material
     /// does not determine the output material, such as `FLUX` (for making pig iron and steel)
@@ -225,16 +225,16 @@ pub struct BuildItemToken {
     pub reaction_class: Option<Reference>, // TODO reference to Reaction token
     /// Item must not be rotten, mainly for organic materials.
     #[serde(alias = "UNROTTEN")]
-    pub unrotten: Option<()>,
+    pub unrotten: Flag,
     /// Item material must come off a creature's body (`CORPSE` or `CORPSEPIECE`).
     #[serde(alias = "USE_BODY_COMPONENT")]
-    pub use_body_component: Option<()>,
+    pub use_body_component: Flag,
     /// Item must be "undisturbed" - used with `THREAD:NONE` to gather webs.
     #[serde(alias = "WEB_ONLY")]
-    pub web_only: Option<()>,
+    pub web_only: Flag,
     /// Item is made of an non-economic stone.
     #[serde(alias = "WORTHLESS_STONE_ONLY")]
-    pub worthless_stone_only: Option<()>,
+    pub worthless_stone_only: Flag,
 }
 
 #[serde_with::skip_serializing_none]

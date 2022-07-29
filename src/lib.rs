@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 mod core;
-mod structure;
 mod json_magic;
+mod structure;
 
 use std::fs::{DirEntry, ReadDir};
 
@@ -57,7 +57,6 @@ pub fn convert_to_json(input: &str) -> Result<String> {
     return Ok(json);
 }
 
-
 pub fn load_all() -> Result<Vec<crate::ObjectToken>> {
     let raw_files = std::fs::read_dir("./raw/objects")?;
     //let raw_files = try_flatten(raw_files)?;
@@ -85,7 +84,9 @@ pub fn load_all() -> Result<Vec<crate::ObjectToken>> {
 
 #[cfg(test)]
 mod tests {
-    use crate::{*, json_magic::cleanup};
+    use anyhow::Context;
+
+    use crate::{json_magic::cleanup, *};
     #[test]
     fn parse_real() -> Result<()> {
         let data = load_all()?;
@@ -123,6 +124,10 @@ mod tests {
     [BODYGLOSS:PAW:foot:paw:feet:paws]
     ";
         let raw = parse(source)?;
+        println!("{}", serde_json::to_string_pretty(&raw)?);
+
+        let data = cleanup(serde_json::to_value(raw)?).context("nothing?")?;
+        println!("{}", serde_json::to_string_pretty(&data)?);
         Ok(())
     }
 }

@@ -51,90 +51,90 @@ pub struct TissueToken {
     /// The thickness of the tissue increases when character strength increases.
     /// Used for muscles in vanilla.
     #[serde(alias = "THICKENS_ON_STRENGTH")]
-    pub thickness_on_strength: Option<()>,
+    pub thickness_on_strength: Flag,
     /// Thickness of said tissue increases when the
     /// character eats and doesn't exercise sufficiently.
     /// Used for fat in vanilla.
     #[serde(alias = "THICKENS_ON_ENERGY_STORAGE")]
-    pub thickness_on_energy_storage: Option<()>,
+    pub thickness_on_energy_storage: Flag,
     /// The tissue contains arteries.
     /// Edged attacks have the chance to break an artery, increasing blood loss.
     /// Used for muscles in vanilla.
     ///
     /// Also see: `MAJOR_ARTERIES` and `VASCULAR`
     #[serde(alias = "ARTERIES")]
-    pub arteries: Option<()>,
+    pub arteries: Flag,
     /// Denotes whether or not the tissue will be scarred once healed.
     #[serde(alias = "SCARS")]
-    pub scars: Option<()>,
+    pub scars: Flag,
     /// Holds the body part together.
     /// A cut or a fracture will disable the body part it's in.
     #[serde(alias = "STRUCTURAL")]
-    pub structural: Option<()>,
+    pub structural: Flag,
     /// Any ligaments or tendons are part of this tissue.
     /// Vulnerable to edged attacks, damage disables the limb.
     ///
     /// Used for bones and chitin in vanilla.
     #[serde(alias = "CONNECTIVE_TISSUE_ANCHOR")]
-    pub connective_tissue_anchor: Option<()>,
+    pub connective_tissue_anchor: Flag,
     /// The tissue will not heal, or heals slower, until it is set by a bone doctor.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SETTABLE")]
-    pub settable: Option<()>,
+    pub settable: Flag,
     /// The broken tissue can be fixed with a cast or a splint to restore function while it heals.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SPLINTABLE")]
-    pub splintable: Option<()>,
+    pub splintable: Flag,
     /// The tissue performs some sort of special function (e.g. sight, hearing, breathing, etc.)
     /// An organ with such a function will stop working if a sufficient amount of damage is
     /// sustained by its `FUNCTIONAL` tissues. If an organ has no `FUNCTIONAL` tissues,
     /// it will stop working only if it is severed or destroyed entirely by heat or cold.
     #[serde(alias = "FUNCTIONAL")]
-    pub functional: Option<()>,
+    pub functional: Flag,
     /// Nervous function - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "NERVOUS")]
-    pub nervous: Option<()>,
+    pub nervous: Flag,
     /// If a creature has no functioning parts with the `THOUGHT` token, it will be unable to move
     /// or breathe; `NO_THOUGHT_CENTER_FOR_MOVEMENT` bypasses this limitation.
     /// Mostly used in `[OBJECT:BODY]`.
     #[serde(alias = "THOUGHT")]
-    pub though: Option<()>,
+    pub though: Flag,
     /// Seems to affect where sensory or motor nerves are located,
     /// and whether damage to this tissue will render a limb useless.
     #[serde(alias = "MUSCULAR")]
-    pub muscular: Option<()>,
+    pub muscular: Flag,
     /// Used to smell - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SMELL")]
-    pub smell: Option<()>,
+    pub smell: Flag,
     /// Used to hearing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "HEAR")]
-    pub hear: Option<()>,
+    pub hear: Flag,
     /// Unknown - not used.
     /// Most likely related to flying.
     #[serde(alias = "FLIGHT")]
-    pub flight: Option<()>,
+    pub flight: Flag,
     /// Used to breathing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "BREATHE")]
-    pub breathe: Option<()>,
+    pub breathe: Flag,
     /// Used to seeing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SIGHT")]
-    pub sight: Option<()>,
+    pub sight: Flag,
     /// Holds body parts together.
     /// A body part will not be severed unless all of its component tissues with the
     /// `CONNECTS` tag are severed.
     #[serde(alias = "CONNECTS")]
-    pub connects: Option<()>,
+    pub connects: Flag,
     /// Causes tissue to sometimes severely bleed when damaged.
     /// This is independent of its `VASCULAR` value.
     ///
     /// Also see: `ARTERIES`
     #[serde(alias = "MAJOR_ARTERIES")]
-    pub major_arteries: Option<()>,
+    pub major_arteries: Flag,
     /// Tissue supplies the creature with heat insulation.
     /// Higher values result in more insulation.
     #[serde(alias = "INSULATION")]
@@ -144,12 +144,12 @@ pub struct TissueToken {
     ///
     /// Also see: `STYLEABLE`
     #[serde(alias = "COSMETIC")]
-    pub cosmetic: Option<()>,
+    pub cosmetic: Flag,
     /// The tissue can be styled as per a tissue style (defined in an entity entry)
     ///
     /// Also see: `COSMETIC`
     #[serde(alias = "STYLEABLE")]
-    pub styleable: Option<()>,
+    pub styleable: Flag,
     /// The shape of the tissue, like if it is a layer or feathers.
     #[serde(alias = "TISSUE_SHAPE")]
     pub tissue_shape: Option<TissueShapeEnum>,
@@ -162,7 +162,7 @@ pub struct TissueToken {
     pub tissue_mat_state: Option<MaterialStateEnum>,
     /// The selected tissue leaks out of the creature when the layers above it are pierced.
     #[serde(alias = "TISSUE_LEAKS")]
-    pub tissue_leaks: Option<()>,
+    pub tissue_leaks: Flag,
     // endregion ==================================================================================
 }
 

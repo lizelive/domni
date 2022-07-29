@@ -1,4 +1,4 @@
-use crate::core::{Choose, Clamp, Reference, ReferenceTo};
+use crate::core::{Choose, Clamp, Reference, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 
@@ -31,13 +31,13 @@ pub struct EntityToken {
     // region: Gameplay ============================================================
     /// Allows creatures from this entity to be playable in adventure mode.
     #[serde(alias = "ALL_MAIN_POPS_CONTROLLABLE")]
-    pub all_main_pops_controllable: Option<()>,
+    pub all_main_pops_controllable: Flag,
     /// Allows playing this entity in fortress mode, and at least one civilization must have this
     /// token. If multiple entities have the `SITE_CONTROLLABLE` token, then at embark the specific
     /// civs can be chosen on the civ list screen, though it will not state what entity the civs
     /// belong to. To check which one, go to the neighbors screen: the entity's race will be at the top.
     #[serde(alias = "SITE_CONTROLLABLE")]
-    pub site_controllable: Option<()>,
+    pub site_controllable: Flag,
     /// The type of creature that will inhabit the civilization. If multiple creature types are
     /// specified, each civilization of this entity type will randomly choose one of the creatures.
     ///
@@ -138,7 +138,7 @@ pub struct EntityToken {
     pub permitted_reaction: Vec<ReferenceTo<ReactionToken>>,
     /// Causes the civ's currency to be numbered with the year it was minted.
     #[serde(alias = "CURRENCY_BY_YEAR")]
-    pub currency_by_year: Option<()>,
+    pub currency_by_year: Flag,
     /// What kind of metals the civ uses for coin minting as well as the value of the coin.
     #[serde(alias = "CURRENCY")] // TODO: the way material tokens are referred to is weird
     pub currency: Vec<(ReferenceTo<InorganicToken>, u32)>,
@@ -251,28 +251,28 @@ pub struct EntityToken {
     )>,
     /// Makes the civ's traders accept offered goods.
     #[serde(alias = "WILL_ACCEPT_TRIBUTE")]
-    pub will_accept_tribute: Option<()>,
+    pub will_accept_tribute: Flag,
     /// The civ will send out this sorts of adventurer in worldgen, which seems to increase Tracker
     /// skill.
     ///
     /// This type of adventurer will sometimes be seen leading a battle (instead of war leaders or
     /// generals) in remote locations during world-gen, in charge of the defenders.
     #[serde(alias = "WANDERER")]
-    pub wanderer: Option<()>,
+    pub wanderer: Flag,
     /// The civ will send out this sorts of adventurer in worldgen, which seems to increase Tracker
     /// skill.
     ///
     /// This type of adventurer will sometimes be seen leading a battle (instead of war leaders or
     /// generals) in remote locations during world-gen, in charge of the defenders.
     #[serde(alias = "BEAST_HUNTER")]
-    pub beast_hunter: Option<()>,
+    pub beast_hunter: Flag,
     /// The civ will send out this sorts of adventurer in worldgen, which seems to increase Tracker
     /// skill.
     ///
     /// This type of adventurer will sometimes be seen leading a battle (instead of war leaders or
     /// generals) in remote locations during world-gen, in charge of the defenders.
     #[serde(alias = "SCOUT")]
-    pub scout: Option<()>,
+    pub scout: Flag,
     /// The civ will send out this sort of adventurer in worldgen, which seems to increase Tracker
     /// skill.
     ///
@@ -282,7 +282,7 @@ pub struct EntityToken {
     /// If the civ sends out mercenaries, they may come to the player's fort to enlist in the
     /// military.
     #[serde(alias = "MERCENARY")]
-    pub mercenary: Option<()>,
+    pub mercenary: Flag,
     /// The civilization will mutilate bodies when they are the victors in history-gen warfare,
     /// such as hanging bodies from trees, putting them on spikes, and so forth.
     ///
@@ -290,7 +290,7 @@ pub struct EntityToken {
     /// died, with or without this token, and regardless of whether they actually antagonized the
     /// townspeople.
     #[serde(alias = "ABUSE_BODIES")]
-    pub abuse_bodies: Option<()>,
+    pub abuse_bodies: Flag,
     /// The season when the civ is most active: when they will trade, interact with you via
     /// diplomats, and/or invade you. Civs can have multiple season entries.
     ///
@@ -307,12 +307,12 @@ pub struct EntityToken {
     /// If the civilization also has the `SIEGER` token, they will eventually ramp it up to less
     /// subtle means of warfare.
     #[serde(alias = "AMBUSHER")]
-    pub ambusher: Option<()>,
+    pub ambusher: Flag,
     /// Will not attack wildlife, and will not be attacked by them, even if you have them in your
     /// party. This can be somewhat disconcerting when attacked by bears in the forest, and your
     /// elven ally sits back and does nothing.
     #[serde(alias = "AT_PEACE_WITH_WILDLIFE")]
-    pub at_peace_with_wildlife: Option<()>,
+    pub at_peace_with_wildlife: Flag,
     /// Sends thieves to steal babies. Without this tag (or `AMBUSHER`, or `ITEM_THIEF`), enemy civs
     /// will only siege (if capable), and will siege as early as they would otherwise babysnatch.
     /// This can happen as early as the first year of the fort!
@@ -326,7 +326,7 @@ pub struct EntityToken {
     /// caravan will count as snatched, reported upon the animal leaving the map, and the animal
     /// will not count as having been exported.
     #[serde(alias = "BABYSNATCHER")]
-    pub babysnatcher: Option<()>,
+    pub babysnatcher: Flag,
     /// Makes the civilization build castles from mead halls, and (unlike older versions) only
     /// functions when the type of site built is a hamlet/town.
     ///
@@ -334,22 +334,22 @@ pub struct EntityToken {
     /// adventurers can only lay claim to human sites.
     /// [Bug:8001](https://www.bay12games.com/dwarves/mantisbt/view.php?id=8001).
     #[serde(alias = "BUILDS_OUTDOOR_FORTIFICATIONS")]
-    pub builds_outdoor_fortifications: Option<()>,
+    pub builds_outdoor_fortifications: Flag,
     /// Makes the civilization build tombs.
     #[serde(alias = "BUILDS_OUTDOOR_TOMBS")]
-    pub builds_outdoor_tombs: Option<()>,
+    pub builds_outdoor_tombs: Flag,
     /// Sets a percentage of the entity population to be used as bandits.
     #[serde(alias = "BANDITRY")]
     pub banditry: Option<Clamp<u8, 0, 100>>,
     /// Visiting diplomats are accompanied by a pair of soldiers.
     #[serde(alias = "DIPLOMAT_BODYGUARDS")]
-    pub diplomat_bodyguards: Option<()>,
+    pub diplomat_bodyguards: Flag,
     /// Found on generated divine "HF Guardian Entities". Cannot be used in user-defined raws.
     #[serde(alias = "GENERATED")]
-    pub generated: Option<()>, // TODO: mark this as unusable, or maybe remove it?
+    pub generated: Flag, // TODO: mark this as unusable, or maybe remove it?
     /// Causes invaders to ignore visiting caravans and other neutral creatures.
     #[serde(alias = "INVADERS_IGNORE_NEUTRALS")]
-    pub invaders_ignore_neutrals: Option<()>,
+    pub invaders_ignore_neutrals: Flag,
     /// Sends thieves to steal items. This will also occur in history generation, and thieves will
     /// have the "thief" profession. Items stolen in history gen will be scattered around that
     /// creature's home. Also causes that civ to be hostile to any entity without this token.
@@ -363,17 +363,17 @@ pub struct EntityToken {
     /// will count as stolen, reported when the items leave the map, and the stolen items will
     /// not count as exported.
     #[serde(alias = "ITEM_THIEF")]
-    pub item_thief: Option<()>,
+    pub item_thief: Flag,
     /// Causes the entity to send out patrols that can ambush adventurers. Said patrols will be
     /// hostile to any adventurers they encounter, regardless of race or nationality.
     #[serde(alias = "LOCAL_BANDITRY")]
-    pub local_banditry: Option<()>,
+    pub local_banditry: Flag,
     /// Caravan merchants are accompanied by soldiers.
     #[serde(alias = "MERCHANT_BODYGUARDS")]
-    pub merchant_bodyguards: Option<()>,
+    pub merchant_bodyguards: Flag,
     /// Merchants will engage in cross-civ trading and form companies.
     #[serde(alias = "MERCHANT_NOBILITY")]
-    pub merchant_nobility: Option<()>,
+    pub merchant_nobility: Flag,
     /// 0 to 5, civ will come to site once population at site has reached that level. If multiple
     /// progress triggers exist for a civ, it will come when any one of them is fulfilled instead
     /// of waiting for all of them to be reached. Each value corresponds to some level of
@@ -465,67 +465,67 @@ pub struct EntityToken {
     /// they will instead send smaller-scale sieges when their triggers for "first contact" are
     /// reached.
     #[serde(alias = "SIEGER")]
-    pub sieger: Option<()>,
+    pub sieger: Flag,
     /// Guards certain special sites, such as a vault belonging to a demon allied with a deity. Used
     /// in generated divine entities.
     #[serde(alias = "SITE_GUARDIAN")]
-    pub site_guardian: Option<()>,
+    pub site_guardian: Flag,
     /// This makes the severity of attacks depend on the extent of item/baby thievery rather than
     /// the passage of time. Designed to go with `ITEM_THIEF`, may or may not work with `BABYSNATCHER`.
     ///
     /// Prevents the civ from engaging in diplomacy or ending up at war.
     #[serde(alias = "SKULKING")]
-    pub skulking: Option<()>,
+    pub skulking: Flag,
     /// Visiting diplomats impose tree cutting quotas; without this, they will simply compliment
     /// your fortress and leave.
     ///
     /// Also causes the diplomat to make unannounced first contact at the very beginning of the
     /// first Spring after your fortress becomes a land holder.
     #[serde(alias = "TREE_CAP_DIPLOMACY")]
-    pub tree_cap_diplomacy: Option<()>,
+    pub tree_cap_diplomacy: Flag,
     /// Defines if a civilization is a hidden subterranean entity, such as bat man civilizations.
     /// May spawn in any of the three caverns, in groups of 5-10 soldiers who will hunt down nearby
     /// cavern creatures. If you embark as this civ, you have access to pets and trees from all
     /// three layers, not only the first.
     #[serde(alias = "LAYER_LINKED")]
-    pub layer_linked: Option<()>,
+    pub layer_linked: Flag,
     /// Unknown. Possibly makes this creature available as a "Corpse" (e.g. Human Corpse) for
     /// necromancers in adventure mode.
     #[serde(alias = "UNDEAD_CANDIDATE")]
-    pub undead_candidate: Option<()>,
+    pub undead_candidate: Flag,
     /// Makes civilizations generate keyboard instruments.
     #[serde(alias = "GENERATE_KEYBOARD_INSTRUMENTS")]
-    pub generate_keyboard_instruments: Option<()>,
+    pub generate_keyboard_instruments: Flag,
     /// Makes civilizations generate percussion instruments.
     #[serde(alias = "GENERATE_PERCUSSION_INSTRUMENTS")]
-    pub generate_percussion_instruments: Option<()>,
+    pub generate_percussion_instruments: Flag,
     /// Makes civilizations generate stringed instruments.
     #[serde(alias = "GENERATE_STRINGED_INSTRUMENTS")]
-    pub generate_stringed_instruments: Option<()>,
+    pub generate_stringed_instruments: Flag,
     /// Makes civilizations generate wind instruments.
     #[serde(alias = "GENERATE_WIND_INSTRUMENTS")]
-    pub generate_wind_instruments: Option<()>,
+    pub generate_wind_instruments: Flag,
     /// Makes civilizations generate dance forms.
     #[serde(alias = "GENERATE_DANCE_FORMS")]
-    pub generate_dance_forms: Option<()>,
+    pub generate_dance_forms: Flag,
     /// Makes civilizations generate musical forms.
     #[serde(alias = "GENERATE_MUSICAL_FORMS")]
-    pub generate_musical_forms: Option<()>,
+    pub generate_musical_forms: Flag,
     /// Makes civilizations generate poetic forms.
     #[serde(alias = "GENERATE_POETIC_FORMS")]
-    pub generate_poetic_forms: Option<()>,
+    pub generate_poetic_forms: Flag,
     /// Define a type of scholar this entity will generate.
     #[serde(alias = "SCHOLAR")]
     pub scholar: Vec<ScholarTypeEnum>,
     /// Generates scholars based on the values generated with the `VARIABLE_VALUE` tag.
     #[serde(alias = "SET_SCHOLARS_ON_VALUES_AND_JOBS")]
-    pub set_scholars_on_values_and_jobs: Option<()>,
+    pub set_scholars_on_values_and_jobs: Flag,
     /// Used for kobolds.
     #[serde(alias = "NO_ARTIFACT_CLAIMS")]
-    pub no_artifact_claims: Option<()>,
+    pub no_artifact_claims: Flag,
     /// The civilization can breach the Underworld during world generation.
     #[serde(alias = "MINING_UNDERWORLD_DISASTERS")]
-    pub mining_underworld_disasters: Option<()>,
+    pub mining_underworld_disasters: Flag,
     // endregion ===================================================================
     // region: Available Items =====================================================
     /// Specify a weapon usable by the entity.
@@ -591,7 +591,7 @@ pub struct EntityToken {
     /// creatures (unless ethics state otherwise) will be able to provide eggs, caught fish, meat,
     /// leather, bone, shell, pearl, horn, and ivory.
     #[serde(alias = "USE_ANIMAL_PRODUCTS")]
-    pub use_animal_products: Option<()>,
+    pub use_animal_products: Flag,
     /// Any creature in the civilization's list of usables (from the surrounding 7x7 or so of
     /// squares and map features in those squares) which has `PET` or `PET_EXOTIC` will be
     /// available as a pet, pack animal (with `PACK_ANIMAL`), wagon puller (with `WAGON_PULLER`),
@@ -602,138 +602,138 @@ pub struct EntityToken {
     /// considered, applies below as well. All common domestic and equipment creatures are also
     /// added to the initial list.
     #[serde(alias = "USE_ANY_PET_RACE")]
-    pub use_any_pet_race: Option<()>,
+    pub use_any_pet_race: Flag,
     /// If they don't have it, creatures with exclusively subterranean biomes are skipped.
     /// If they have it, cave creatures with `PET` will also be available as pets, pack animals
     /// (with `PACK_ANIMAL`), wagon pullers (with `WAGON_PULLER`), mounts (with `MOUNT` or
     /// `MOUNT_EXOTIC`), and siege minions (with `TRAINABLE_WAR` and without `CAN_LEARN`).
     #[serde(alias = "USE_CAVE_ANIMALS")]
-    pub use_cave_animals: Option<()>,
+    pub use_cave_animals: Flag,
     /// Don't have it -> `EVIL` creatures skipped. If they have it, evil creatures with
     /// `SLOW_LEARNER` or without `CAN_LEARN` will be also available as pets (with `PET`), pack
     /// animals (with `PACK_ANIMAL`), wagon pullers (with `WAGON_PULLER`), mounts (with `MOUNT` or
     /// `MOUNT_EXOTIC`), and siege minions (with `TRAINABLE_WAR` or `SLOW_LEARNER`), even the normally
     /// untameable species.
     #[serde(alias = "USE_EVIL_ANIMALS")]
-    pub use_evil_animals: Option<()>,
+    pub use_evil_animals: Flag,
     /// As `EVIL` creatures for all uses of plants.
     #[serde(alias = "USE_EVIL_PLANTS")]
-    pub use_evil_plants: Option<()>,
+    pub use_evil_plants: Flag,
     /// As `EVIL` creatures for all uses of wood.
     #[serde(alias = "USE_EVIL_WOOD")]
-    pub use_evil_wood: Option<()>,
+    pub use_evil_wood: Flag,
     /// Don't have it -> `GOOD` creatures skipped. If they have it, good creatures without
     /// `CAN_LEARN` will also be available as pets (with `PET`), pack animals (with `PACK_ANIMAL`),
     /// wagon pullers (with `WAGON_PULLER`), mounts (with `MOUNT` or `MOUNT_EXOTIC`), and siege minions
     /// (with `TRAINABLE_WAR`), even the normally untameable species.
     #[serde(alias = "USE_GOOD_ANIMALS")]
-    pub use_good_animals: Option<()>,
+    pub use_good_animals: Flag,
     /// As `GOOD` creatures for all uses of plants.
     #[serde(alias = "USE_GOOD_PLANTS")]
-    pub use_good_plants: Option<()>,
+    pub use_good_plants: Flag,
     /// As `GOOD` creatures for all uses of wood.
     #[serde(alias = "USE_GOOD_WOOD")]
-    pub use_good_wood: Option<()>,
+    pub use_good_wood: Flag,
     /// If the relevant professions are permitted, controls availability of lye (`LYE_MAKING`),
     /// charcoal (`BURN_WOOD`), and potash (`POTASH_MAKING`).
     #[serde(alias = "USE_MISC_PROCESSED_WOOD_PRODUCTS")]
-    pub use_misc_processed_wood_products: Option<()>,
+    pub use_misc_processed_wood_products: Flag,
     /// Makes the civilization use all locally available non-exotic pets.
     #[serde(alias = "USE_NON_EXOTIC_PET_RACE")]
-    pub use_non_exotic_pet_race: Option<()>,
+    pub use_non_exotic_pet_race: Flag,
     /// Gives the civilization access to creatures with `COMMON_DOMESTIC` and `MOUNT`.
     /// Additionally, all available (based on `USE_ANY_PET_RACE`, `USE_CAVE_ANIMALS`,
     /// `USE_GOOD_ANIMALS`, and `USE_EVIL_ANIMALS`) creatures with `MOUNT` and `PET` will be allowed
     /// for use as mounts during combat.
     #[serde(alias = "COMMON_DOMESTIC_MOUNT")]
-    pub common_domestic_mount: Option<()>,
+    pub common_domestic_mount: Flag,
     /// Gives the civilization access to creatures with `COMMON_DOMESTIC` and `PACK_ANIMAL`.
     /// Additionally, all available (based on `USE_ANY_PET_RACE`, `USE_CAVE_ANIMALS`,
     /// `USE_GOOD_ANIMALS`, and `USE_EVIL_ANIMALS`) creatures with `PACK_ANIMAL` and `PET` will
     /// be allowed for use during trade as pack animals.
     #[serde(alias = "COMMON_DOMESTIC_PACK")]
-    pub common_domestic_pack: Option<()>,
+    pub common_domestic_pack: Flag,
     /// Gives the civilization access to creatures with `COMMON_DOMESTIC` and `PET`.
     /// Additionally, all available (based on `USE_ANY_PET_RACE`, `USE_CAVE_ANIMALS`,
     /// `USE_GOOD_ANIMALS`, and `USE_EVIL_ANIMALS`) creatures with `PET` will be allowed
     /// for use as pets.
     #[serde(alias = "COMMON_DOMESTIC_PET")]
-    pub common_domestic_pet: Option<()>,
+    pub common_domestic_pet: Flag,
     /// Gives the civilization access to creatures with `COMMON_DOMESTIC` and `WAGON_PULLER`.
     /// Additionally, all available (based on `USE_ANY_PET_RACE`, `USE_CAVE_ANIMALS`,
     /// `USE_GOOD_ANIMALS`, and `USE_EVIL_ANIMALS`) creatures with `WAGON_PULLER` and `PET`
     /// will be allowed for use during trade to pull wagons.
     #[serde(alias = "COMMON_DOMESTIC_PULL")]
-    pub common_domestic_pull: Option<()>,
+    pub common_domestic_pull: Flag,
     /// Allow civ to use river products in the goods it has available for trade.
     #[serde(alias = "RIVER_PRODUCTS")]
-    pub river_products: Option<()>,
+    pub river_products: Flag,
     /// Allow civ to use ocean products (including amber and coral) in the goods it has available
     /// for trade.
     ///
     /// Without `OCEAN_PRODUCTS`, civilizations will not be able to trade ocean fish
     /// even if they are also available from other sources (e.g. sturgeons and stingrays).
     #[serde(alias = "OCEAN_PRODUCTS")]
-    pub ocean_products: Option<()>,
+    pub ocean_products: Flag,
     /// Allow civ to use underground plant products in the goods it has available for trade.
     /// Lack of suitable vegetation in the caverns will cause worldgen rejections.
     #[serde(alias = "INDOOR_FARMING")]
-    pub indoor_farming: Option<()>,
+    pub indoor_farming: Flag,
     /// Allow civ to use outdoor plant products in the goods it has available for trade.
     /// Lack of suitable vegetation in the civ's starting area will cause worldgen rejections.
     #[serde(alias = "OUTDOOR_FARMING")]
-    pub outdoor_farming: Option<()>,
+    pub outdoor_farming: Flag,
     /// Allow civ to use underground plant growths (quarry bush leaves, in unmodded games)
     /// in the goods it has available for trade.
     #[serde(alias = "INDOOR_GARDENS")]
-    pub indoor_gardens: Option<()>,
+    pub indoor_gardens: Flag,
     /// Allow civ to use outdoor plant growths in the goods it has available for trade.
     #[serde(alias = "OUTDOOR_GARDENS")]
-    pub outdoor_gardens: Option<()>,
+    pub outdoor_gardens: Flag,
     /// Allows civ to use indoor tree growths in the goods it has available for trade.
     /// Not used in vanilla entities, as vanilla underground trees do not grow fruit.
     #[serde(alias = "INDOOR_ORCHARDS")]
-    pub indoor_orchards: Option<()>,
+    pub indoor_orchards: Flag,
     /// Allows civ to use outdoor tree growths in the goods it has available for trade.
     #[serde(alias = "OUTDOOR_ORCHARDS")]
-    pub outdoor_orchards: Option<()>,
+    pub outdoor_orchards: Flag,
     /// Civ members will attempt to wear clothing.
     #[serde(alias = "CLOTHING")]
-    pub clothing: Option<()>,
+    pub clothing: Flag,
     /// Will wear things made of spider silk and other subterranean materials.
     #[serde(alias = "SUBTERRANEAN_CLOTHING")]
-    pub subterranean_clothing: Option<()>,
+    pub subterranean_clothing: Flag,
     /// Adds decorations to equipment based on the level of the generated unit. Also improves item
     /// quality.
     #[serde(alias = "EQUIPMENT_IMPROVEMENTS")]
-    pub equipment_improvements: Option<()>,
+    pub equipment_improvements: Flag,
     /// Adds decorations to weapons generated for bowman and master bowman. An elf hack.
     #[serde(alias = "IMPROVED_BOWS")]
-    pub improved_bows: Option<()>,
+    pub improved_bows: Flag,
     /// Allows metal materials to be used to make cages (inexpensive metals only) and crafts.
     #[serde(alias = "METAL_PREF")]
-    pub metal_pref: Option<()>,
+    pub metal_pref: Flag,
     /// Allows the civilization to make use of nearby stone types. If the `FURNACE_OPERATOR` job is
     /// permitted, also allows ore-bearing stones to be smelted into metals.
     #[serde(alias = "STONE_PREF")]
-    pub stone_pref: Option<()>,
+    pub stone_pref: Flag,
     /// The civilization can make traditionally metallic weapons such as swords and spears from
     /// wood. An elf hack.
     #[serde(alias = "WOOD_WEAPONS")]
-    pub wood_weapons: Option<()>,
+    pub wood_weapons: Flag,
     /// The civilization can make traditionally metallic armor such as mail shirts and helmets from
     /// wood. An elf hack.
     #[serde(alias = "WOOD_ARMOR")]
-    pub wood_armor: Option<()>,
+    pub wood_armor: Flag,
     /// Enables creatures of this entity to bring gems in trade.
     #[serde(alias = "GEM_PREF")]
-    pub gem_pref: Option<()>,
+    pub gem_pref: Flag,
     /// Allow civ to use subterranean wood types, such as tower-cap and fungiwood logs.
     #[serde(alias = "INDOOR_WOOD")]
-    pub indoor_wood: Option<()>,
+    pub indoor_wood: Flag,
     /// Allow civ to use outdoor wood types, such as mangrove and oak.
     #[serde(alias = "OUTDOOR_WOOD")]
-    pub outdoor_wood: Option<()>,
+    pub outdoor_wood: Flag,
     /// Precious gems cut by this civilization's jewelers can be of this shape.
     #[serde(alias = "GEM_SHAPE")]
     pub gem_shape: Vec<ReferenceTo<ShapeToken>>,
@@ -743,17 +743,17 @@ pub struct EntityToken {
     /// Allows civ to use materials with `[DIVINE]` for clothing. Used for generated divine
     /// entities.
     #[serde(alias = "DIVINE_MAT_CLOTHING")]
-    pub divine_mat_clothing: Option<()>,
+    pub divine_mat_clothing: Flag,
     /// Allows civ to use materials with `[DIVINE]` for crafts (unverified).  Used for generated divine
     /// entities.
     #[serde(alias = "DIVINE_MAT_CRAFTS")]
-    pub divine_mat_crafts: Option<()>,
+    pub divine_mat_crafts: Flag,
     /// Allows civ to use metals with `[DIVINE]` for weapons. Used for generated divine entities.
     #[serde(alias = "DIVINE_MAT_WEAPONS")]
-    pub divine_mat_weapons: Option<()>,
+    pub divine_mat_weapons: Flag,
     /// Allows civ to use metals with `[DIVINE]` for armour. Used for generated divine entities.
     #[serde(alias = "DIVINE_MAT_ARMOR")]
-    pub divine_mat_armor: Option<()>,
+    pub divine_mat_armor: Flag,
     // endregion ===================================================================
 }
 
@@ -763,7 +763,7 @@ pub struct EntityToken {
 pub struct Animal {
     /// argument 1 of `ANIMAL`
     #[serde(alias = "ANIMAL")]
-    pub reference: Option<()>,
+    pub reference: Flag,
     /// Select specific creature.
     #[serde(alias = "ANIMAL_TOKEN")]
     pub animal_token: Option<ReferenceTo<CreatureToken>>,
@@ -781,47 +781,47 @@ pub struct Animal {
     /// creatures, including demons, night trolls and other generated ones will be used if no
     /// specific creature or class is selected.
     #[serde(alias = "ANIMAL_ALWAYS_PRESENT")]
-    pub animal_always_present: Option<()>,
+    pub animal_always_present: Flag,
     /// Override creature usage tokens `MOUNT` and `MOUNT_EXOTIC`.
     /// Overridden by `ALWAYS` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_NEVER_MOUNT")]
-    pub animal_never_mount: Option<()>,
+    pub animal_never_mount: Flag,
     /// Override creature usage tokens `MOUNT` and `MOUNT_EXOTIC`.
     /// Overrides `NEVER` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_ALWAYS_MOUNT")]
-    pub animal_always_mount: Option<()>,
+    pub animal_always_mount: Flag,
     /// Override creature usage token `WAGON_PULLER`.
     /// Overridden by `ALWAYS` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_NEVER_WAGON_PULLER")]
-    pub animal_never_wagon_puller: Option<()>,
+    pub animal_never_wagon_puller: Flag,
     /// Override creature usage token `WAGON_PULLER`.
     /// Overrides `NEVER` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_ALWAYS_WAGON_PULLER")]
-    pub animal_always_wagon_puller: Option<()>,
+    pub animal_always_wagon_puller: Flag,
     /// Override creature usage tokens `TRAINABLE_WAR` and not `CAN_LEARN`.
     /// Overridden by `ALWAYS` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_NEVER_SIEGE")]
-    pub animal_never_siege: Option<()>,
+    pub animal_never_siege: Flag,
     /// Override creature usage tokens `TRAINABLE_WAR` and not `CAN_LEARN`.
     /// Overrides `NEVER` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_ALWAYS_SIEGE")]
-    pub animal_always_siege: Option<()>,
+    pub animal_always_siege: Flag,
     /// Override creature usage tokens `PET` and `PET_EXOTIC`.
     /// Overridden by `ALWAYS` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_NEVER_PET")]
-    pub animal_never_pet: Option<()>,
+    pub animal_never_pet: Flag,
     /// Override creature usage tokens `PET` and `PET_EXOTIC`.
     /// Overrides `NEVER` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_ALWAYS_PET")]
-    pub animal_always_pet: Option<()>,
+    pub animal_always_pet: Flag,
     /// Override creature usage token `PACK_ANIMAL`.
     /// Overridden by `ALWAYS` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_NEVER_PACK_ANIMAL")]
-    pub animal_never_pack_animal: Option<()>,
+    pub animal_never_pack_animal: Flag,
     /// Override creature usage token `PACK_ANIMAL`.
     /// Overrides `NEVER` counterpart if a caste is matched by more than one animal definition.
     #[serde(alias = "ANIMAL_ALWAYS_PACK_ANIMAL")]
-    pub animal_always_pack_animal: Option<()>,
+    pub animal_always_pack_animal: Flag,
 }
 
 ///

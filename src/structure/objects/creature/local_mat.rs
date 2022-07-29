@@ -1,4 +1,4 @@
-use crate::core::{Choose, DFChar, Reference, ReferenceTo};
+use crate::core::{Choose, DFChar, Reference, ReferenceTo, Flag};
 use crate::structure::{
     AllEnum, AllOrAllSolidEnum, ColorToken, DietInfoEnum, InorganicToken, ItemReferenceArg,
     MaterialStateEnum, MaterialTokenArg, NoneEnum, OverwriteSolidEnum, PluralEnum, ReactionToken,
@@ -56,90 +56,90 @@ pub struct LocalTissueToken {
     /// The thickness of the tissue increases when character strength increases.
     /// Used for muscles in vanilla.
     #[serde(alias = "THICKENS_ON_STRENGTH")]
-    pub thickness_on_strength: Option<()>,
+    pub thickness_on_strength: Flag,
     /// Thickness of said tissue increases when the
     /// character eats and doesn't exercise sufficiently.
     /// Used for fat in vanilla.
     #[serde(alias = "THICKENS_ON_ENERGY_STORAGE")]
-    pub thickness_on_energy_storage: Option<()>,
+    pub thickness_on_energy_storage: Flag,
     /// The tissue contains arteries.
     /// Edged attacks have the chance to break an artery, increasing blood loss.
     /// Used for muscles in vanilla.
     ///
     /// Also see: `MAJOR_ARTERIES` and `VASCULAR`
     #[serde(alias = "ARTERIES")]
-    pub arteries: Option<()>,
+    pub arteries: Flag,
     /// Denotes whether or not the tissue will be scarred once healed.
     #[serde(alias = "SCARS")]
-    pub scars: Option<()>,
+    pub scars: Flag,
     /// Holds the body part together.
     /// A cut or a fracture will disable the body part it's in.
     #[serde(alias = "STRUCTURAL")]
-    pub structural: Option<()>,
+    pub structural: Flag,
     /// Any ligaments or tendons are part of this tissue.
     /// Vulnerable to edged attacks, damage disables the limb.
     ///
     /// Used for bones and chitin in vanilla.
     #[serde(alias = "CONNECTIVE_TISSUE_ANCHOR")]
-    pub connective_tissue_anchor: Option<()>,
+    pub connective_tissue_anchor: Flag,
     /// The tissue will not heal, or heals slower, until it is set by a bone doctor.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SETTABLE")]
-    pub settable: Option<()>,
+    pub settable: Flag,
     /// The broken tissue can be fixed with a cast or a splint to restore function while it heals.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SPLINTABLE")]
-    pub splintable: Option<()>,
+    pub splintable: Flag,
     /// The tissue performs some sort of special function (e.g. sight, hearing, breathing, etc.)
     /// An organ with such a function will stop working if a sufficient amount of damage is
     /// sustained by its `FUNCTIONAL` tissues. If an organ has no `FUNCTIONAL` tissues,
     /// it will stop working only if it is severed or destroyed entirely by heat or cold.
     #[serde(alias = "FUNCTIONAL")]
-    pub functional: Option<()>,
+    pub functional: Flag,
     /// Nervous function - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "NERVOUS")]
-    pub nervous: Option<()>,
+    pub nervous: Flag,
     /// If a creature has no functioning parts with the `THOUGHT` token, it will be unable to move
     /// or breathe; `NO_THOUGHT_CENTER_FOR_MOVEMENT` bypasses this limitation.
     /// Mostly used in `[OBJECT:BODY]`.
     #[serde(alias = "THOUGHT")]
-    pub though: Option<()>,
+    pub though: Flag,
     /// Seems to affect where sensory or motor nerves are located,
     /// and whether damage to this tissue will render a limb useless.
     #[serde(alias = "MUSCULAR")]
-    pub muscular: Option<()>,
+    pub muscular: Flag,
     /// Used to smell - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SMELL")]
-    pub smell: Option<()>,
+    pub smell: Flag,
     /// Used to hearing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "HEAR")]
-    pub hear: Option<()>,
+    pub hear: Flag,
     /// Unknown - not used.
     /// Most likely related to flying.
     #[serde(alias = "FLIGHT")]
-    pub flight: Option<()>,
+    pub flight: Flag,
     /// Used to breathing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "BREATHE")]
-    pub breathe: Option<()>,
+    pub breathe: Flag,
     /// Used to seeing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SIGHT")]
-    pub sight: Option<()>,
+    pub sight: Flag,
     /// Holds body parts together.
     /// A body part will not be severed unless all of its component tissues with the
     /// `CONNECTS` tag are severed.
     #[serde(alias = "CONNECTS")]
-    pub connects: Option<()>,
+    pub connects: Flag,
     /// Causes tissue to sometimes severely bleed when damaged.
     /// This is independent of its `VASCULAR` value.
     ///
     /// Also see: `ARTERIES`
     #[serde(alias = "MAJOR_ARTERIES")]
-    pub major_arteries: Option<()>,
+    pub major_arteries: Flag,
     /// Tissue supplies the creature with heat insulation.
     /// Higher values result in more insulation.
     #[serde(alias = "INSULATION")]
@@ -149,12 +149,12 @@ pub struct LocalTissueToken {
     ///
     /// Also see: `STYLEABLE`
     #[serde(alias = "COSMETIC")]
-    pub cosmetic: Option<()>,
+    pub cosmetic: Flag,
     /// The tissue can be styled as per a tissue style (defined in an entity entry)
     ///
     /// Also see: `COSMETIC`
     #[serde(alias = "STYLEABLE")]
-    pub styleable: Option<()>,
+    pub styleable: Flag,
     /// The shape of the tissue, like if it is a layer or feathers.
     #[serde(alias = "TISSUE_SHAPE")]
     pub tissue_shape: Option<TissueShapeEnum>,
@@ -167,7 +167,7 @@ pub struct LocalTissueToken {
     pub tissue_mat_state: Option<MaterialStateEnum>,
     /// The selected tissue leaks out of the creature when the layers above it are pierced.
     #[serde(alias = "TISSUE_LEAKS")]
-    pub tissue_leaks: Option<()>,
+    pub tissue_leaks: Flag,
     // endregion ==================================================================================
 }
 
@@ -221,90 +221,90 @@ pub struct UseTissue {
     /// The thickness of the tissue increases when character strength increases.
     /// Used for muscles in vanilla.
     #[serde(alias = "THICKENS_ON_STRENGTH")]
-    pub thickness_on_strength: Option<()>,
+    pub thickness_on_strength: Flag,
     /// Thickness of said tissue increases when the
     /// character eats and doesn't exercise sufficiently.
     /// Used for fat in vanilla.
     #[serde(alias = "THICKENS_ON_ENERGY_STORAGE")]
-    pub thickness_on_energy_storage: Option<()>,
+    pub thickness_on_energy_storage: Flag,
     /// The tissue contains arteries.
     /// Edged attacks have the chance to break an artery, increasing blood loss.
     /// Used for muscles in vanilla.
     ///
     /// Also see: `MAJOR_ARTERIES` and `VASCULAR`
     #[serde(alias = "ARTERIES")]
-    pub arteries: Option<()>,
+    pub arteries: Flag,
     /// Denotes whether or not the tissue will be scarred once healed.
     #[serde(alias = "SCARS")]
-    pub scars: Option<()>,
+    pub scars: Flag,
     /// Holds the body part together.
     /// A cut or a fracture will disable the body part it's in.
     #[serde(alias = "STRUCTURAL")]
-    pub structural: Option<()>,
+    pub structural: Flag,
     /// Any ligaments or tendons are part of this tissue.
     /// Vulnerable to edged attacks, damage disables the limb.
     ///
     /// Used for bones and chitin in vanilla.
     #[serde(alias = "CONNECTIVE_TISSUE_ANCHOR")]
-    pub connective_tissue_anchor: Option<()>,
+    pub connective_tissue_anchor: Flag,
     /// The tissue will not heal, or heals slower, until it is set by a bone doctor.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SETTABLE")]
-    pub settable: Option<()>,
+    pub settable: Flag,
     /// The broken tissue can be fixed with a cast or a splint to restore function while it heals.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SPLINTABLE")]
-    pub splintable: Option<()>,
+    pub splintable: Flag,
     /// The tissue performs some sort of special function (e.g. sight, hearing, breathing, etc.)
     /// An organ with such a function will stop working if a sufficient amount of damage is
     /// sustained by its `FUNCTIONAL` tissues. If an organ has no `FUNCTIONAL` tissues,
     /// it will stop working only if it is severed or destroyed entirely by heat or cold.
     #[serde(alias = "FUNCTIONAL")]
-    pub functional: Option<()>,
+    pub functional: Flag,
     /// Nervous function - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "NERVOUS")]
-    pub nervous: Option<()>,
+    pub nervous: Flag,
     /// If a creature has no functioning parts with the `THOUGHT` token, it will be unable to move
     /// or breathe; `NO_THOUGHT_CENTER_FOR_MOVEMENT` bypasses this limitation.
     /// Mostly used in `[OBJECT:BODY]`.
     #[serde(alias = "THOUGHT")]
-    pub though: Option<()>,
+    pub though: Flag,
     /// Seems to affect where sensory or motor nerves are located,
     /// and whether damage to this tissue will render a limb useless.
     #[serde(alias = "MUSCULAR")]
-    pub muscular: Option<()>,
+    pub muscular: Flag,
     /// Used to smell - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SMELL")]
-    pub smell: Option<()>,
+    pub smell: Flag,
     /// Used to hearing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "HEAR")]
-    pub hear: Option<()>,
+    pub hear: Flag,
     /// Unknown - not used.
     /// Most likely related to flying.
     #[serde(alias = "FLIGHT")]
-    pub flight: Option<()>,
+    pub flight: Flag,
     /// Used to breathing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "BREATHE")]
-    pub breathe: Option<()>,
+    pub breathe: Flag,
     /// Used to seeing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SIGHT")]
-    pub sight: Option<()>,
+    pub sight: Flag,
     /// Holds body parts together.
     /// A body part will not be severed unless all of its component tissues with the
     /// `CONNECTS` tag are severed.
     #[serde(alias = "CONNECTS")]
-    pub connects: Option<()>,
+    pub connects: Flag,
     /// Causes tissue to sometimes severely bleed when damaged.
     /// This is independent of its `VASCULAR` value.
     ///
     /// Also see: `ARTERIES`
     #[serde(alias = "MAJOR_ARTERIES")]
-    pub major_arteries: Option<()>,
+    pub major_arteries: Flag,
     /// Tissue supplies the creature with heat insulation.
     /// Higher values result in more insulation.
     #[serde(alias = "INSULATION")]
@@ -314,12 +314,12 @@ pub struct UseTissue {
     ///
     /// Also see: `STYLEABLE`
     #[serde(alias = "COSMETIC")]
-    pub cosmetic: Option<()>,
+    pub cosmetic: Flag,
     /// The tissue can be styled as per a tissue style (defined in an entity entry)
     ///
     /// Also see: `COSMETIC`
     #[serde(alias = "STYLEABLE")]
-    pub styleable: Option<()>,
+    pub styleable: Flag,
     /// The shape of the tissue, like if it is a layer or feathers.
     #[serde(alias = "TISSUE_SHAPE")]
     pub tissue_shape: Option<TissueShapeEnum>,
@@ -332,7 +332,7 @@ pub struct UseTissue {
     pub tissue_mat_state: Option<MaterialStateEnum>,
     /// The selected tissue leaks out of the creature when the layers above it are pierced.
     #[serde(alias = "TISSUE_LEAKS")]
-    pub tissue_leaks: Option<()>,
+    pub tissue_leaks: Flag,
     // endregion ==================================================================================
 }
 
@@ -386,90 +386,90 @@ pub struct UseTissueTemplate {
     /// The thickness of the tissue increases when character strength increases.
     /// Used for muscles in vanilla.
     #[serde(alias = "THICKENS_ON_STRENGTH")]
-    pub thickness_on_strength: Option<()>,
+    pub thickness_on_strength: Flag,
     /// Thickness of said tissue increases when the
     /// character eats and doesn't exercise sufficiently.
     /// Used for fat in vanilla.
     #[serde(alias = "THICKENS_ON_ENERGY_STORAGE")]
-    pub thickness_on_energy_storage: Option<()>,
+    pub thickness_on_energy_storage: Flag,
     /// The tissue contains arteries.
     /// Edged attacks have the chance to break an artery, increasing blood loss.
     /// Used for muscles in vanilla.
     ///
     /// Also see: `MAJOR_ARTERIES` and `VASCULAR`
     #[serde(alias = "ARTERIES")]
-    pub arteries: Option<()>,
+    pub arteries: Flag,
     /// Denotes whether or not the tissue will be scarred once healed.
     #[serde(alias = "SCARS")]
-    pub scars: Option<()>,
+    pub scars: Flag,
     /// Holds the body part together.
     /// A cut or a fracture will disable the body part it's in.
     #[serde(alias = "STRUCTURAL")]
-    pub structural: Option<()>,
+    pub structural: Flag,
     /// Any ligaments or tendons are part of this tissue.
     /// Vulnerable to edged attacks, damage disables the limb.
     ///
     /// Used for bones and chitin in vanilla.
     #[serde(alias = "CONNECTIVE_TISSUE_ANCHOR")]
-    pub connective_tissue_anchor: Option<()>,
+    pub connective_tissue_anchor: Flag,
     /// The tissue will not heal, or heals slower, until it is set by a bone doctor.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SETTABLE")]
-    pub settable: Option<()>,
+    pub settable: Flag,
     /// The broken tissue can be fixed with a cast or a splint to restore function while it heals.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SPLINTABLE")]
-    pub splintable: Option<()>,
+    pub splintable: Flag,
     /// The tissue performs some sort of special function (e.g. sight, hearing, breathing, etc.)
     /// An organ with such a function will stop working if a sufficient amount of damage is
     /// sustained by its `FUNCTIONAL` tissues. If an organ has no `FUNCTIONAL` tissues,
     /// it will stop working only if it is severed or destroyed entirely by heat or cold.
     #[serde(alias = "FUNCTIONAL")]
-    pub functional: Option<()>,
+    pub functional: Flag,
     /// Nervous function - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "NERVOUS")]
-    pub nervous: Option<()>,
+    pub nervous: Flag,
     /// If a creature has no functioning parts with the `THOUGHT` token, it will be unable to move
     /// or breathe; `NO_THOUGHT_CENTER_FOR_MOVEMENT` bypasses this limitation.
     /// Mostly used in `[OBJECT:BODY]`.
     #[serde(alias = "THOUGHT")]
-    pub though: Option<()>,
+    pub though: Flag,
     /// Seems to affect where sensory or motor nerves are located,
     /// and whether damage to this tissue will render a limb useless.
     #[serde(alias = "MUSCULAR")]
-    pub muscular: Option<()>,
+    pub muscular: Flag,
     /// Used to smell - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SMELL")]
-    pub smell: Option<()>,
+    pub smell: Flag,
     /// Used to hearing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "HEAR")]
-    pub hear: Option<()>,
+    pub hear: Flag,
     /// Unknown - not used.
     /// Most likely related to flying.
     #[serde(alias = "FLIGHT")]
-    pub flight: Option<()>,
+    pub flight: Flag,
     /// Used to breathing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "BREATHE")]
-    pub breathe: Option<()>,
+    pub breathe: Flag,
     /// Used to seeing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SIGHT")]
-    pub sight: Option<()>,
+    pub sight: Flag,
     /// Holds body parts together.
     /// A body part will not be severed unless all of its component tissues with the
     /// `CONNECTS` tag are severed.
     #[serde(alias = "CONNECTS")]
-    pub connects: Option<()>,
+    pub connects: Flag,
     /// Causes tissue to sometimes severely bleed when damaged.
     /// This is independent of its `VASCULAR` value.
     ///
     /// Also see: `ARTERIES`
     #[serde(alias = "MAJOR_ARTERIES")]
-    pub major_arteries: Option<()>,
+    pub major_arteries: Flag,
     /// Tissue supplies the creature with heat insulation.
     /// Higher values result in more insulation.
     #[serde(alias = "INSULATION")]
@@ -479,12 +479,12 @@ pub struct UseTissueTemplate {
     ///
     /// Also see: `STYLEABLE`
     #[serde(alias = "COSMETIC")]
-    pub cosmetic: Option<()>,
+    pub cosmetic: Flag,
     /// The tissue can be styled as per a tissue style (defined in an entity entry)
     ///
     /// Also see: `COSMETIC`
     #[serde(alias = "STYLEABLE")]
-    pub styleable: Option<()>,
+    pub styleable: Flag,
     /// The shape of the tissue, like if it is a layer or feathers.
     #[serde(alias = "TISSUE_SHAPE")]
     pub tissue_shape: Option<TissueShapeEnum>,
@@ -497,7 +497,7 @@ pub struct UseTissueTemplate {
     pub tissue_mat_state: Option<MaterialStateEnum>,
     /// The selected tissue leaks out of the creature when the layers above it are pierced.
     #[serde(alias = "TISSUE_LEAKS")]
-    pub tissue_leaks: Option<()>,
+    pub tissue_leaks: Flag,
     // endregion ==================================================================================
 }
 
@@ -550,90 +550,90 @@ pub struct SelectTissue {
     /// The thickness of the tissue increases when character strength increases.
     /// Used for muscles in vanilla.
     #[serde(alias = "THICKENS_ON_STRENGTH")]
-    pub thickness_on_strength: Option<()>,
+    pub thickness_on_strength: Flag,
     /// Thickness of said tissue increases when the
     /// character eats and doesn't exercise sufficiently.
     /// Used for fat in vanilla.
     #[serde(alias = "THICKENS_ON_ENERGY_STORAGE")]
-    pub thickness_on_energy_storage: Option<()>,
+    pub thickness_on_energy_storage: Flag,
     /// The tissue contains arteries.
     /// Edged attacks have the chance to break an artery, increasing blood loss.
     /// Used for muscles in vanilla.
     ///
     /// Also see: `MAJOR_ARTERIES` and `VASCULAR`
     #[serde(alias = "ARTERIES")]
-    pub arteries: Option<()>,
+    pub arteries: Flag,
     /// Denotes whether or not the tissue will be scarred once healed.
     #[serde(alias = "SCARS")]
-    pub scars: Option<()>,
+    pub scars: Flag,
     /// Holds the body part together.
     /// A cut or a fracture will disable the body part it's in.
     #[serde(alias = "STRUCTURAL")]
-    pub structural: Option<()>,
+    pub structural: Flag,
     /// Any ligaments or tendons are part of this tissue.
     /// Vulnerable to edged attacks, damage disables the limb.
     ///
     /// Used for bones and chitin in vanilla.
     #[serde(alias = "CONNECTIVE_TISSUE_ANCHOR")]
-    pub connective_tissue_anchor: Option<()>,
+    pub connective_tissue_anchor: Flag,
     /// The tissue will not heal, or heals slower, until it is set by a bone doctor.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SETTABLE")]
-    pub settable: Option<()>,
+    pub settable: Flag,
     /// The broken tissue can be fixed with a cast or a splint to restore function while it heals.
     /// Used for bones, shell and chitin in vanilla.
     #[serde(alias = "SPLINTABLE")]
-    pub splintable: Option<()>,
+    pub splintable: Flag,
     /// The tissue performs some sort of special function (e.g. sight, hearing, breathing, etc.)
     /// An organ with such a function will stop working if a sufficient amount of damage is
     /// sustained by its `FUNCTIONAL` tissues. If an organ has no `FUNCTIONAL` tissues,
     /// it will stop working only if it is severed or destroyed entirely by heat or cold.
     #[serde(alias = "FUNCTIONAL")]
-    pub functional: Option<()>,
+    pub functional: Flag,
     /// Nervous function - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "NERVOUS")]
-    pub nervous: Option<()>,
+    pub nervous: Flag,
     /// If a creature has no functioning parts with the `THOUGHT` token, it will be unable to move
     /// or breathe; `NO_THOUGHT_CENTER_FOR_MOVEMENT` bypasses this limitation.
     /// Mostly used in `[OBJECT:BODY]`.
     #[serde(alias = "THOUGHT")]
-    pub though: Option<()>,
+    pub though: Flag,
     /// Seems to affect where sensory or motor nerves are located,
     /// and whether damage to this tissue will render a limb useless.
     #[serde(alias = "MUSCULAR")]
-    pub muscular: Option<()>,
+    pub muscular: Flag,
     /// Used to smell - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SMELL")]
-    pub smell: Option<()>,
+    pub smell: Flag,
     /// Used to hearing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "HEAR")]
-    pub hear: Option<()>,
+    pub hear: Flag,
     /// Unknown - not used.
     /// Most likely related to flying.
     #[serde(alias = "FLIGHT")]
-    pub flight: Option<()>,
+    pub flight: Flag,
     /// Used to breathing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "BREATHE")]
-    pub breathe: Option<()>,
+    pub breathe: Flag,
     /// Used to seeing - not used.
     /// This token is used in `[OBJECT:BODY]` tokens.
     #[serde(alias = "SIGHT")]
-    pub sight: Option<()>,
+    pub sight: Flag,
     /// Holds body parts together.
     /// A body part will not be severed unless all of its component tissues with the
     /// `CONNECTS` tag are severed.
     #[serde(alias = "CONNECTS")]
-    pub connects: Option<()>,
+    pub connects: Flag,
     /// Causes tissue to sometimes severely bleed when damaged.
     /// This is independent of its `VASCULAR` value.
     ///
     /// Also see: `ARTERIES`
     #[serde(alias = "MAJOR_ARTERIES")]
-    pub major_arteries: Option<()>,
+    pub major_arteries: Flag,
     /// Tissue supplies the creature with heat insulation.
     /// Higher values result in more insulation.
     #[serde(alias = "INSULATION")]
@@ -643,12 +643,12 @@ pub struct SelectTissue {
     ///
     /// Also see: `STYLEABLE`
     #[serde(alias = "COSMETIC")]
-    pub cosmetic: Option<()>,
+    pub cosmetic: Flag,
     /// The tissue can be styled as per a tissue style (defined in an entity entry)
     ///
     /// Also see: `COSMETIC`
     #[serde(alias = "STYLEABLE")]
-    pub styleable: Option<()>,
+    pub styleable: Flag,
     /// The shape of the tissue, like if it is a layer or feathers.
     #[serde(alias = "TISSUE_SHAPE")]
     pub tissue_shape: Option<TissueShapeEnum>,
@@ -661,7 +661,7 @@ pub struct SelectTissue {
     pub tissue_mat_state: Option<MaterialStateEnum>,
     /// The selected tissue leaks out of the creature when the layers above it are pierced.
     #[serde(alias = "TISSUE_LEAKS")]
-    pub tissue_leaks: Option<()>,
+    pub tissue_leaks: Flag,
     // endregion ==================================================================================
 }
 
@@ -713,7 +713,7 @@ pub struct SelectMaterial {
     // region: MatDef but not allowed in INORGANIC ================================================
     /// The material forms "wafers" instead of "bars".
     #[serde(alias = "WAFERS")]
-    pub wafers: Option<()>,
+    pub wafers: Flag,
     /// Makes `BOULDER` acceptable as a reagent in reactions that require `METAL_ORE:MATERIAL_NAME`,
     /// as well as smelting directly into metal bars.
     ///
@@ -985,258 +985,258 @@ pub struct SelectMaterial {
     /// opposed to killing animals (which currently does not include Elves) will refuse to accept
     /// these items in trade.
     #[serde(alias = "IMPLIES_ANIMAL_KILL")]
-    pub implies_animal_kill: Option<()>,
+    pub implies_animal_kill: Flag,
     /// Classifies the material as plant-based alcohol, allowing its storage in food stockpiles
     /// under "Drink (Plant)".
     #[serde(alias = "ALCOHOL_PLANT")]
-    pub alcohol_plant: Option<()>,
+    pub alcohol_plant: Flag,
     /// Classifies the material as animal-based alcohol, allowing its storage in food stockpiles
     /// under "Drink (Animal)".
     #[serde(alias = "ALCOHOL_CREATURE")]
-    pub alcohol_creature: Option<()>,
+    pub alcohol_creature: Flag,
     /// Classifies the material as generic alcohol. Implied by both `ALCOHOL_PLANT` and
     /// `ALCOHOL_CREATURE`. Exact behavior unknown, possibly vestigial.
     #[serde(alias = "ALCOHOL")]
-    pub alcohol: Option<()>,
+    pub alcohol: Flag,
     /// Classifies the material as plant-based cheese, allowing its storage in food stockpiles
     /// under "Cheese (Plant)".
     #[serde(alias = "CHEESE_PLANT")]
-    pub cheese_plant: Option<()>,
+    pub cheese_plant: Flag,
     /// Classifies the material as animal-based cheese, allowing its storage in food stockpiles
     /// under "Cheese (Animal)".
     #[serde(alias = "CHEESE_CREATURE")]
-    pub cheese_creature: Option<()>,
+    pub cheese_creature: Flag,
     /// Classifies the material as generic cheese. Implied by both `CHEESE_PLANT` and
     /// `CHEESE_CREATURE`. Exact behavior unknown, possibly vestigial.
     #[serde(alias = "CHEESE")]
-    pub cheese: Option<()>,
+    pub cheese: Flag,
     /// Classifies the material as plant powder, allowing its storage in food stockpiles under
     /// "Milled Plant".
     #[serde(alias = "POWDER_MISC_PLANT")]
-    pub powder_misc_plant: Option<()>,
+    pub powder_misc_plant: Flag,
     /// Classifies the material as creature powder, allowing its storage in food stockpiles under
     /// "Bone Meal".
     #[serde(alias = "POWDER_MISC_CREATURE")]
-    pub powder_misc_creature: Option<()>,
+    pub powder_misc_creature: Flag,
     /// Classifies the material as generic powder. Implied by both `POWDER_MISC_PLANT` and
     /// `POWDER_MISC_CREATURE`. Exact behavior unknown, possibly vestigial.
     #[serde(alias = "POWDER_MISC")]
-    pub powder_misc: Option<()>,
+    pub powder_misc: Flag,
     /// Permits globs of the material in solid form to be stored in food stockpiles under "Fat" -
     /// without it, dwarves will come by and "clean" the items, destroying them (unless
     /// `[DO_NOT_CLEAN_GLOB]` is also included).
     #[serde(alias = "STOCKPILE_GLOB", alias = "STOCKPILE_GLOB_SOLID")]
-    pub stockpile_glob: Option<()>,
+    pub stockpile_glob: Flag,
     /// Classifies the material as milled paste, allowing its storage in food stockpiles under
     /// "Paste".
     #[serde(alias = "STOCKPILE_GLOB_PASTE")]
-    pub stockpile_glob_paste: Option<()>,
+    pub stockpile_glob_paste: Flag,
     /// Classifies the material as pressed goods, allowing its storage in food stockpiles under
     /// "Pressed Material".
     #[serde(alias = "STOCKPILE_GLOB_PRESSED")]
-    pub stockpile_glob_pressed: Option<()>,
+    pub stockpile_glob_pressed: Flag,
     /// Classifies the material as a plant growth (e.g. fruits, leaves), allowing its storage in
     /// food stockpiles under Plant Growth/Fruit.
     #[serde(alias = "STOCKPILE_PLANT_GROWTH")]
-    pub stockpile_plant_growth: Option<()>,
+    pub stockpile_plant_growth: Flag,
     /// Classifies the material as a plant extract, allowing its storage in food stockpiles under
     /// "Extract (Plant)".
     #[serde(alias = "LIQUID_MISC_PLANT")]
-    pub liquid_misc_plant: Option<()>,
+    pub liquid_misc_plant: Flag,
     /// Classifies the material as a creature extract, allowing its storage in food stockpiles under
     /// "Extract (Animal)".
     #[serde(alias = "LIQUID_MISC_CREATURE")]
-    pub liquid_misc_creature: Option<()>,
+    pub liquid_misc_creature: Flag,
     /// Classifies the material as a miscellaneous liquid, allowing its storage in food stockpiles
     /// under "Misc. Liquid" along with lye.
     #[serde(alias = "LIQUID_MISC_OTHER")]
-    pub liquid_misc_other: Option<()>,
+    pub liquid_misc_other: Flag,
     /// Classifies the material as a generic liquid. Implied by `LIQUID_MISC_PLANT`,
     /// `LIQUID_MISC_CREATURE`, and `LIQUID_MISC_OTHER`. Exact behavior unknown, possibly vestigial.
     #[serde(alias = "LIQUID_MISC")]
-    pub liquid_misc: Option<()>,
+    pub liquid_misc: Flag,
     /// Classifies the material as a plant, allowing its storage in food stockpiles under "Plants".
     #[serde(alias = "STRUCTURAL_PLANT_MAT")]
-    pub structural_plant_mat: Option<()>,
+    pub structural_plant_mat: Flag,
     /// Classifies the material as a plant seed, allowing its storage in food stockpiles under
     /// "Seeds".
     #[serde(alias = "SEED_MAT")]
-    pub seed_mat: Option<()>,
+    pub seed_mat: Flag,
     /// Classifies the material as bone, allowing its use for bone carvers and restriction from
     /// stockpiles by material.
     #[serde(alias = "BONE")]
-    pub bone: Option<()>,
+    pub bone: Flag,
     /// Classifies the material as wood, allowing its use for carpenters and storage in wood
     /// stockpiles. Entities opposed to killing plants (i.e. Elves) will refuse to accept these
     /// items in trade.
     #[serde(alias = "WOOD")]
-    pub wood: Option<()>,
+    pub wood: Flag,
     /// Classifies the material as plant fiber, allowing its use for clothiers and storage in cloth
     /// stockpiles under "Thread (Plant)" and "Cloth (Plant)".
     #[serde(alias = "THREAD_PLANT")]
-    pub thread_plant: Option<()>,
+    pub thread_plant: Flag,
     /// Classifies the material as tooth, allowing its use for bone carvers and restriction from
     /// stockpiles by material.
     #[serde(alias = "TOOTH")]
-    pub tooth: Option<()>,
+    pub tooth: Flag,
     /// Classifies the material as horn, allowing its use for bone carvers and restriction from
     /// stockpiles by material.
     #[serde(alias = "HORN")]
-    pub horn: Option<()>,
+    pub horn: Flag,
     /// Classifies the material as pearl, allowing its use for bone carvers and restriction from
     /// stockpiles by material.
     #[serde(alias = "PEARL")]
-    pub pearl: Option<()>,
+    pub pearl: Flag,
     /// Classifies the material as shell, allowing its use for bone carvers and restriction from
     /// stockpiles by material.
     #[serde(alias = "SHELL")]
-    pub shell: Option<()>,
+    pub shell: Flag,
     /// Classifies the material as leather, allowing its use for leatherworkers and storage in
     /// leather stockpiles.
     #[serde(alias = "LEATHER")]
-    pub leather: Option<()>,
+    pub leather: Flag,
     /// Classifies the material as silk, allowing its use for clothiers and storage in cloth
     /// stockpiles under "Thread (Silk)" and "Cloth (Silk)".
     #[serde(alias = "SILK")]
-    pub silk: Option<()>,
+    pub silk: Flag,
     /// Classifies the material as soap, allowing it to be used as a bath detergent and stored in
     /// bar/block stockpiles under "Bars: Other Materials".
     #[serde(alias = "SOAP")]
-    pub soap: Option<()>,
+    pub soap: Flag,
     /// Material generates miasma when it rots.
     #[serde(alias = "GENERATES_MIASMA")]
-    pub generates_miasma: Option<()>,
+    pub generates_miasma: Flag,
     /// Classifies the material as edible meat.
     #[serde(alias = "MEAT")]
-    pub meat: Option<()>,
+    pub meat: Flag,
     /// Material will rot if not stockpiled appropriately. Currently only affects food and refuse,
     /// other items made of this material will not rot.
     #[serde(alias = "ROTS")]
-    pub rots: Option<()>,
+    pub rots: Flag,
     /// Tells the game to classify contaminants of this material as being "blood" in Adventurer mode
     /// tile descriptions ("Here we have a Dwarf in a slurry of blood.").
     #[serde(alias = "BLOOD_MAP_DESCRIPTOR")]
-    pub blood_map_descriptor: Option<()>,
+    pub blood_map_descriptor: Flag,
     /// Tells the game to classify contaminants of this material as being "ichor".
     #[serde(alias = "ICHOR_MAP_DESCRIPTOR")]
-    pub ichor_map_descriptor: Option<()>,
+    pub ichor_map_descriptor: Flag,
     /// Tells the game to classify contaminants of this material as being "goo".
     #[serde(alias = "GOO_MAP_DESCRIPTOR")]
-    pub goo_map_descriptor: Option<()>,
+    pub goo_map_descriptor: Flag,
     /// Tells the game to classify contaminants of this material as being "slime".
     #[serde(alias = "SLIME_MAP_DESCRIPTOR")]
-    pub slime_map_descriptor: Option<()>,
+    pub slime_map_descriptor: Flag,
     /// Tells the game to classify contaminants of this material as being "pus".
     #[serde(alias = "PUS_MAP_DESCRIPTOR")]
-    pub pus_map_descriptor: Option<()>,
+    pub pus_map_descriptor: Flag,
     /// Tells the game to classify contaminants of this material as being "sweat".
     #[serde(alias = "SWEAT_MAP_DESCRIPTOR")]
-    pub sweat_map_descriptor: Option<()>,
+    pub sweat_map_descriptor: Flag,
     /// Tells the game to classify contaminants of this material as being "tears".
     #[serde(alias = "TEARS_MAP_DESCRIPTOR")]
-    pub tears_map_descriptor: Option<()>,
+    pub tears_map_descriptor: Flag,
     /// Tells the game to classify contaminants of this material as being "spit".
     #[serde(alias = "SPIT_MAP_DESCRIPTOR")]
-    pub spit_map_descriptor: Option<()>,
+    pub spit_map_descriptor: Flag,
     /// Contaminants composed of this material evaporate over time, slowly disappearing from the
     /// map. Used internally by water.
     #[serde(alias = "EVAPORATES")]
-    pub evaporates: Option<()>,
+    pub evaporates: Flag,
     /// Used for materials which cause syndromes, causes it to enter the creature's blood instead of
     /// simply spattering on the surface.
     #[serde(alias = "ENTERS_BLOOD")]
-    pub enters_blood: Option<()>,
+    pub enters_blood: Flag,
     /// Can be eaten by vermin.
     #[serde(alias = "EDIBLE_VERMIN")]
-    pub edible_vermin: Option<()>,
+    pub edible_vermin: Flag,
     /// Can be eaten raw.
     #[serde(alias = "EDIBLE_RAW")]
-    pub edible_raw: Option<()>,
+    pub edible_raw: Flag,
     /// Can be cooked and then eaten.
     #[serde(alias = "EDIBLE_COOKED")]
-    pub edible_cooked: Option<()>,
+    pub edible_cooked: Flag,
     /// Prevents globs made of this material from being cleaned up and destroyed.
     #[serde(alias = "DO_NOT_CLEAN_GLOB")]
-    pub do_not_clean_glob: Option<()>,
+    pub do_not_clean_glob: Flag,
     /// Prevents the material from showing up in Stone stockpile settings.
     #[serde(alias = "NO_STONE_STOCKPILE")]
-    pub no_stone_stockpile: Option<()>,
+    pub no_stone_stockpile: Flag,
     /// Allows the creation of metal furniture at the metalsmith's forge.
     #[serde(alias = "ITEMS_METAL")]
-    pub items_metal: Option<()>,
+    pub items_metal: Flag,
     /// Equivalent to `ITEMS_HARD`. Given to bone.
     #[serde(alias = "ITEMS_BARRED")]
-    pub items_barred: Option<()>,
+    pub items_barred: Flag,
     /// Equivalent to `ITEMS_HARD`. Given to shell.
     #[serde(alias = "ITEMS_SCALED")]
-    pub items_scaled: Option<()>,
+    pub items_scaled: Flag,
     /// Equivalent to `ITEMS_SOFT`. Given to leather.
     #[serde(alias = "ITEMS_LEATHER")]
-    pub items_leather: Option<()>,
+    pub items_leather: Flag,
     /// Random crafts made from this material cannot be made into rings, crowns, scepters or
     /// figurines. Given to plant fiber, silk and wool.
     #[serde(alias = "ITEMS_SOFT")]
-    pub items_soft: Option<()>,
+    pub items_soft: Flag,
     /// Random crafts made from this material include all seven items. Given to stone, wood, bone,
     /// shell, chitin, claws, teeth, horns, hooves and beeswax. Hair, pearls and eggshells also have
     /// the tag.
     #[serde(alias = "ITEMS_HARD")]
-    pub items_hard: Option<()>,
+    pub items_hard: Flag,
     /// Used to define that the material is a stone. Allows its usage in masonry and stonecrafting
     /// and storage in stone stockpiles, among other effects.
     #[serde(alias = "IS_STONE")]
-    pub is_stone: Option<()>,
+    pub is_stone: Flag,
     /// Used for a stone that cannot be dug into.
     #[serde(alias = "UNDIGGABLE")]
-    pub undiggable: Option<()>,
+    pub undiggable: Flag,
     /// Causes containers made of this material to be prefixed with "unglazed" if they have not yet
     /// been glazed.
     #[serde(alias = "DISPLAY_UNGLAZED")]
-    pub display_unglazed: Option<()>,
+    pub display_unglazed: Flag,
     /// Classifies the material as yarn, allowing its use for clothiers and its storage in cloth
     /// stockpiles under "Thread (Yarn)" and "Cloth (Yarn)".
     #[serde(alias = "YARN")]
-    pub yarn: Option<()>,
+    pub yarn: Flag,
     /// Classifies the material as metal thread, permitting thread and cloth to be stored in cloth
     /// stockpiles under "Thread (Metal)" and "Cloth (Metal)".
     #[serde(alias = "STOCKPILE_THREAD_METAL")]
-    pub stockpile_thread_metal: Option<()>,
+    pub stockpile_thread_metal: Flag,
     /// Defines the material as being metal, allowing it to be used at forges.
     #[serde(alias = "IS_METAL")]
-    pub is_metal: Option<()>,
+    pub is_metal: Flag,
     /// Used internally by green glass, clear glass, and crystal glass.
     #[serde(alias = "IS_GLASS")]
-    pub is_glass: Option<()>,
+    pub is_glass: Flag,
     /// Can be used in the production of crystal glass.
     #[serde(alias = "CRYSTAL_GLASSABLE")]
-    pub crystal_glassable: Option<()>,
+    pub crystal_glassable: Flag,
     /// Melee weapons can be made out of this material.
     #[serde(alias = "ITEMS_WEAPON")]
-    pub items_weapon: Option<()>,
+    pub items_weapon: Flag,
     /// Ranged weapons can be made out of this material.
     #[serde(alias = "ITEMS_WEAPON_RANGED")]
-    pub items_weapon_ranged: Option<()>,
+    pub items_weapon_ranged: Flag,
     /// Anvils can be made out of this material.
     #[serde(alias = "ITEMS_ANVIL")]
-    pub items_anvil: Option<()>,
+    pub items_anvil: Flag,
     /// Ammunition can be made out of this material.
     #[serde(alias = "ITEMS_AMMO")]
-    pub items_ammo: Option<()>,
+    pub items_ammo: Flag,
     /// Picks can be made out of this material.
     #[serde(alias = "ITEMS_DIGGER")]
-    pub items_digger: Option<()>,
+    pub items_digger: Flag,
     /// Armor can be made out of this material.
     #[serde(alias = "ITEMS_ARMOR")]
-    pub items_armor: Option<()>,
+    pub items_armor: Flag,
     /// Used internally by amber and coral. Functionally equivalent to `ITEMS_HARD`.
     #[serde(alias = "ITEMS_DELICATE")]
-    pub items_delicate: Option<()>,
+    pub items_delicate: Flag,
     /// Siege engine parts can be made out of this material. Does not appear to work.
     #[serde(alias = "ITEMS_SIEGE_ENGINE")]
-    pub items_siege_engine: Option<()>,
+    pub items_siege_engine: Flag,
     /// Querns and millstones can be made out of this material.
     #[serde(alias = "ITEMS_QUERN")]
-    pub items_quern: Option<()>,
+    pub items_quern: Flag,
     // endregion ==================================================================================
     // endregion ==================================================================================
 }

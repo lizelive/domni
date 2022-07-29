@@ -1,4 +1,4 @@
-use crate::core::{Choose, Clamp, Reference, ReferenceTo};
+use crate::core::{Choose, Clamp, Reference, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 
@@ -18,7 +18,7 @@ pub struct EntityPosition {
     pub responsibility: Vec<Responsibility>,
     /// The position holder is not subjected to the economy. Less than relevant right now.
     #[serde(alias = "ACCOUNT_EXEMPT")]
-    pub account_exempt: Option<()>,
+    pub account_exempt: Flag,
     /// Only creatures with the specified class token can be appointed to this position.
     #[serde(alias = "ALLOWED_CLASS")]
     pub allowed_class: Option<Reference>, // TODO: ref is creature class
@@ -34,7 +34,7 @@ pub struct EntityPosition {
     pub appointed_by: Vec<Reference>, // TODO: ref here is EntityPosition
     /// A creature that kills a member of this position will be sure to talk about it a lot.
     #[serde(alias = "BRAG_ON_KILL")]
-    pub brag_on_kill: Option<()>,
+    pub brag_on_kill: Flag,
     /// In adventure mode, when referencing locations, an `NPC` may mention this position holder
     /// living there or having done some deed there, it also means that the position exists in
     /// world-gen, rather than being created only at the end of world-gen.
@@ -42,7 +42,7 @@ pub struct EntityPosition {
     /// Dark Fortress civs cannot have this tag on anybody but their Law Maker, or the game will
     /// crash without leaving an errorlog.
     #[serde(alias = "CHAT_WORTHY")]
-    pub chat_worthy: Option<()>,
+    pub chat_worthy: Flag,
     /// Creatures of this position will have this color, instead of their profession color, e.g.
     /// `[COLOR:5:0:1]`.
     #[serde(alias = "COLOR")]
@@ -53,38 +53,38 @@ pub struct EntityPosition {
     pub commander: Option<(Reference, AllEnum)>, // TODO: ref here is an EntityPosition
     /// This position is a puppet ruler left behind in a conquered site.
     #[serde(alias = "CONQUERED_SITE")]
-    pub conquered_site: Option<()>,
+    pub conquered_site: Flag,
     /// How many demands the position can make of the population at one time.
     #[serde(alias = "DEMAND_MAX")]
     pub demand_max: Option<Clamp<u8, 0, 100>>,
     /// The site's (or civ's) minted coins, if any, will have images that reflect the personality of
     /// this position holder.
     #[serde(alias = "DETERMINES_COIN_DESIGN")]
-    pub determines_coin_design: Option<()>,
+    pub determines_coin_design: Flag,
     /// The position won't be culled from Legends as "unimportant" during world generation.
     #[serde(alias = "DO_NOT_CULL")]
-    pub do_not_cull: Option<()>,
+    pub do_not_cull: Flag,
     /// Members of this position will never agree to 'join' your character during adventure mode.
     #[serde(alias = "DUTY_BOUND")]
-    pub duty_bound: Option<()>,
+    pub duty_bound: Flag,
     /// The population will periodically select the most skill-eligible creature to fill this
     /// position. Contrast `[APPOINTED_BY]`.
     #[serde(alias = "ELECTED")]
-    pub elected: Option<()>,
+    pub elected: Flag,
     /// The various members who have filled this role will be listed in the civilisation's history.
     #[serde(alias = "EXPORTED_IN_LEGENDS")]
-    pub exported_in_legends: Option<()>,
+    pub exported_in_legends: Flag,
     /// The creature holding this position will visibly flash, like legendary citizens. Represents a
     /// properly noble station by default.
     #[serde(alias = "FLASHES")]
-    pub flashes: Option<()>,
+    pub flashes: Flag,
     /// The position can only be held by the specified gender. Currently bugged:
     /// [Bug:2714](https://www.bay12games.com/dwarves/mantisbt/view.php?id=2714).
     #[serde(alias = "GENDER")]
     pub gender: Option<MaleOrFemaleEnum>,
     /// The position can assign quests to adventurers.
     #[serde(alias = "KILL_QUEST")]
-    pub kill_quest: Option<()>,
+    pub kill_quest: Flag,
     /// This is an alternative to `SITE`. What it does is allow positions to be created at civ-level
     /// 'as needed' for all sites that meet the requirements to have them, which are the values set
     /// in `LAND_HOLDER_TRIGGER`. The character is tied permanently to a particular site but also
@@ -101,17 +101,17 @@ pub struct EntityPosition {
     /// The position holder cannot be assigned labors. Currently nonfunctional.
     /// [Bug:3721](https://www.bay12games.com/dwarves/mantisbt/view.php?id=3721).
     #[serde(alias = "MENIAL_WORK_EXEMPTION")]
-    pub menial_work_exemption: Option<()>,
+    pub menial_work_exemption: Flag,
     /// The spouse of the position holder doesn't have to work/cannot be assigned labors.
     /// Currently nonfunctional.
     /// [Bug:3721](https://www.bay12games.com/dwarves/mantisbt/view.php?id=3721).
     #[serde(alias = "MENIAL_WORK_EXEMPTION_SPOUSE")]
-    pub menial_work_exemption_spouse: Option<()>,
+    pub menial_work_exemption_spouse: Flag,
     /// This position cannot be appointed from the nobles screen. Intended for militia captains and
     /// other squad leaders to reduce clutter. Currently nonfunctional:
     /// [Bug:8965](https://www.bay12games.com/dwarves/mantisbt/view.php?id=8965).
     #[serde(alias = "MILITARY_SCREEN_ONLY")]
-    pub military_screen_only: Option<()>,
+    pub military_screen_only: Flag,
     /// The name of the position.
     #[serde(alias = "NAME")]
     pub name: Option<(String, String)>,
@@ -134,11 +134,11 @@ pub struct EntityPosition {
     /// The position holder will not be held accountable for his or her crimes. Currently
     /// nonfunctional. [Bug:4589](http://www.bay12games.com/dwarves/mantisbt/view.php?id=4589).
     #[serde(alias = "PUNISHMENT_EXEMPTION")]
-    pub punishment_exemption: Option<()>,
+    pub punishment_exemption: Flag,
     /// The position holder can give quests in Adventure mode. Functionality in 0.31.13 and later is
     /// uncertain.
     #[serde(alias = "QUEST_GIVER")]
-    pub quest_giver: Option<()>,
+    pub quest_giver: Flag,
     /// Creatures of the specified class cannot be appointed to this position.
     #[serde(alias = "REJECTED_CLASS")]
     pub rejected_class: Vec<Reference>, // TODO: ref is creature class
@@ -177,7 +177,7 @@ pub struct EntityPosition {
     /// hillocks) the position will not appear, while in major sites (such as dwarf fortresses) it
     /// will.
     #[serde(alias = "REQUIRES_MARKET")]
-    pub requires_market: Option<()>,
+    pub requires_market: Flag,
     /// The position requires the population to be at least this number before it becomes available,
     /// or before the position holder will move in.
     #[serde(alias = "REQUIRES_POPULATION")]
@@ -186,22 +186,22 @@ pub struct EntityPosition {
     /// position holder will always be found at that particular location. Does nothing for dwarven
     /// nobles, because at present, dwarves have no such special locations.
     #[serde(alias = "RULES_FROM_LOCATION")]
-    pub rules_from_location: Option<()>,
+    pub rules_from_location: Flag,
     /// Every site government will have the defined number of this position instead of the whole
     /// civilization; provided that other criteria (if any) are met. Unless `LAND_HOLDER` is present
     /// instead, the defined number of the position will be created only for the civilization as a
     /// whole.
     #[serde(alias = "SITE")]
-    pub site: Option<()>,
+    pub site: Flag,
     /// The position holder will get upset if someone with a higher `PRECEDENCE` holds quarters with
     /// a greater value than their own.
     #[serde(alias = "SLEEP_PRETENSION")]
-    pub sleep_pretension: Option<()>,
+    pub sleep_pretension: Flag,
     /// The civilization will inter the corpse of the position holder in a special grave, either in
     /// catacombs or in monuments. If that grave is disturbed, the position holder can return as a
     /// mummy (unverified).
     #[serde(alias = "SPECIAL_BURIAL")]
-    pub special_burial: Option<()>,
+    pub special_burial: Flag,
     /// The name of the position holder's spouse.
     #[serde(alias = "SPOUSE")]
     pub spouse: Option<(String, String)>,

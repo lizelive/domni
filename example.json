@@ -1,0 +1,64 @@
+{
+    "body": {
+        "THROAT": {
+            "THROAT": {
+                "name": "throat",
+                "con_cat": "NECK",
+                "throat": true,
+                "embedded": true,
+                "small": true
+            }
+        },
+        "TEETH": {
+            "U_F_TOOTH": {
+                "name": "upper front tooth",
+                "category": "TOOTH",
+                "contype": "Head",
+                "socket": true,
+                "small" : true,
+                "number": 6,
+                "individual_name": [
+                    "first upper right incisor",
+                    "first upper left incisor",
+                    "second upper right incisor",
+                    "second upper left incisor",
+                    {
+                        "singular": "right eye tooth",
+                        "plural": "right eye teeth"
+                    },
+                    {
+                        "singular": "left eye tooth",
+                        "plural": "left eye teeth"
+                    }
+                ]
+            }
+        },
+        "BASIC_2PARTBODY": {
+            "UB": {
+                "name": {
+                    "singular": "upper body",
+                    "plural": "upper bodies"
+                },
+                "category": "BODY_UPPER",
+                "default_relsize": 1000,
+                "upperbody": true
+            },
+            "LB": {
+                "name": {
+                    "singular": "lower body",
+                    "plural": "lower bodies"
+                },
+                "category": "BODY_LOWER",
+                "con": "UB",
+                "default_relsize": 1000,
+                "lowerbody": true
+            }
+        },
+        "PAW": [
+            "foot",
+            "paw",
+            "feet",
+            "paws"
+        ]
+    }
+}

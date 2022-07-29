@@ -97,7 +97,7 @@ pub struct CeXTokenArg {
     /// If an effect can not be applied to the contacted limb (such as `IMPAIR_FUNCTION` on a
     /// non-organ) then this token makes the syndrome have no effect. This token also makes
     /// inhaled syndromes have no effect.
-    pub localized: Option<()>,
+    pub localized: Flag,
     /// Specifies which body parts and tissues are to be affected by the syndrome. You can specify
     /// by category, by type, or by token, and then specify a specific tissue within that category,
     /// type or token.
@@ -116,28 +116,28 @@ pub struct CeXTokenArg {
     /// This tag is overidden by (and therefore incompatible with) `LOCALIZED`.
     pub bp: Vec<(BpCriteriaTokenArg, Reference)>,
     /// This tag makes the syndrome only affect tissue layers with the `VASCULAR` token.
-    pub vascular_only: Option<()>,
+    pub vascular_only: Flag,
     /// This tag makes the syndrome only affects tissue layers with the `MUSCULAR` token.
-    pub muscular_only: Option<()>,
+    pub muscular_only: Flag,
     /// This argument presumably causes the effects of the syndrome to scale with the size of the
     /// creature compared to the size of the dose of contagion they received, but has yet to be
     /// extensively tested.
-    pub size_dilutes: Option<()>,
+    pub size_dilutes: Flag,
     /// This argument has yet to be tested fully, but presumably delays the onset of a syndrome
     /// according to the size of the victim.
-    pub size_delays: Option<()>,
+    pub size_delays: Flag,
     /// Multiplies the duration of the syndrome by X in Fortress mode. If X is 144, syndrome
     /// will last the same amount of ticks in fortress and adventure mode.
     pub dwf_stretch: Option<u32>,
     /// Makes the symptom begin immediately rather than ramping up.
-    pub abrupt: Option<()>,
+    pub abrupt: Flag,
     /// Can be hidden by a unit assuming a secret identity, such as a
     /// [vampire](https://dwarffortresswiki.org/index.php/Vampire).
-    pub can_be_hidden: Option<()>,
+    pub can_be_hidden: Flag,
     /// Determines if the effect can be hindered by the target creature's [disease resistance
     /// attribute](https://dwarffortresswiki.org/index.php/Attribute#Disease_Resistance). Without
     /// this argument, disease resistance is ignored.
-    pub resistable: Option<()>,
+    pub resistable: Flag,
     /// Determines the number of ticks after which this syndrome effect begins to affect a creature.
     pub start: Option<u32>,
     /// Determines the number of ticks this syndrome lasts.
@@ -159,22 +159,22 @@ pub struct CeXNoTargetTokenArg {
     /// This argument presumably causes the effects of the syndrome to scale with the size of the
     /// creature compared to the size of the dose of contagion they received, but has yet to be
     /// extensively tested.
-    pub size_dilutes: Option<()>,
+    pub size_dilutes: Flag,
     /// This argument has yet to be tested fully, but presumably delays the onset of a syndrome
     /// according to the size of the victim.
-    pub size_delays: Option<()>,
+    pub size_delays: Flag,
     /// Multiplies the duration of the syndrome by X in Fortress mode. If X is 144, syndrome
     /// will last the same amount of ticks in fortress and adventure mode.
     pub dwf_stretch: Option<u32>,
     /// Makes the symptom begin immediately rather than ramping up.
-    pub abrupt: Option<()>,
+    pub abrupt: Flag,
     /// Can be hidden by a unit assuming a secret identity, such as a
     /// [vampire](https://dwarffortresswiki.org/index.php/Vampire).
-    pub can_be_hidden: Option<()>,
+    pub can_be_hidden: Flag,
     /// Determines if the effect can be hindered by the target creature's [disease resistance
     /// attribute](https://dwarffortresswiki.org/index.php/Attribute#Disease_Resistance). Without
     /// this argument, disease resistance is ignored.
-    pub resistable: Option<()>,
+    pub resistable: Flag,
     /// Determines the number of ticks after which this syndrome effect begins to affect a creature.
     pub start: Option<u32>,
     /// Determines the number of ticks this syndrome lasts.
@@ -193,22 +193,22 @@ pub struct CeXNoSevTokenArg {
     /// This argument presumably causes the effects of the syndrome to scale with the size of the
     /// creature compared to the size of the dose of contagion they received, but has yet to be
     /// extensively tested.
-    pub size_dilutes: Option<()>,
+    pub size_dilutes: Flag,
     /// This argument has yet to be tested fully, but presumably delays the onset of a syndrome
     /// according to the size of the victim.
-    pub size_delays: Option<()>,
+    pub size_delays: Flag,
     /// Multiplies the duration of the syndrome by X in Fortress mode. If X is 144, syndrome
     /// will last the same amount of ticks in fortress and adventure mode.
     pub dwf_stretch: Option<u32>,
     /// Makes the symptom begin immediately rather than ramping up.
-    pub abrupt: Option<()>,
+    pub abrupt: Flag,
     /// Can be hidden by a unit assuming a secret identity, such as a
     /// [vampire](https://dwarffortresswiki.org/index.php/Vampire).
-    pub can_be_hidden: Option<()>,
+    pub can_be_hidden: Flag,
     /// Determines if the effect can be hindered by the target creature's [disease resistance
     /// attribute](https://dwarffortresswiki.org/index.php/Attribute#Disease_Resistance). Without
     /// this argument, disease resistance is ignored.
-    pub resistable: Option<()>,
+    pub resistable: Flag,
     /// Determines the number of ticks after which this syndrome effect begins to affect a creature.
     pub start: Option<u32>,
     /// Determines the number of ticks this syndrome lasts.

@@ -1,13 +1,63 @@
-use serde::{Deserialize, Serialize};
+use serde::{Serialize, Serializer};
 use std::fmt;
 use std::hash::{Hash, Hasher};
 use std::marker::PhantomData;
 
-#[derive(Serialize, Deserialize, Clone, Default)]
+#[derive(Clone, Default)]
 pub struct ReferenceTo<T>(pub String, PhantomData<T>);
 
 fn get_ref_type<T>() -> &'static str {
     "ReferenceTo"
+}
+use serde::de::{self, Deserialize, Deserializer, MapAccess, SeqAccess, Visitor, IgnoredAny};
+
+impl<T> Serialize for ReferenceTo<T> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        serializer.serialize_str(&self.0)
+    }
+}
+
+impl<'de, T> Deserialize<'de> for ReferenceTo<T> {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        struct ReferenceVisitor<T>(PhantomData<T>);
+
+        impl<'de, T> Visitor<'de> for ReferenceVisitor<T> {
+            type Value = ReferenceTo<T>;
+
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("`str` or `[str]`")
+            }
+
+            fn visit_seq<V>(self, mut seq: V) -> Result<Self::Value, V::Error>
+            where
+                V: SeqAccess<'de>,
+            {
+                let value = seq
+                    .next_element()?
+                    .ok_or_else(|| de::Error::invalid_length(0, &self))?;
+
+                // Skip over any remaining elements in the sequence 
+                while let Some(IgnoredAny) = seq.next_element()? {
+                    // ignore
+                }
+                Ok(value)
+            }
+
+            fn visit_str<E>(self, value: &str) -> Result<Self::Value, E>
+            where
+                E: de::Error,
+            {
+                Ok(ReferenceTo::from(value.to_string()))
+            }
+        }
+        deserializer.deserialize_any(ReferenceVisitor(PhantomData::<T>))
+    }
 }
 
 impl<T> fmt::Debug for ReferenceTo<T> {
@@ -24,7 +74,7 @@ impl<T> PartialEq for ReferenceTo<T> {
         self.0 == other.0
     }
 }
-impl<T> Eq for ReferenceTo<T> {}
+impl<T> Eq for ReferenceTo<T> where T: Clone {}
 
 impl<T> ReferenceTo<T> {
     pub fn new(reference: String) -> Self {

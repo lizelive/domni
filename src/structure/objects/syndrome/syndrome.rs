@@ -19,7 +19,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SyndromeToken {
     #[serde(alias = "SYNDROME")]
-    pub syndrome: Option<()>,
+    pub syndrome: Flag,
     // region: Basic Tokens =======================================================================
     /// Used to specify the name of the syndrome as it appears in-game. Names don't have to be
     /// unique, it's perfectly acceptable to have multiple syndromes with identical names.
@@ -69,7 +69,7 @@ pub struct SyndromeToken {
     /// allowed to target the secreting creature can potentially be reapplied at the rate of
     /// secretion; this may work differently in adventurer mode).
     #[serde(alias = "SYN_CONTACT")]
-    pub syn_contact: Option<()>,
+    pub syn_contact: Flag,
     /// If the syndrome is tied to a material, creatures who eat or drink substances comprising,
     /// containing or contaminated with this material will contract the syndrome if this token is
     /// included. This includes prepared meals when any of the constituent ingredients contains the
@@ -78,7 +78,7 @@ pub struct SyndromeToken {
     /// This also applies to grazing creatures which happen to munch on a grass that has an
     /// ingestion-triggered syndrome tied to any of its constituent materials.
     #[serde(alias = "SYN_INGESTED")]
-    pub syn_ingested: Option<()>,
+    pub syn_ingested: Flag,
     /// If the syndrome is tied to a material, creatures who inhale the material will contract the
     /// syndrome if this token is included. Materials can only be inhaled in their gaseous state,
     /// which is attainable by boiling, or in the form of a `TRAILING_GAS_FLOW`, `UNDIRECTED_GAS` or
@@ -89,7 +89,7 @@ pub struct SyndromeToken {
     /// Contrary to what one might expect, creatures with `[NOBREATHE]` are in fact capable of
     /// contracting inhalation syndromes; this is presumably a bug.
     #[serde(alias = "SYN_INHALED")]
-    pub syn_inhaled: Option<()>,
+    pub syn_inhaled: Flag,
     /// If the syndrome is tied to a material, the injection of this material into a creature's
     /// bloodstream will cause it to contract the syndrome if this token is included. Injection can
     /// be carried out as part of a creature attack via `SPECIALATTACK_INJECT_EXTRACT`, or by
@@ -102,7 +102,7 @@ pub struct SyndromeToken {
     /// work on creatures with the `CE_REMOVE_TAG:HAS_BLOOD` syndrome effect). Getting the weapon
     /// "lodged into the wound" isn't a requirement.
     #[serde(alias = "SYN_INJECTED")]
-    pub syn_injected: Option<()>,
+    pub syn_injected: Flag,
     /// If this is included, only creatures which belong to the specified creature class (as well as
     /// creatures which pass the `SYN_AFFECTED_CREATURE` check if this is included) will be able to
     /// contract the syndrome. This token can be specified multiple times per syndrome, in which
@@ -139,7 +139,7 @@ pub struct SyndromeToken {
     /// Prevents creatures from being admitted to hospital for problems arising directly as a result
     /// of the syndrome's effects, no matter how bad they get.
     #[serde(alias = "SYN_NO_HOSPITAL")]
-    pub syn_no_hospital: Option<()>,
+    pub syn_no_hospital: Flag,
     /// This token can be included to give a syndrome an identifier which can be shared between
     /// multiple syndromes. Only one identifier may be specified per syndrome.
     ///

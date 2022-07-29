@@ -1,4 +1,4 @@
-use crate::core::{Clamp, Reference, ReferenceTo};
+use crate::core::{Clamp, Reference, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 
@@ -20,24 +20,24 @@ pub struct Attack {
     pub attack_contact_perc: Option<u32>,
     /// Multiple strikes with this attack cannot be performed effectively.
     #[serde(alias = "ATTACK_FLAG_BAD_MULTIATTACK")]
-    pub attack_flag_bad_multiattack: Option<()>,
+    pub attack_flag_bad_multiattack: Flag,
     /// Attacks that damage tissue have the chance to latch on in a wrestling hold. The grabbing
     /// bodypart can then use the "shake around" wrestling move, causing severe, armor-bypassing
     /// tensile damage according to the attacker's body volume.
     #[serde(alias = "ATTACK_FLAG_CANLATCH")]
-    pub attack_flag_canlatch: Option<()>,
+    pub attack_flag_canlatch: Flag,
     /// The attack is edged, with all the effects on physical resistance and contact area that it
     /// entails.
     #[serde(alias = "ATTACK_FLAG_EDGE")]
-    pub attack_flag_edge: Option<()>,
+    pub attack_flag_edge: Flag,
     /// Multiple strikes with this attack can be performed with no penalty. The creature will use
     /// all attacks with this token at once.
     #[serde(alias = "ATTACK_FLAG_INDEPENDENT_MULTIATTACK")]
-    pub attack_flag_independent_multiattack: Option<()>,
+    pub attack_flag_independent_multiattack: Flag,
     /// Displays the name of the body part used to perform an attack while announcing it, e.g. "The
     /// weaver punches the bugbat with his right hand".
     #[serde(alias = "ATTACK_FLAG_WITH")]
-    pub attack_flag_with: Option<()>,
+    pub attack_flag_with: Flag,
     /// The penetration value of the attack, measured in % of the body part's volume. Requires
     /// `ATTACK_FLAG_EDGE`.
     #[serde(alias = "ATTACK_PENETRATION_PERC")]

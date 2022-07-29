@@ -1,4 +1,4 @@
-use crate::core::{AllowEmpty, Any, Choose, Clamp, DFChar, Reference, ReferenceTo};
+use crate::core::{AllowEmpty, Any, Choose, Clamp, DFChar, Reference, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 
@@ -70,24 +70,24 @@ pub struct Caste {
     /// the creature will only adopt individuals who have a preference for their species. Used by
     /// cats in the vanilla game.
     #[serde(alias = "ADOPTS_OWNER")]
-    pub adopts_owner: Option<()>,
+    pub adopts_owner: Flag,
     /// Makes the creature need alcohol to get through the working day; it will choose to drink
     /// booze instead of water if possible. Going sober for too long reduces speed.
     #[serde(alias = "ALCOHOL_DEPENDENT")]
-    pub alcohol_dependent: Option<()>,
+    pub alcohol_dependent: Flag,
     /// Sets the creature to be active during the day, night, and twilight in Adventurer Mode. Seems
     /// to be a separate value from `[DIURNAL]`/`[NOCTURNAL]`/`[CREPUSCULAR]`, rather than implying them.
     #[serde(alias = "ALL_ACTIVE")]
-    pub all_active: Option<()>,
+    pub all_active: Flag,
     /// Found on `[LARGE_PREDATOR]`s who ambush their prey. Instead of charging relentlessly at prey,
     /// the predator will wait till the prey is within a few squares before charging. May or may not
     /// work on other creatures (unverified).
     #[serde(alias = "AMBUSHPREDATOR")]
-    pub ambushpredator: Option<()>,
+    pub ambushpredator: Flag,
     /// Allows a creature to breathe both inside and outside of water (unlike `[AQUATIC]`) - does
     /// not prevent drowning in magma.
     #[serde(alias = "AMPHIBIOUS")]
-    pub amphibious: Option<()>,
+    pub amphibious: Flag,
     /// Applies the specified creature variation.
     ///
     /// In addition to the required `CREATURE_VARIATION` object ID, you may give extra arguments;
@@ -136,15 +136,15 @@ pub struct Caste {
     )>,
     /// Enables the creature to breathe in water, but causes it to air-drown on dry land.
     #[serde(alias = "AQUATIC")]
-    pub aquatic: Option<()>,
+    pub aquatic: Flag,
     /// Causes the creature to be excluded from the object testing arena's creature spawning list.
     ///
     /// Typically applied to spoileriffic creatures.
     #[serde(alias = "ARENA_RESTRICTED")]
-    pub arena_restricted: Option<()>,
+    pub arena_restricted: Flag,
     /// Prevents the creature from attacking or frighten creatures with the `[NATURAL]` tag.
     #[serde(alias = "AT_PEACE_WITH_WILDLIFE")]
-    pub at_peace_with_wildlife: Option<()>,
+    pub at_peace_with_wildlife: Flag,
     /// Specifies when a megabeast or semi-megabeast will attack the fortress. The attacks will
     /// start occuring when at least one of the requirements is met. Setting a value to 0 disables
     /// the trigger.
@@ -174,7 +174,7 @@ pub struct Caste {
     /// `[LARGE_PREDATOR]` tag. When tamed, animals with this tag will be useless for fortress
     /// defense.
     #[serde(alias = "BENIGN")]
-    pub benign: Option<()>,
+    pub benign: Flag,
     /// Specifies what the creature's blood is made of.
     #[serde(alias = "BLOOD")]
     pub blood: Option<(MaterialTokenArg, MaterialStateEnum)>,
@@ -183,7 +183,7 @@ pub struct Caste {
     /// mode, this can be done at will. Seems to be required to make the creature denouncable as a
     /// creature of the night.
     #[serde(alias = "BLOODSUCKER")]
-    pub bloodsucker: Option<()>,
+    pub bloodsucker: Flag,
     /// Draws body parts from `OBJECT:BODY` files (such as `body_default.txt`)
     ///
     /// For example:
@@ -245,7 +245,7 @@ pub struct Caste {
     /// Creature eats bones. Implies `[CARNIVORE]`. Adventurers with this token are currently unable
     /// to eat bones. [Bug:11069](https://www.bay12games.com/dwarves/mantisbt/view.php?id=11069)
     #[serde(alias = "BONECARN")]
-    pub bonecarn: Option<()>,
+    pub bonecarn: Flag,
     /// Allows a creature to destroy furniture and buildings. Value `[1]` targets mostly doors,
     /// hatches, furniture and the like. Value `[2]` targets any building/structure other than
     /// floors, walls, and stairs.
@@ -257,28 +257,28 @@ pub struct Caste {
     /// monsters. Adventurers lacking this token can allocate but not increase attributes and
     /// skills. Skills allocated will disappear on start.
     #[serde(alias = "CAN_LEARN")]
-    pub can_learn: Option<()>,
+    pub can_learn: Flag,
     /// Can talk. Note that this is not necessary for a creature to gain social skills.
     #[serde(alias = "CAN_SPEAK")]
-    pub can_speak: Option<()>,
+    pub can_speak: Flag,
     /// Creature cannot climb, even if it has free grasp parts.
     #[serde(alias = "CANNOT_CLIMB")]
-    pub cannot_climb: Option<()>,
+    pub cannot_climb: Flag,
     /// Creature cannot jump.
     #[serde(alias = "CANNOT_JUMP")]
-    pub cannot_jump: Option<()>,
+    pub cannot_jump: Flag,
     /// Acts like `[NOT_LIVING]`, except that `[OPPOSED_TO_LIFE]` creatures will attack them.
     #[serde(alias = "CANNOT_UNDEAD")]
-    pub cannot_undead: Option<()>,
+    pub cannot_undead: Flag,
     /// Allows the creature to open doors that are set to be unpassable for pets. In adventure mode,
     /// creatures lacking this token will be unable to pass through door tiles except whilst these
     /// are occupied by other creatures.
     #[serde(alias = "CANOPENDOORS")]
-    pub canopendoors: Option<()>,
+    pub canopendoors: Flag,
     /// Creature only eats meat. If the creature goes on rampages in worldgen, it will often devour
     /// the people/animals it kills.
     #[serde(alias = "CARNIVORE")]
-    pub carnivore: Option<()>,
+    pub carnivore: Flag,
     /// Caste-specific `[ALTTILE]`; if set, the creature of this caste will blink between its
     /// `[CASTE_TILE]` and its `CASTE_ALTTILE`.
     #[serde(alias = "CASTE_ALTTILE")]
@@ -321,7 +321,7 @@ pub struct Caste {
     pub caste_tile: Option<DFChar>,
     /// Gives the creature a bonus in caves. Also causes cave adaptation.
     #[serde(alias = "CAVE_ADAPT")]
-    pub cave_adapt: Option<()>,
+    pub cave_adapt: Flag,
     /// Multiplies body size by a factor of (integer)%. 50 halves size, 200 doubles.
     #[serde(alias = "CHANGE_BODY_SIZE_PERC")]
     pub change_body_size_perc: Option<u32>,
@@ -339,7 +339,7 @@ pub struct Caste {
     pub clutch_size: Option<(u32, u32)>,
     /// Caste hovers around colony.
     #[serde(alias = "COLONY_EXTERNAL")]
-    pub colony_external: Option<()>,
+    pub colony_external: Flag,
     /// When combined with any of `[PET]`, `[PACK_ANIMAL]`, `[WAGON_PULLER]` and/or `[MOUNT]`, the
     /// creature is guaranteed to be domesticated by any civilization with `[COMMON_DOMESTIC_PET]`,
     /// `[COMMON_DOMESTIC_PACK]`.
@@ -348,21 +348,21 @@ pub struct Caste {
     /// will always have access to the creature, even in the absence of wild populations. This token
     /// is invalid on `[FANCIFUL]` creatures.
     #[serde(alias = "COMMON_DOMESTIC")]
-    pub common_domestic: Option<()>,
+    pub common_domestic: Flag,
     /// Creatures of this caste's species with the `[SPOUSE_CONVERTER]` and
     /// `[NIGHT_CREATURE_HUNTER]` tokens will kidnap `[SPOUSE_CONVERSION_TARGET]`s of an appropriate
     /// sex and convert them into castes with `CONVERTED_SPOUSE`.
     #[serde(alias = "CONVERTED_SPOUSE")]
-    pub converted_spouse: Option<()>,
+    pub converted_spouse: Flag,
     /// Set this to allow the creature to be cooked in meals without first being butchered/cleaned.
     /// Used by some water-dwelling vermin such as mussels, nautiluses and oysters.
     #[serde(alias = "COOKABLE_LIVE")]
-    pub cookable_live: Option<()>,
+    pub cookable_live: Flag,
     /// Creature is 'berserk' and will attack all other creatures, except members of its own species
     /// that also have the `CRAZED` tag. It will show "Berserk" in the unit list. Berserk creatures go
     /// on rampages during worldgen much more frequently than non-berserk ones.
     #[serde(alias = "CRAZED")]
-    pub crazed: Option<()>,
+    pub crazed: Flag,
     /// An arbitrary creature classification. Can be set to anything, but only existing uses are
     /// `GENERAL_POISON` (used in syndromes), `EDIBLE_GROUND_BUG` (valid targets for `GOBBLE_VERMIN_x`
     /// tokens), and `MAMMAL` (self-explanatory). A single creature can have multiple classes.
@@ -371,19 +371,19 @@ pub struct Caste {
     pub creature_class: Vec<Reference>,
     /// Sets the creature to be active at twilight in adventurer mode.
     #[serde(alias = "CREPUSCULAR")]
-    pub crepuscular: Option<()>,
+    pub crepuscular: Flag,
     /// Allows a creature to steal and eat edible items from a site. It will attempt to grab a food
     /// item and immediately make its way to the map's edge, where it will disappear with it. If the
     /// creature goes on rampages during worldgen, it will often steal food instead of attacking.
     /// Trained and tame instances of the creature will no longer display this behavior.
     #[serde(alias = "CURIOUSBEAST_EATER")]
-    pub curiousbeast_eater: Option<()>,
+    pub curiousbeast_eater: Flag,
     /// Allows a creature to (very quickly) drink your alcohol. Or spill the barrel to the ground.
     /// Also affects undead versions of the creature. Unlike food or item thieves, drink thieves
     /// will consume your alcohol on the spot rather than run away with one piece of it. Trained and
     /// tame instances of the creature will no longer display this behavior.
     #[serde(alias = "CURIOUSBEAST_GUZZLER")]
-    pub curiousbeast_guzzler: Option<()>,
+    pub curiousbeast_guzzler: Flag,
     /// Allows a creature to steal things (apparently, of the highest value it can find). It will
     /// attempt to grab an item of value and immediately make its way to the map's edge, where it
     /// will disappear with it. If the creature goes on rampages in worldgen, it will often steal
@@ -391,30 +391,30 @@ pub struct Caste {
     /// the creature will no longer display this behavior. Also, makes the creature unable to drop
     /// hauled items until it enters combat.
     #[serde(alias = "CURIOUSBEAST_ITEM")]
-    pub curiousbeast_item: Option<()>,
+    pub curiousbeast_item: Flag,
     /// Found on generated demons. Marks the caste to be used in the initial wave after breaking
     /// into the underworld, and by the demon civilizations created during world-gen breachings.
     /// Could not be specified in user-defined raws until version `0.47.01`.
     #[serde(alias = "DEMON")]
-    pub demon: Option<()>,
+    pub demon: Flag,
     /// A brief description of the creature type, as displayed when viewing the creature's
     /// description/thoughts & preferences screen.
     #[serde(alias = "DESCRIPTION")]
     pub description: Option<String>,
     /// Dies upon attacking. Used by honey bees to simulate them dying after using their stingers.
     #[serde(alias = "DIE_WHEN_VERMIN_BITE")]
-    pub die_when_vermin_bite: Option<()>,
+    pub die_when_vermin_bite: Flag,
     /// Increases experience gain during adventure mode. Creatures with 11 or higher are not
     /// assigned for quests in adventure mode.
     #[serde(alias = "DIFFICULTY")]
     pub difficulty: Option<u32>,
     /// Sets the creature to be active during the day in Adventurer Mode.
     #[serde(alias = "DIURNAL")]
-    pub diurnal: Option<()>,
+    pub diurnal: Flag,
     /// The creature hunts vermin by diving from the air. On tame creatures it works the same as
     /// normal `[HUNTS_VERMIN]`. Found on peregrine falcons.
     #[serde(alias = "DIVE_HUNTS_VERMIN")]
-    pub dive_hunts_vermin: Option<()>,
+    pub dive_hunts_vermin: Flag,
     /// Defines the material composition of eggs laid by the creature. Egg-laying creatures in the
     /// default game define this 3 times, using `LOCAL_CREATURE_MAT:EGGSHELL`,
     /// `LOCAL_CREATURE_MAT:EGG_WHITE`, and then `LOCAL_CREATURE_MAT:EGG_YOLK`. Eggs will be made out of
@@ -428,7 +428,7 @@ pub struct Caste {
     pub egg_size: Option<u32>,
     /// Allows the creature to wear or wield items.
     #[serde(alias = "EQUIPS")]
-    pub equips: Option<()>,
+    pub equips: Flag,
     /// A list of `EXTRA_BUTCHER_OBJECT` tokens on this creature.
     #[serde(alias = "EXTRA_BUTCHER_OBJECT")]
     pub extra_butcher_object: Vec<ExtraButcherObject>,
@@ -438,11 +438,11 @@ pub struct Caste {
     /// Creature can see regardless of whether it has working eyes and has full 360 degree vision,
     /// making it impossible to strike the creature from a blind spot in combat.
     #[serde(alias = "EXTRAVISION")]
-    pub extravision: Option<()>,
+    pub extravision: Flag,
     /// Found on subterranean animal-man tribals. Currently defunct. In previous versions, it caused
     /// these creatures to crawl out of chasms and underground rivers.
     #[serde(alias = "FEATURE_ATTACK_GROUP")]
-    pub feature_attack_group: Option<()>,
+    pub feature_attack_group: Flag,
     /// Found on forgotten beasts. Presumably makes it act as such, initiating underground attacks on
     /// fortresses, or leads to the pop-up message upon encountering one.
     ///
@@ -455,21 +455,21 @@ pub struct Caste {
     ///
     /// Could not be specified in user-defined raws until version `0.47.01`.
     #[serde(alias = "FEATURE_BEAST")]
-    pub feature_beast: Option<()>,
+    pub feature_beast: Flag,
     /// Makes the creature biologically female, enabling her to bear young. Usually specified inside
     /// a caste.
     #[serde(alias = "FEMALE")]
-    pub female: Option<()>,
+    pub female: Flag,
     /// Makes the creature immune to `FIREBALL` and `FIREJET` attacks, and allows it to path through
     /// high temperature zones, like lava or fires. Does not, by itself, make the creature immune to
     /// the damaging effects of burning in fire, and does not prevent general heat damage or melting
     /// on its own (this would require adjustments to be made to the creature's body materials - see
     /// the dragon raws for an example).
     #[serde(alias = "FIREIMMUNE")]
-    pub fireimmune: Option<()>,
+    pub fireimmune: Flag,
     /// Like `[FIREIMMUNE]`, but also renders the creature immune to `DRAGONFIRE` attacks.
     #[serde(alias = "FIREIMMUNE_SUPER")]
-    pub fireimmune_super: Option<()>,
+    pub fireimmune_super: Flag,
     /// The creature's corpse is a single `FISH_RAW` food item that needs to be cleaned (into a
     /// `FISH` item) at a fishery to become edible. Before being cleaned the item is referred to as
     /// "raw". The food item is categorized under "fish" on the food and stocks screens, and when
@@ -480,7 +480,7 @@ pub struct Caste {
     /// vermin creatures, resulting in multiple units of food (meat, brain, lungs, eyes, spleen
     /// etc.) from a single fished vermin. These units of food are categorized as meat by the game.
     #[serde(alias = "FISHITEM")]
-    pub fishitem: Option<()>,
+    pub fishitem: Flag,
     /// The creature's body is constantly at this temperature, heating up or cooling the surrounding
     /// area. Alters the temperature of the creature's inventory and all adjacent tiles, with all
     /// the effects that this implies. May trigger wildfires at high enough values. Also makes the
@@ -493,7 +493,7 @@ pub struct Caste {
     /// If engaged in combat, the creature will flee at the first sign of resistance. Used by
     /// kobolds in the vanilla game.
     #[serde(alias = "FLEEQUICK")]
-    pub fleequick: Option<()>,
+    pub fleequick: Flag,
     /// Allows a creature to fly, independent of it having wings or not. Fortress Mode pathfinding
     /// only partially incorporates flying - flying creatures need a land path to exist between them
     /// and an area in order to access it, but as long as one such path exists, they do not need to
@@ -502,7 +502,7 @@ pub struct Caste {
     /// without this token will be unable to fly. (A 'wing' in this context refers to any body part
     /// with its own `FLIER` token).
     #[serde(alias = "FLIER")]
-    pub flier: Option<()>,
+    pub flier: Flag,
     /// Defines a gait by which the creature can move.
     /// See [Gait](https://dwarffortresswiki.org/index.php/Gait) for more information.
     ///
@@ -543,10 +543,10 @@ pub struct Caste {
     pub general_material_force_multiplier: Option<(u32, u32)>,
     /// Makes the creature get infections from necrotic tissue.
     #[serde(alias = "GETS_INFECTIONS_FROM_ROT")]
-    pub gets_infections_from_rot: Option<()>,
+    pub gets_infections_from_rot: Flag,
     /// Makes the creature's wounds become infected if left untreated for too long.
     #[serde(alias = "GETS_WOUND_INFECTIONS")]
-    pub gets_wound_infections: Option<()>,
+    pub gets_wound_infections: Flag,
     /// The creature can and will gnaw its way out of animal traps and cages using the specified
     /// verb, depending on the material from which it is made (normally wood).
     #[serde(alias = "GNAWER")]
@@ -586,10 +586,10 @@ pub struct Caste {
     /// The creature has nerves in its muscles. Cutting the muscle tissue can sever motor and
     /// sensory nerves.
     #[serde(alias = "HAS_NERVES")]
-    pub has_nerves: Option<()>,
+    pub has_nerves: Flag,
     /// The creature has a shell. Seemingly no longer used - holdover from previous versions.
     #[serde(alias = "HASSHELL")]
-    pub hasshell: Option<()>,
+    pub hasshell: Flag,
     /// Default 'NONE'. The creature's normal body temperature. Creature ceases maintaining
     /// temperature on death unlike fixed material temperatures. Provides minor protection from
     /// environmental temperature to the creature.
@@ -597,26 +597,26 @@ pub struct Caste {
     pub homeotherm: Option<Choose<u32, NoneEnum>>,
     /// Creature hunts and kills nearby vermin.
     #[serde(alias = "HUNTS_VERMIN")]
-    pub hunts_vermin: Option<()>,
+    pub hunts_vermin: Flag,
     /// The creature cannot move. Found on sponges. Will also stop a creature from breeding in
     /// fortress mode (MALE and `FEMALE` are affected, if one is `IMMOBILE` no breeding will
     /// happen).
     #[serde(alias = "IMMOBILE")]
-    pub immobile: Option<()>,
+    pub immobile: Flag,
     /// The creature is immobile while on land. Only works on `[AQUATIC]` creatures which can't
     /// breathe on land.
     #[serde(alias = "IMMOBILE_LAND")]
-    pub immobile_land: Option<()>,
+    pub immobile_land: Flag,
     /// The creature radiates fire. It will ignite, and potentially completely destroy, items the
     /// creature is standing on. Keep booze away from critters with this tag. Also gives the vermin
     /// a high chance of escaping from animal traps and cages made of certain materials.
     #[serde(alias = "IMMOLATE")]
-    pub immolate: Option<()>,
+    pub immolate: Flag,
     /// Alias for `[CAN_SPEAK]` + `[CAN_LEARN]` but additionally keeps creatures from being
     /// butchered by the AI during worldgen and post-gen. In fortress mode, `[CAN_LEARN]` is
     /// enough.
     #[serde(alias = "INTELLIGENT")]
-    pub intelligent: Option<()>,
+    pub intelligent: Flag,
     /// Determines if the creature leaves behind a non-standard corpse (i.e. wood, statue, bars,
     /// stone, pool of liquid, etc.).
     #[serde(alias = "ITEMCORPSE")]
@@ -640,7 +640,7 @@ pub struct Caste {
     pub lair_characteristic: Option<(LairCharacteristicEnum, Clamp<u8, 0, 100>)>,
     /// This creature will actively hunt adventurers in its lair.
     #[serde(alias = "LAIR_HUNTER")]
-    pub lair_hunter: Option<()>,
+    pub lair_hunter: Flag,
     /// What this creature says while hunting adventurers in its lair. Requires a `.txt` on the end.
     #[serde(alias = "LAIR_HUNTER_SPEECH")]
     pub lair_hunter_speech: Option<String>, // TODO: string is a txt path
@@ -656,10 +656,10 @@ pub struct Caste {
     /// Also, they can be mentioned in the intro paragraph when starting a fortress e.g.
     /// "ere the wolves get hungry."
     #[serde(alias = "LARGE_PREDATOR")]
-    pub large_predator: Option<()>,
+    pub large_predator: Flag,
     /// Creature lays eggs instead of giving birth to live young.
     #[serde(alias = "LAYS_EGGS")]
-    pub lays_eggs: Option<()>,
+    pub lays_eggs: Flag,
     /// Creature lays the specified item instead of regular eggs.
     #[serde(alias = "LAYS_UNUSUAL_EGGS")]
     pub lays_unusual_eggs: Option<(ItemReferenceArg, MaterialTokenArg)>,
@@ -670,40 +670,40 @@ pub struct Caste {
     pub ligaments: Option<(MaterialTokenArg, u32)>,
     /// The creature will generate light, such as in adventurer mode at night.
     #[serde(alias = "LIGHT_GEN")]
-    pub light_gen: Option<()>,
+    pub light_gen: Flag,
     /// The creature will attack enemies rather than flee from them. This tag has the same effect on
     /// player-controlled creatures - including modded dwarves. Retired as of version `0.40.14`
     /// in favor of `[LARGE_PREDATOR]`.
     #[serde(alias = "LIKES_FIGHTING")]
-    pub likes_fighting: Option<()>,
+    pub likes_fighting: Flag,
     /// Creature uses "sssssnake talk" (multiplies 'S' when talking - "My name isss Recisssiz.").
     /// Used by serpent men and reptile men in the vanilla game. C's with the same pronunciation
     /// (depending on the word) are not affected by this token.
     #[serde(alias = "LISP")]
-    pub lisp: Option<()>,
+    pub lisp: Flag,
     /// Determines the number of offspring per one birth.
     #[serde(alias = "LITTERSIZE")]
     pub littersize: Option<(u32, u32)>,
     /// Wild animals of this species may occasionally join a civilization. Prevents trading of
     /// (tame) instances of this creature in caravans.
     #[serde(alias = "LOCAL_POPS_PRODUCE_HEROES")]
-    pub local_pops_produce_heroes: Option<()>,
+    pub local_pops_produce_heroes: Flag,
     /// Lets a creature open doors that are set to forbidden in Fortress Mode.
     #[serde(alias = "LOCKPICKER")]
-    pub lockpicker: Option<()>,
+    pub lockpicker: Flag,
     /// Determines how well a creature can see in the dark - higher is better. Dwarves have 10,000,
     /// which amounts to perfect nightvision.
     #[serde(alias = "LOW_LIGHT_VISION")]
     pub low_light_vision: Option<Clamp<u16, 0, 10_000>>, // TODO: find out if it can be negative
     /// No function, presumably a placeholder.
     #[serde(alias = "MAGICAL")]
-    pub magical: Option<()>,
+    pub magical: Flag,
     /// The creature is able to see while submerged in magma.
     #[serde(alias = "MAGMA_VISION")]
-    pub magma_vision: Option<()>,
+    pub magma_vision: Flag,
     /// Makes the creature biologically male. Usually declared inside a caste.
     #[serde(alias = "MALE")]
-    pub male: Option<()>,
+    pub male: Flag,
     // region: Mannerisms =========================================================================
     /// Adds a possible mannerism to the creature's profile.
     ///
@@ -728,7 +728,7 @@ pub struct Caste {
     /// particular part (e.g. replacing "finger" with "toe" will give you "when she gets
     /// exasperated, she often points and shakes her toe").
     #[serde(alias = "MANNERISM_BREATH")]
-    pub mannerism_breath: Option<()>,
+    pub mannerism_breath: Flag,
     /// Adds a possible mannerism to the creature's profile.
     ///
     /// Mannerisms give a possibility of a personality quirk being included in each member of a
@@ -764,7 +764,7 @@ pub struct Caste {
     /// particular part (e.g. replacing "finger" with "toe" will give you "when she gets
     /// exasperated, she often points and shakes her toe").
     #[serde(alias = "MANNERISM_EYELIDS")]
-    pub mannerism_eyelids: Option<()>,
+    pub mannerism_eyelids: Flag,
     /// Adds a possible mannerism to the creature's profile.
     ///
     /// Mannerisms give a possibility of a personality quirk being included in each member of a
@@ -860,7 +860,7 @@ pub struct Caste {
     /// particular part (e.g. replacing "finger" with "toe" will give you "when she gets
     /// exasperated, she often points and shakes her toe").
     #[serde(alias = "MANNERISM_LAUGH")]
-    pub mannerism_laugh: Option<()>,
+    pub mannerism_laugh: Flag,
     /// Adds a possible mannerism to the creature's profile.
     ///
     /// Mannerisms give a possibility of a personality quirk being included in each member of a
@@ -932,7 +932,7 @@ pub struct Caste {
     /// particular part (e.g. replacing "finger" with "toe" will give you "when she gets
     /// exasperated, she often points and shakes her toe").
     #[serde(alias = "MANNERISM_POSTURE")]
-    pub mannerism_posture: Option<()>,
+    pub mannerism_posture: Flag,
     /// Adds a possible mannerism to the creature's profile.
     ///
     /// Mannerisms give a possibility of a personality quirk being included in each member of a
@@ -944,7 +944,7 @@ pub struct Caste {
     /// particular part (e.g. replacing "finger" with "toe" will give you "when she gets
     /// exasperated, she often points and shakes her toe").
     #[serde(alias = "MANNERISM_SIT")]
-    pub mannerism_sit: Option<()>,
+    pub mannerism_sit: Flag,
     /// Adds a possible mannerism to the creature's profile.
     ///
     /// Mannerisms give a possibility of a personality quirk being included in each member of a
@@ -956,7 +956,7 @@ pub struct Caste {
     /// particular part (e.g. replacing "finger" with "toe" will give you "when she gets
     /// exasperated, she often points and shakes her toe").
     #[serde(alias = "MANNERISM_SMILE")]
-    pub mannerism_smile: Option<()>,
+    pub mannerism_smile: Flag,
     /// Adds a possible mannerism to the creature's profile.
     ///
     /// Mannerisms give a possibility of a personality quirk being included in each member of a
@@ -968,7 +968,7 @@ pub struct Caste {
     /// particular part (e.g. replacing "finger" with "toe" will give you "when she gets
     /// exasperated, she often points and shakes her toe").
     #[serde(alias = "MANNERISM_STRETCH")]
-    pub mannerism_stretch: Option<()>,
+    pub mannerism_stretch: Flag,
     /// Adds a possible mannerism to the creature's profile.
     ///
     /// Mannerisms give a possibility of a personality quirk being included in each member of a
@@ -992,7 +992,7 @@ pub struct Caste {
     /// particular part (e.g. replacing "finger" with "toe" will give you "when she gets
     /// exasperated, she often points and shakes her toe").
     #[serde(alias = "MANNERISM_WALK")]
-    pub mannerism_walk: Option<()>,
+    pub mannerism_walk: Flag,
     // endregion ==================================================================================
     /// When struck with a weapon made of the specified material, the force exerted will be
     /// multiplied by A/B, thus making the creature more or less susceptible to this material.
@@ -1005,7 +1005,7 @@ pub struct Caste {
     pub material_force_multiplier: Vec<(MaterialTokenArg, u32, u32)>,
     /// Sets the creature to be active at dawn in adventurer mode.
     #[serde(alias = "MATUTINAL")]
-    pub matutinal: Option<()>,
+    pub matutinal: Flag,
     /// Determines the creature's natural lifespan, using the specified minimum and maximum age
     /// values (in years). Each individual creature with this token is generated with a
     /// predetermined date (calculated down to the exact tick!) between these values, at which it is
@@ -1023,7 +1023,7 @@ pub struct Caste {
     /// combined with `[CAN_LEARN]`, will severely impact their pathfinding and lead the creature to
     /// move extremely slowly when not performing any task.
     #[serde(alias = "MEANDERER")]
-    pub meanderer: Option<()>,
+    pub meanderer: Flag,
     /// A 'boss' creature. A small number of the creatures are created during worldgen, their
     /// histories and descendants (if any) will be tracked in worldgen (as opposed to simply
     /// 'spawning'), and they will occasionally go on rampages, potentially leading to worship if
@@ -1037,7 +1037,7 @@ pub struct Caste {
     /// Requires specifying a `[BIOME]` in which the creature will live. Subterranean biomes appear
     /// to not be allowed.
     #[serde(alias = "MEGABEAST")]
-    pub megabeast: Option<()>,
+    pub megabeast: Flag,
     /// This means you can increase your attribute to a given percentage of its starting value
     /// (or the average value + your starting value if that is higher).
     ///
@@ -1070,30 +1070,30 @@ pub struct Caste {
     /// vanilla game. "They go on little missions to mess with various fortress buildings, not just
     /// levers."
     #[serde(alias = "MISCHIEVOUS", alias = "MISCHIEVIOUS")]
-    pub mischievous: Option<()>,
+    pub mischievous: Flag,
     /// Seemingly no longer used.
     #[serde(alias = "MODVALUE")]
-    pub modvalue: Option<()>,
+    pub modvalue: Flag,
     /// Creature may be used as a mount. No use for the player in fortress mode, but enemy sieging
     /// forces may arrive with cavalry. Mounts are usable in adventure mode.
     #[serde(alias = "MOUNT")]
-    pub mount: Option<()>,
+    pub mount: Flag,
     /// Creature may be used as a mount, but civilizations cannot domesticate it in worldgen without
     /// certain exceptions.
     #[serde(alias = "MOUNT_EXOTIC")]
-    pub mount_exotic: Option<()>,
+    pub mount_exotic: Flag,
     /// Allows the creature to have all-around vision as long as it has multiple heads that can see.
     #[serde(alias = "MULTIPART_FULL_VISION")]
-    pub multipart_full_vision: Option<()>,
+    pub multipart_full_vision: Flag,
     /// Makes the species usually produce a single offspring per birth, occasionally producing twins
     /// or triplets using typical real-world human probabilities. Requires `[FEMALE]`.
     #[serde(alias = "MULTIPLE_LITTER_RARE")]
-    pub multiple_litter_rare: Option<()>,
+    pub multiple_litter_rare: Flag,
     /// Animal is considered to be natural. `NATURAL` animals will not engage creatures tagged with
     /// `[AT_PEACE_WITH_WILDLIFE]` in combat unless they are members of a hostile entity and vice-
     /// versa.
     #[serde(alias = "NATURAL", alias = "NATURAL_ANIMAL")]
-    pub natural: Option<()>,
+    pub natural: Flag,
     /// The creature possesses the specified skill at this level inherently - that is, it begins
     /// with the skill at this level, and the skill may never rust below that. A value of 15 is
     /// legendary.
@@ -1107,13 +1107,13 @@ pub struct Caste {
     /// Bogeyman Types" in advanced world generation to 0 will only remove randomly-generated
     /// bogeymen.
     #[serde(alias = "NIGHT_CREATURE_BOGEYMAN")]
-    pub night_creature_bogeyman: Option<()>,
+    pub night_creature_bogeyman: Flag,
     /// Found on some necromancers. Creatures with this tag will experiment and create strange
     /// hybrid creatures. This tag appears to be all that is needed to allow necromancers or modded
     /// secrets to create every category of procedural experimental creature
     /// ([Though more testing is required to fully confirm this](http://www.bay12forums.com/smf/index.php?topic=175437.msg8085255#msg8085255)).
     #[serde(alias = "NIGHT_CREATURE_EXPERIMENTER")]
-    pub night_creature_experimenter: Option<()>,
+    pub night_creature_experimenter: Flag,
     /// Found on night trolls and werebeasts. Implies that the creature is a night creature, and
     /// shows its description in legends mode entry. The creature is always hostile and will start
     /// no quarter combat with any nearby creatures, except for members of its own race. Note that
@@ -1132,124 +1132,124 @@ pub struct Caste {
     /// go on rampages during worldgen. It will actively attempt to seek out potential conversion
     /// targets to abduct, convert, and have children with (if possible).
     #[serde(alias = "NIGHT_CREATURE_HUNTER")]
-    pub night_creature_hunter: Option<()>,
+    pub night_creature_hunter: Flag,
     /// Found on nightmares. Corpses and severed body parts derived from creatures with this token
     /// turn into smoke after a short while.
     #[serde(alias = "NIGHT_CREATURE_NIGHTMARE")]
-    pub night_creature_nightmare: Option<()>,
+    pub night_creature_nightmare: Flag,
     /// The creature caste does not appear in autumn.
     #[serde(alias = "NO_AUTUMN")]
-    pub no_autumn: Option<()>,
+    pub no_autumn: Flag,
     /// Creature doesn't require connected body parts to move (presumably); generally used on undead
     /// creatures with connections that have rotted away.
     #[serde(alias = "NO_CONNECTIONS_FOR_MOVEMENT")]
-    pub no_connections_for_movement: Option<()>,
+    pub no_connections_for_movement: Flag,
     /// Creature cannot become dizzy.
     #[serde(alias = "NO_DIZZINESS")]
-    pub no_dizziness: Option<()>,
+    pub no_dizziness: Flag,
     /// Creature does not need to drink.
     #[serde(alias = "NO_DRINK")]
-    pub no_drink: Option<()>,
+    pub no_drink: Flag,
     /// Creature does not need to eat.
     #[serde(alias = "NO_EAT")]
-    pub no_eat: Option<()>,
+    pub no_eat: Flag,
     /// Creature cannot suffer fevers.
     #[serde(alias = "NO_FEVERS")]
-    pub no_fevers: Option<()>,
+    pub no_fevers: Flag,
     /// The creature is biologically sexless. Makes the creature unable to breed.
     #[serde(alias = "NO_GENDER")]
-    pub no_gender: Option<()>,
+    pub no_gender: Flag,
     /// The creature cannot raise any physical attributes.
     #[serde(alias = "NO_PHYS_ATT_GAIN")]
-    pub no_phys_att_gain: Option<()>,
+    pub no_phys_att_gain: Flag,
     /// The creature cannot lose any physical attributes.
     #[serde(alias = "NO_PHYS_ATT_RUST")]
-    pub no_phys_att_rust: Option<()>,
+    pub no_phys_att_rust: Flag,
     /// Creature does not need to sleep. Can still be rendered unconscious by other means.
     #[serde(alias = "NO_SLEEP")]
-    pub no_sleep: Option<()>,
+    pub no_sleep: Flag,
     /// The creature caste does not appear in spring.
     #[serde(alias = "NO_SPRING")]
-    pub no_spring: Option<()>,
+    pub no_spring: Flag,
     /// The creature caste does not appear in summer.
     #[serde(alias = "NO_SUMMER")]
-    pub no_summer: Option<()>,
+    pub no_summer: Flag,
     /// Creature doesn't require an organ with the `[THOUGHT]` tag to survive or attack; generally
     /// used on creatures that don't have brains.
     #[serde(alias = "NO_THOUGHT_CENTER_FOR_MOVEMENT")]
-    pub no_thought_center_for_movement: Option<()>,
+    pub no_thought_center_for_movement: Flag,
     /// Prevents creature from selecting its color based on its profession (e.g. Miner, Hunter,
     /// Wrestler).
     #[serde(alias = "NO_UNIT_TYPE_COLOR")]
-    pub no_unit_type_color: Option<()>,
+    pub no_unit_type_color: Flag,
     /// Likely prevents the creature from leaving broken vegetation tracks (unverified).
     #[serde(alias = "NO_VEGETATION_PERTURB")]
-    pub no_vegetation_perturb: Option<()>,
+    pub no_vegetation_perturb: Flag,
     /// The creature caste does not appear in winter.
     #[serde(alias = "NO_WINTER")]
-    pub no_winter: Option<()>,
+    pub no_winter: Flag,
     /// Creature has no bones.
     #[serde(alias = "NOBONES")]
-    pub nobones: Option<()>,
+    pub nobones: Flag,
     /// Creature doesn't need to breathe or have `[BREATHE]` parts in body, nor can it drown or be
     /// strangled. Creatures living in magma must have this tag, otherwise they will drown.
     #[serde(alias = "NOBREATHE")]
-    pub nobreathe: Option<()>,
+    pub nobreathe: Flag,
     /// Sets the creature to be active at night in adventure mode.
     #[serde(alias = "NOCTURNAL")]
-    pub nocturnal: Option<()>,
+    pub nocturnal: Flag,
     /// Creature has no emotions. It is immune to the effects of stress and unable to rage, and its
     /// needs cannot be fulfilled in any way. Used on undead in the vanilla game.
     #[serde(alias = "NOEMOTION")]
-    pub noemotion: Option<()>,
+    pub noemotion: Flag,
     /// Creature can't become tired or over-exerted from taking too many combat actions or moving at
     /// full speed for extended periods of time.
     #[serde(alias = "NOEXERT")]
-    pub noexert: Option<()>,
+    pub noexert: Flag,
     /// Creature doesn't feel fear and will never flee from battle. Additionally, it causes bogeymen
     /// and nightmares to become friendly towards the creature.
     #[serde(alias = "NOFEAR")]
-    pub nofear: Option<()>,
+    pub nofear: Flag,
     /// Creature will not drop meat when butchered.
     #[serde(alias = "NOMEAT")]
-    pub nomeat: Option<()>,
+    pub nomeat: Flag,
     /// Creature isn't nauseated by gut hits and cannot vomit.
     #[serde(alias = "NONAUSEA")]
-    pub nonausea: Option<()>,
+    pub nonausea: Flag,
     /// Creature doesn't feel pain.
     #[serde(alias = "NOPAIN")]
-    pub nopain: Option<()>,
+    pub nopain: Flag,
     /// Creature will not drop a hide when butchered.
     #[serde(alias = "NOSKIN")]
-    pub noskin: Option<()>,
+    pub noskin: Flag,
     /// Creature will not drop a skull on butchering, rot, or decay of severed head.
     #[serde(alias = "NOSKULL")]
-    pub noskull: Option<()>,
+    pub noskull: Flag,
     /// Does not produce miasma when rotting.
     #[serde(alias = "NOSMELLYROT")]
-    pub nosmellyrot: Option<()>,
+    pub nosmellyrot: Flag,
     /// Weapons can't get stuck in the creature.
     #[serde(alias = "NOSTUCKINS")]
-    pub nostuckins: Option<()>,
+    pub nostuckins: Flag,
     /// Creature can't be stunned and knocked unconscious by pain or head injuries. Creatures with
     /// this tag never wake up from sleep in Fortress Mode. If this creature needs to sleep while
     /// playing, it will die.
     #[serde(alias = "NOSTUN")]
-    pub nostun: Option<()>,
+    pub nostun: Flag,
     /// Cannot be butchered.
     #[serde(alias = "NOT_BUTCHERABLE")]
-    pub not_butcherable: Option<()>,
+    pub not_butcherable: Flag,
     /// Cannot be raised from the dead by necromancers or evil clouds. Implies the creature is not a
     /// normal living being. Used by vampires, mummies and inorganic creatures like the amethyst man
     /// and bronze colossus. Creatures who are `[OPPOSED_TO_LIFE]` (undead) will be docile towards
     /// creatures with this token.
     #[serde(alias = "NOT_LIVING")]
-    pub not_living: Option<()>,
+    pub not_living: Flag,
     /// Creature doesn't require a `[THOUGHT]` body part to survive. Has the added effect of
     /// preventing speech, though directly controlling creatures that would otherwise be capable of
     /// speaking allows them to engage in conversation.
     #[serde(alias = "NOTHOUGHT")]
-    pub nothought: Option<()>,
+    pub nothought: Flag,
     /// How easy the creature is to smell. The higher the number, the easier the creature can be
     /// smelt. Zero is odorless. Default is 50.
     #[serde(alias = "ODOR_LEVEL")]
@@ -1265,7 +1265,7 @@ pub struct Caste {
     /// living creatures that lack it, while ignoring other living creatures that also have this
     /// token.
     #[serde(alias = "OPPOSED_TO_LIFE")]
-    pub opposed_to_life: Option<()>,
+    pub opposed_to_life: Flag,
     /// Determines caste's likelihood of having sexual attraction to certain sexes. Values default
     /// to `75:20:5` for the same sex and `5:20:75` for the opposite sex. The first value indicates how
     /// likely to be entirely uninterested in the sex, the second decides if the creature will
@@ -1275,23 +1275,23 @@ pub struct Caste {
     pub orientation: Vec<(MaleOrFemaleEnum, u32, u32, u32)>,
     /// Lets you play as an outsider of this species in adventure mode.
     #[serde(alias = "OUTSIDER_CONTROLLABLE")]
-    pub outsider_controllable: Option<()>,
+    pub outsider_controllable: Flag,
     /// Allows the creature to be used as a pack animal. Currently only used by merchants without
     /// wagons. Also prevents creature from dropping hauled items on its own -- do not use for
     /// player-controllable creatures!
     #[serde(alias = "PACK_ANIMAL")]
-    pub pack_animal: Option<()>,
+    pub pack_animal: Flag,
     /// The creature is immune to all paralyzing special attacks.
     #[serde(alias = "PARALYZEIMMUNE")]
-    pub paralyzeimmune: Option<()>,
+    pub paralyzeimmune: Flag,
     /// Used to control the bat riders with paralyze-dart blowguns that flew through the `2D` chasm.
     /// Doesn't do anything now.
     #[serde(alias = "PATTERNFLIER")]
-    pub patternflier: Option<()>,
+    pub patternflier: Flag,
     /// In earlier versions, creature would generate pearls. Apparently does nothing in the current
     /// version.
     #[serde(alias = "PEARL")]
-    pub pearl: Option<()>,
+    pub pearl: Flag,
     /// Controls the ability of vermin to find a way into containers when they are eating food from
     /// your stockpiles. The value for vermin in the game's current version ranges from 1-3. A
     /// higher value is better at penetrating containers.
@@ -1309,7 +1309,7 @@ pub struct Caste {
     /// with all the problems that entails. However, you can solve these problems using the popular
     /// plugin Dwarf Therapist, which is completely unaffected by the tag.
     #[serde(alias = "PET")]
-    pub pet: Option<()>,
+    pub pet: Flag,
     /// Allows the creature to be tamed in Fortress mode. Prequisite for all other working animal
     /// roles. Civilizations cannot domesticate it in worldgen, with certain exceptions.
     /// Adding this to civilization members will classify them as pets instead of citizens, with
@@ -1317,7 +1317,7 @@ pub struct Caste {
     ///
     /// May make them more difficult to tame, but this needs verification.
     #[serde(alias = "PET_EXOTIC")]
-    pub pet_exotic: Option<()>,
+    pub pet_exotic: Flag,
     /// How valuable a tamed animal is. Actual cost in points in the embarking screen is
     /// `1+(PETVALUE/2)` for an untrained animal, `1+PETVALUE` for a war/hunting one.
     #[serde(alias = "PETVALUE")]
@@ -1363,7 +1363,7 @@ pub struct Caste {
     /// creature ascends to a position of leadership, it will proceed to act as a standard ruler for
     /// their entity and fulfill the same functions (hold tournaments, tame creatures, etc).
     #[serde(alias = "POWER")]
-    pub power: Option<()>,
+    pub power: Flag,
     /// Creature has a percentage chance to flip out at visible non-friendly creatures. Enraged
     /// creatures attack anything regardless of timidity and get a strength bonus to their hits.
     /// This is what makes badgers so hardcore.
@@ -1386,10 +1386,10 @@ pub struct Caste {
     /// remains on death when biting. Leaving this tag out will cause the creature to disappear
     /// entirely after it bites.
     #[serde(alias = "REMAINS_ON_VERMIN_BITE_DEATH")]
-    pub remains_on_vermin_bite_death: Option<()>,
+    pub remains_on_vermin_bite_death: Flag,
     /// Unknown.
     #[serde(alias = "REMAINS_UNDETERMINED")]
-    pub remains_undetermined: Option<()>,
+    pub remains_undetermined: Flag,
     /// The creature will retract into a body part when threatened. It will be unable to move or
     /// attack, but enemies will only be able to attack the specified body part. (eg. Turtle,
     /// Hedgehog)
@@ -1405,7 +1405,7 @@ pub struct Caste {
     /// Cat behavior. If it kills a vermin creature and has an owner, it carries the remains in its
     /// mouth and drops them at their feet. Requires `[HUNTS_VERMIN]`, obviously.
     #[serde(alias = "RETURNS_VERMIN_KILLS_TO_OWNER")]
-    pub returns_vermin_kills_to_owner: Option<()>,
+    pub returns_vermin_kills_to_owner: Flag,
     /// Creature will occasionally root around in the grass, looking for insects.
     ///
     /// Used for flavor in Adventurer Mode, spawns vermin edible for this creature in Fortress Mode.
@@ -1437,7 +1437,7 @@ pub struct Caste {
     /// See the [semi-megabeast page](https://dwarffortresswiki.org/index.php/Semi-megabeast)
     /// for more info.
     #[serde(alias = "SEMIMEGABEAST")]
-    pub semimegabeast: Option<()>,
+    pub semimegabeast: Flag,
     /// Gives the creature the ability to sense creatures belonging to the specified creature class
     /// even when they lie far beyond line of sight, including through walls and floors. It also
     /// appears to reduce or negate the combat penalty of blind units when fighting creatures they
@@ -1484,10 +1484,10 @@ pub struct Caste {
     /// creatures with this token combined with `[EVIL]` will become servants of goblins in their
     /// civilizations, in the style of trolls.
     #[serde(alias = "SLOW_LEARNER")]
-    pub slow_learner: Option<()>,
+    pub slow_learner: Flag,
     /// Creature leaves "remains" instead of a corpse. Used by vermin.
     #[serde(alias = "SMALL_REMAINS")]
-    pub small_remains: Option<()>,
+    pub small_remains: Flag,
     /// Creature makes sounds periodically, which can be heard in Adventure mode.
     ///
     /// First-person reads "You bark"
@@ -1514,12 +1514,12 @@ pub struct Caste {
     pub specific_food: Vec<PlantOrCreatureTokenArg>,
     /// This creature can be converted by a night creature with `[SPOUSE_CONVERTER]`.
     #[serde(alias = "SPOUSE_CONVERSION_TARGET")]
-    pub spouse_conversion_target: Option<()>,
+    pub spouse_conversion_target: Flag,
     /// If the creature has the `[NIGHT_CREATURE_HUNTER]` tag, it will kidnap
     /// `[SPOUSE_CONVERSION_TARGET]`s and transform them into the caste of its species with the
     /// `[CONVERTED_SPOUSE]` tag during worldgen. It may also start families this way.
     #[serde(alias = "SPOUSE_CONVERTER")]
-    pub spouse_converter: Option<()>,
+    pub spouse_converter: Flag,
     /// If the creature rules over a site, it will cause the local landscape to be corrupted into
     /// evil surroundings associated with the creature's spheres. The creature must have at least
     /// one of the following spheres for this to take effect: `BLIGHT`, `DEATH`, `DISEASE`,
@@ -1529,32 +1529,32 @@ pub struct Caste {
     /// ([source](http://www.bay12forums.com/smf/index.php?topic=169696.msg8162224#msg8162224)).
     /// Used by demons in the vanilla game.
     #[serde(alias = "SPREAD_EVIL_SPHERES_IF_RULER")]
-    pub spread_evil_spheres_if_ruler: Option<()>,
+    pub spread_evil_spheres_if_ruler: Flag,
     /// Caste does not require `[GRASP]` body parts to climb -- it can climb with `[STANCE]` parts
     /// instead.
     #[serde(alias = "STANCE_CLIMBER")]
-    pub stance_climber: Option<()>,
+    pub stance_climber: Flag,
     /// Acts as `[GRAZER]` but set to `20000*G*(max size)^(-3/4)`, where `G` defaults to 100 but can
     /// be set in d_init, and the whole thing is trapped between 150 and 3 million. Used for all
     /// grazers in the default creature raws.
     #[serde(alias = "STANDARD_GRAZER")]
-    pub standard_grazer: Option<()>,
+    pub standard_grazer: Flag,
     /// The creature will get strange moods in fortress mode and can produce artifacts.
     #[serde(alias = "STRANGE_MOODS")]
-    pub strange_moods: Option<()>,
+    pub strange_moods: Flag,
     /// Gives the creature knowledge of any secrets with `[SUPERNATURAL_LEARNING_POSSIBLE]` that
     /// match its spheres. Also prevents it from becoming a vampire or a werebeast. Other effects
     /// are unknown.
     #[serde(alias = "SUPERNATURAL")]
-    pub supernatural: Option<()>,
+    pub supernatural: Flag,
     /// The creature naturally knows how to swim perfectly and does not use the swimmer skill, as
     /// opposed to `[SWIMS_LEARNED]`. However, Fortress mode AI never paths into water anyway,
     /// so it's less useful there.
     #[serde(alias = "SWIMS_INNATE")]
-    pub swims_innate: Option<()>,
+    pub swims_innate: Flag,
     /// The creature swims only as well as their present swimming skill allows them to.
     #[serde(alias = "SWIMS_LEARNED")]
-    pub swims_learned: Option<()>,
+    pub swims_learned: Flag,
     /// Dilutes the effects of syndromes which have the specified identifier. A percentage of 100
     /// is equal to the regular syndrome effect severity, higher percentages reduce severity.
     #[serde(alias = "SYNDROME_DILUTION_FACTOR")]
@@ -1566,52 +1566,52 @@ pub struct Caste {
     pub tendons: Option<(MaterialTokenArg, u32)>,
     /// The creature's webs can catch larger creatures.
     #[serde(alias = "THICKWEB")]
-    pub thickweb: Option<()>,
+    pub thickweb: Flag,
     /// Found on titans. Cannot be specified in user-defined raws.
     #[serde(alias = "TITAN")] // TODO mark generated, see #84
-    pub titan: Option<()>,
+    pub titan: Flag,
     /// How much the creature can carry when used by merchants.
     #[serde(alias = "TRADE_CAPACITY")]
     pub trade_capacity: Option<u32>,
     /// Shortcut for `[TRAINABLE_HUNTING]` + `[TRAINABLE_WAR]`.
     #[serde(alias = "TRAINABLE")]
-    pub trainable: Option<()>,
+    pub trainable: Flag,
     /// Can be trained as a hunting beast, increasing speed.
     #[serde(alias = "TRAINABLE_HUNTING")]
-    pub trainable_hunting: Option<()>,
+    pub trainable_hunting: Flag,
     /// Can be trained as a war beast, increasing strength and endurance.
     #[serde(alias = "TRAINABLE_WAR")]
-    pub trainable_war: Option<()>,
+    pub trainable_war: Flag,
     /// Allows the creature to go into [martial trances](https://dwarffortresswiki.org/index.php/Martial_trance).
     /// Used by dwarves in the vanilla game.
     #[serde(alias = "TRANCES")]
-    pub trances: Option<()>,
+    pub trances: Flag,
     /// The creature will never trigger traps it steps on. Used by a number of creatures. Doesn't
     /// make the creature immune to remotely activated traps (like retractable spikes being
     /// triggered while the creature is standing over them). `TRAPAVOID` creatures lose this power
     /// if they're immobilized while standing in a trap, be it by stepping on thick web, being
     /// paralyzed or being knocked unconscious.
     #[serde(alias = "TRAPAVOID")]
-    pub trapavoid: Option<()>,
+    pub trapavoid: Flag,
     /// The creature is displayed as blue when in 7/7 water. Used on fish and amphibious creatures
     /// which swim under the water.
     #[serde(alias = "UNDERSWIM")]
-    pub underswim: Option<()>,
+    pub underswim: Flag,
     /// Found on generated demons; causes the game to create a single named instance of the demon
     /// which will emerge from the underworld and take over civilizations during worldgen. Could not
     /// be specified in user-defined raws prior to version `0.47.01`.
     #[serde(alias = "UNIQUE_DEMON")]
-    pub unique_demon: Option<()>,
+    pub unique_demon: Flag,
     /// Changes the language of the creature into unintelligible 'kobold-speak', which creatures of
     /// other species will be unable to understand. If a civilized creature has this and is not part
     /// of a `[SKULKING]` civ, it will tend to start wars with all nearby civilizations and will be
     /// unable to make peace treaties due to 'inability to communicate'.
     #[serde(alias = "UTTERANCES")]
-    pub utterances: Option<()>,
+    pub utterances: Flag,
     /// The creature is made of swampstuff. Doesn't appear to do anything in particular. Used by
     /// grimelings in the vanilla game.
     #[serde(alias = "VEGETATION")]
-    pub vegetation: Option<()>,
+    pub vegetation: Flag,
     /// Enables vermin to bite other creatures, injecting the specified material. See
     /// `[SPECIALATTACK_INJECT_EXTRACT]` for details about injection - this token presumably works
     /// in a similar manner (unverified).
@@ -1621,28 +1621,28 @@ pub struct Caste {
     /// preference towards them. Being hated by some dwarves does not prevent the vermin from
     /// appearing as a positive preference for other dwarves.
     #[serde(alias = "VERMIN_HATEABLE")]
-    pub vermin_hateable: Option<()>,
+    pub vermin_hateable: Flag,
     /// This makes the creature move in a swarm of creatures of the same race as it (e.g. swarm of
     /// flies, swarm of ants).
     #[serde(alias = "VERMIN_MICRO")]
-    pub vermin_micro: Option<()>,
+    pub vermin_micro: Flag,
     /// The creature cannot be caught by fishing.
     #[serde(alias = "VERMIN_NOFISH")]
-    pub vermin_nofish: Option<()>,
+    pub vermin_nofish: Flag,
     /// The creature will not be observed randomly roaming about the map.
     #[serde(alias = "VERMIN_NOROAM")]
-    pub vermin_noroam: Option<()>,
+    pub vermin_noroam: Flag,
     /// The creature cannot be caught in baited animal traps; however, a "catch live land animal"
     /// task may still be able to capture one if a dwarf finds one roaming around.
     #[serde(alias = "VERMIN_NOTRAP")]
-    pub vermin_notrap: Option<()>,
+    pub vermin_notrap: Flag,
     /// Old shorthand for "does cat stuff". Contains `[AT_PEACE_WITH_WILDLIFE]` +
     /// `[RETURNS_VERMIN_KILLS_TO_OWNER]` + `[HUNTS_VERMIN]` + `[ADOPTS_OWNER]`.
     #[serde(alias = "VERMINHUNTER")]
-    pub verminhunter: Option<()>,
+    pub verminhunter: Flag,
     /// Sets the creature to be active during the evening in adventurer mode.
     #[serde(alias = "VESPERTINE")]
-    pub vespertine: Option<()>,
+    pub vespertine: Flag,
     /// Value should determine how close you have to get to a critter before it attacks (or prevents
     /// adv mode travel etc.) Default is 20.
     #[serde(alias = "VIEWRANGE")]
@@ -1658,13 +1658,13 @@ pub struct Caste {
     /// Allows the creature to pull caravan wagons. If a civilization doesn't have access to any, it
     /// is restricted to trading with pack animals.
     #[serde(alias = "WAGON_PULLER")]
-    pub wagon_puller: Option<()>,
+    pub wagon_puller: Flag,
     /// Allows the creature to create webs, and defines what the webs are made of.
     #[serde(alias = "WEBBER")]
     pub webber: Option<MaterialTokenArg>,
     /// The creature will not get caught in thick webs. Used by creatures who can shoot thick webs
     /// (such as giant cave spiders) in order to make them immune to their own attacks.
     #[serde(alias = "WEBIMMUNE")]
-    pub webimmune: Option<()>,
+    pub webimmune: Flag,
     // endregion ==================================================================================
 }

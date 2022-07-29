@@ -17,3 +17,5 @@ pub use df_char::DFChar;
 pub use reference::Reference;
 pub use reference_to::ReferenceTo;
 pub use referenceable::Referenceable;
+
+pub type Flag = Option<()>;
