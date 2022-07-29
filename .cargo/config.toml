@@ -1,0 +1,5 @@
+[source]
+
+[source.gitlab-df-raw-language-server]
+git = "https://gitlab.com/df-modding-tools/df-raw-language-server.git"
+branch = "dev"

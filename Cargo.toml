@@ -6,3 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+df_ls_lexical_analysis = { git = "https://gitlab.com/df-modding-tools/df-raw-language-server.git", branch = "dev" }
+df_ls_structure = { git = "https://gitlab.com/df-modding-tools/df-raw-language-server.git", branch = "dev" }
+df_ls_syntax_analysis = { git = "https://gitlab.com/df-modding-tools/df-raw-language-server.git", branch = "dev" }
+df_ls_core = { git = "https://gitlab.com/df-modding-tools/df-raw-language-server.git", branch = "dev" }
+anyhow = "1"
+serde_json = "1"
+serde_with = "2"
+serde = { version = "1", features = ["derive"] }
+indexmap = "1"
