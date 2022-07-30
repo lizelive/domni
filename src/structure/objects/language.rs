@@ -1,4 +1,4 @@
-use crate::core::{AllowEmpty, ReferenceTo};
+use crate::core::{AllowEmpty, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 

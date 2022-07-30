@@ -1,4 +1,4 @@
-use crate::core::{Reference, ReferenceTo};
+use crate::core::{Reference, ReferenceTo, Flag};
 use crate::structure::{
     BodyAttributeEnum, BpCriteriaTokenArg, CasteFlagEnum, CreatureFlagEnum, CreatureToken,
     FacetEnum, InteractionToken, PersonalityTraitEnum, SoulAttributeEnum,

@@ -1,4 +1,4 @@
-use crate::core::{Choose, Clamp, DFChar, Reference, ReferenceTo};
+use crate::core::{Choose, Clamp, DFChar, Reference, ReferenceTo, Flag};
 use crate::structure::{
     AllOrAllSolidEnum, DietInfoEnum, MaterialStateEnum, NoneEnum, OverwriteSolidEnum, SphereEnum,
     StandardPluralEnum,

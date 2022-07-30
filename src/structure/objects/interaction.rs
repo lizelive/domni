@@ -1,4 +1,4 @@
-use crate::core::{Choose, Reference, ReferenceTo};
+use crate::core::{Choose, Reference, ReferenceTo, Flag};
 use crate::structure::{
     BreathFlowEnum, BreathMaterialEnum, CasteFlagEnum, CreatureFlagEnum, CreatureToken,
     EffectLocationEnum, MaterialTokenArg, SphereEnum, SynTransmittionMethodEnum, SyndromeToken,

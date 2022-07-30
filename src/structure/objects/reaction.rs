@@ -1,4 +1,4 @@
-use crate::core::{AllowEmpty, Choose, Clamp, Reference, ReferenceTo};
+use crate::core::{AllowEmpty, Choose, Clamp, Reference, ReferenceTo, Flag};
 use crate::structure::{
     BuildingToken, ItemReferenceArg, KeyBindEnum, MaterialTokenArg, NoneEnum, SkillEnum,
 };

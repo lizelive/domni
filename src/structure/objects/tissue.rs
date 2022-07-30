@@ -1,4 +1,4 @@
-use crate::core::{Choose, ReferenceTo};
+use crate::core::{Choose, ReferenceTo, Flag};
 use crate::structure::{MaterialStateEnum, MaterialTokenArg, PluralEnum};
 
 use serde::{Deserialize, Serialize};

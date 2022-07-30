@@ -1,4 +1,4 @@
-use crate::core::{Choose, DFChar, Reference, ReferenceTo};
+use crate::core::{Choose, DFChar, Reference, ReferenceTo, Flag};
 use crate::structure::{AllOrAllSolidEnum, MaterialStateEnum, NoneEnum, StandardPluralEnum};
 use crate::structure::{
     ColorToken, InorganicToken, ItemReferenceArg, MaterialTokenArg, ReactionToken, SyndromeToken,

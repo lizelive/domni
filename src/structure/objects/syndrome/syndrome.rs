@@ -1,4 +1,4 @@
-use crate::core::{Reference, ReferenceTo};
+use crate::core::{Reference, ReferenceTo, Flag};
 use crate::structure::{
     CeAddTag, CeBleeding, CeBlisters, CeBodyAppearanceModifier, CeBodyMatInteraction,
     CeBodyTransformation, CeBpAppearanceModifier, CeBruising, CeCanDoInteraction,

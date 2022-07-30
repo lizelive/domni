@@ -1,4 +1,4 @@
-use crate::core::{DFChar, Reference, ReferenceTo};
+use crate::core::{DFChar, Reference, ReferenceTo, Flag};
 
 use serde::{Deserialize, Serialize};
 
